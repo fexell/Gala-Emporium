@@ -144,6 +144,7 @@ dist
 # Backup files
 backup
 
+# My local test files
 test
 
 # End of https://www.toptal.com/developers/gitignore/api/node
