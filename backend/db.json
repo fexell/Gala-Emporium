@@ -2,21 +2,12 @@
   "events": [
     {
       "id": 1,
-      "title": "event 1",
-      "description": "description 1",
-      "date": "2023-01-01"
-    },
-    {
-      "id": 2,
-      "title": "event 2",
-      "description": "description 2",
-      "date": "2023-01-02"
-    },
-    {
-      "title": "event 3",
-      "description": "description 3",
-      "date": "2023-01-03",
-      "id": 3
+      "category": "music",
+      "title": "Jazz Night",
+      "datetime": "2024-07-15T20:00:00",
+      "location": "The Blue Note",
+      "description": "An evening of smooth jazz with local artists.",
+      "price": 25.00
     }
   ]
 }

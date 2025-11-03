@@ -64,7 +64,7 @@ const createApiClient                       = ({ baseUrl, defaultHeaders = {} } 
         body                                : body instanceof FormData
           ? body
           : JSON.stringify( body ),
-        headers: body instanceof FormData
+        headers                             : body instanceof FormData
           ? defaultHeaders
           : { 'Content-Type': 'application/json', ...defaultHeaders }
       }
