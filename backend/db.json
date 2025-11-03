@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "event 1",
+      "description": "description 1",
+      "date": "2023-01-01"
+    },
+    {
+      "id": 2,
+      "title": "event 2",
+      "description": "description 2",
+      "date": "2023-01-02"
+    }
+  ]
+}
