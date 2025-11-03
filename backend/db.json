@@ -11,6 +11,12 @@
       "title": "event 2",
       "description": "description 2",
       "date": "2023-01-02"
+    },
+    {
+      "title": "event 3",
+      "description": "description 3",
+      "date": "2023-01-03",
+      "id": 3
     }
   ]
 }
