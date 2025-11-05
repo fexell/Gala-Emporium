@@ -50,7 +50,33 @@
       </div>
     </section>
 
-    <!-- Admin grejer (bara för den som har access) -->
+
+    <!-- Bokning av biljetter. Länken Boka hoppar hit -->
+    <section id="booking" class="tickets">
+      <div class="wrapper">
+        <h2>Boka Biljetter</h2>
+        
+        <form id="ticket-form" class="buy-tickets">
+          <select id="pick-show" required>
+            
+            <option value="">Vilket event vill du gå på?</option>      
+            <!-- fylls med JS -->
+          </select>
+          
+          <input type="text" id="your-name" placeholder="Vad heter du?" required>
+
+          <input type="email" id="your-email" placeholder="Din mejl" required>
+
+          <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" max="10" required>
+          
+          <button type="submit">Boka nu!</button>
+        </form>
+        
+        <div id="booking-message" class="confirmation hide"></div>
+      </div>
+    </section>
+
+        <!-- Admin grejer (bara för den som har access) -->
     <section id="admin" class="backstage">
       <div class="wrapper">
         <h2>Admin Panel</h2>
@@ -86,30 +112,6 @@
       </div>
     </section>
 
-    <!-- Bokning av biljetter. Länken Boka hoppar hit -->
-    <section id="booking" class="tickets">
-      <div class="wrapper">
-        <h2>Boka Biljetter</h2>
-        
-        <form id="ticket-form" class="buy-tickets">
-          <select id="pick-show" required>
-            
-            <option value="">Vilket event vill du gå på?</option>      
-            <!-- fylls med JS -->
-          </select>
-          
-          <input type="text" id="your-name" placeholder="Vad heter du?" required>
-
-          <input type="email" id="your-email" placeholder="Din mejl" required>
-          
-          <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" max="10" required>
-          
-          <button type="submit">Boka nu!</button>
-        </form>
-        
-        <div id="booking-message" class="confirmation hide"></div>
-      </div>
-    </section>
 
   </main>
 </body>

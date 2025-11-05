@@ -5,12 +5,17 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth; /* mjuk scrollning för nav-länkar */
+}
+
+
 /* Design av body för en mörk tema */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1a1a1a;
-  color: #f5f5f5;
-  line-height: 1.6; /* radavstånd - gör texten luftigare och lättare att läsa */
+  font-family: 'Georgia', serif; /* mer elegant serif för filmmusik-känsla */
+  background-color: #0f0f0f; /* djupare svart */
+  color: #f8f8f8; /* lite varmare vit */
+  line-height: 1.7; /* radavstånd - gör texten luftigare och lättare att läsa */
 }
 
 /* wrapper för all content */
@@ -63,18 +68,18 @@ body {
 
 
 /* banner sektion - hero området */
-.banner { /* hela banner-sektionen */
-  background-color: #313131; /* bara en mörk grå bakgrund tills vidare */
-  padding: 80px 0;
+.banner {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), #2c1810;
+  padding: 100px 0; 
   text-align: center;
-  border-bottom: 1px solid #444;
+  border-bottom: 3px solid #d4af37; /* tjockare guld-linje */
 }
 
 .banner h2 { /* "Upplev filmmusikens magi" rubriken */
-  font-size: 3em;
-  color: #d4af37; /* guld */
-  margin-bottom: 20px;
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+  font-size: 3.5em; 
+  color: #d4af37;
+  margin-bottom: 25px;
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9); /* starkare skugga */
 }
 
 .banner p { /* undertexten under rubriken */
@@ -84,11 +89,12 @@ body {
   margin: 0 auto; /* centrerar texten */
 }
 
-/* om oss sektionen */
+/* alternera sektioner för bättre kontrast */
 .info-box { /* hela "om oss" sektionen */
-  padding: 60px 0;
-  background-color: #222; /* lite ljusare än body */
+  padding: 80px 0;
+  background-color: #2a2a2a; /* lite ljusare för kontrast */
 }
+
 
 .info-box h2 { /* "Om Movie Soundtrack Orchestra" rubriken */
   font-size: 2.2em;
@@ -98,9 +104,10 @@ body {
 }
 
 .info-box p { /* textstyckena med info om orkestern */
-  font-size: 1.1em;
-  color: #ddd;
-  max-width: 800px; /* begränsar bredden för bättre läsbarhet */
+  font-size: 1.2em; /* lite större text */
+  color: #e0e0e0;
+  line-height: 1.8; /* mer luftig text */
+  max-width: 700px; /* smalare för bättre läsning */
   margin: 0 auto 20px auto; /* centrerat med mellanrum under */
   text-align: center;
 }
@@ -111,9 +118,8 @@ body {
 
 
 
-/* evenemang sektionen */
 .show-list { /* hela evenemang-sektionen */
-  padding: 60px 0;
+  padding: 80px 0;
   background-color: #1a1a1a; /* samma som body */
 }
 
@@ -135,16 +141,19 @@ body {
 
 /* event kort (kommer att skapas av JS) */
 .event-card { /* varje enskilt evenemang-kort */
-  background-color: #2a2a2a;
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e); /* subtil gradient */
   border: 1px solid #444;
-  border-radius: 8px;
-  padding: 20px;
-  transition: transform 0.3s; /* smooth hover-effekt */
+  border-radius: 12px; /* rundare hörn */
+  padding: 25px;
+  transition: all 0.4s ease; /* längre, mjukare transition */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* skugga för djup */
 }
 
+
 .event-card:hover { /* när man hovrar över ett event-kort */
-  transform: translateY(-5px); /* lyfter upp kortet lite */
+  transform: translateY(-8px); /* mer dramatisk hover */
   border-color: #d4af37; /* guld kant */
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2); /* guld-glöd */
 }
 
 
@@ -155,28 +164,29 @@ body {
 
 /* admin sektion */
 .backstage { /* hela admin-sektionen */
-  padding: 60px 0;
-  background-color: #2d1b1b; /* lite rödaktig för "backstage" känsla */
+  padding: 40px 0; /* mindre padding - tar mindre plats */
+  background-color: #1e1e1e; /* mer diskret färg, inte så rödaktig */
+  border-top: 1px solid #333; /* subtil avgränsning */
 }
 
 .backstage h2 { /* "Admin Panel" rubriken */
-  font-size: 2.2em;
-  color: #d4af37;
+  font-size: 1.8em; /* mindre rubrik */
+  color: #888; /* mindre flashig färg */
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .show-hide-btn { /* knappen som visar/döljer admin-formuläret */
-  background-color: #d4af37; /* guld bakgrund */
-  color: #1a1a1a; /* mörk text */
+  background-color: #444; /* diskret grå istället för guld */
+  color: #ccc;
   border: none;
-  padding: 12px 25px;
-  font-size: 1.1em;
-  border-radius: 5px;
+  padding: 10px 20px; /* mindre knapp */
+  font-size: 0.9em; /* mindre text */
+  border-radius: 3px;
   cursor: pointer;
-  display: block; /* block för att kunna centrera */
-  margin: 0 auto 30px auto; /* centrerad */
-  transition: background-color 0.3s; /* smooth hover-effekt */
+  display: block;
+  margin: 0 auto 20px auto;
+  transition: background-color 0.3s;
 }
 
 .show-hide-btn:hover { /* när man hovrar över admin-knappen */
@@ -237,3 +247,64 @@ body {
   display: none;
 }
 
+
+
+
+
+
+/* bokning sektion */
+.tickets { /* hela boknings-sektionen */
+  padding: 60px 0;
+  background-color: #1f2937; /* lite blåaktig för variation */
+}
+
+
+.tickets h2 { /* "Boka Biljetter" rubriken */
+  font-size: 2.2em;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.buy-tickets { /* boknings-formuläret */
+  max-width: 500px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px; /* samma spacing som admin-formuläret */
+}
+
+
+.buy-tickets select,
+.buy-tickets input { /* alla fält i boknings-formuläret */
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  font-size: 1em;
+}
+
+.buy-tickets button { /* "Boka nu!" knappen */
+  background-color: #22c55e; /* grön för "köp" */
+  color: white;
+  padding: 18px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-tickets button:hover { /* hover på boka-knappen */
+  background-color: #16a34a; /* mörkare grön */
+}
+
+.confirmation { /* bekräftelsemeddelandet */
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #22c55e;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
