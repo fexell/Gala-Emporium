@@ -16,5 +16,5 @@ Set up for success! 🙂
     ```
   eller:
   ```bash
-    npm start
-    ```
+  npm start
+  ```
