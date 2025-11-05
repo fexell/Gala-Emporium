@@ -68,8 +68,11 @@ body {
 
 
 /* banner sektion - hero området */
-.banner {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), #2c1810;
+.banner { /* hela banner-sektionen */
+  background: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), /* mörk overlay för text-läsbarhet */
+    url('../images/theatre.jpg') center/cover,
+    #2c1810; /* fallback färg om bilden inte laddar */
   padding: 100px 0; 
   text-align: center;
   border-bottom: 3px solid #d4af37; /* tjockare guld-linje */
