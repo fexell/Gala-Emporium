@@ -14,3 +14,7 @@ Set up for success! 🙂
    ```bash
     npm run dev
     ```
+  eller:
+    ```bash
+      npm start
+      ```
