@@ -94,3 +94,40 @@ body {
   margin: 0 auto 20px auto; /* centrerat med mellanrum under */
   text-align: center;
 }
+
+
+/* evenemang sektionen */
+.show-list { /* hela evenemang-sektionen */
+  padding: 60px 0;
+  background-color: #1a1a1a; /* samma som body */
+}
+
+.show-list h2 { /* "Kommande Evenemang" rubriken */
+  font-size: 2.2em;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.shows { /* containern som håller alla event-kort */
+  display: grid;
+  /* korten blir minst 300px breda, men växer för att fylla utrymmet */
+  /* auto-fit = browsern räknar ut hur många som får plats per rad */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px; /* mellanrum mellan korten */
+  margin-top: 20px;
+}
+
+/* event kort (kommer att skapas av JS) */
+.event-card { /* varje enskilt evenemang-kort */
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s; /* smooth hover-effekt */
+}
+
+.event-card:hover { /* när man hovrar över ett event-kort */
+  transform: translateY(-5px); /* lyfter upp kortet lite */
+  border-color: #d4af37; /* guld kant */
+}
