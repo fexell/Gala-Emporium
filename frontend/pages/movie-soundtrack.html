@@ -9,47 +9,110 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <h1 class="club-title">Movie Soundtrack Orchestra</h1>
-      <nav class="nav">
+  
+  <!-- Header med navigation -->
+  <header class="top-bar">
+    <div class="wrapper">
+      <h1 class="site-name">Movie Soundtrack Orchestra</h1>
+      <nav class="menu">
         <a href="#about">Om Oss</a>
         <a href="#events">Evenemang</a>
         <a href="#booking">Boka</a>
       </nav>
     </div>
   </header>
-  
 
-  <!-- Om oss ektion och evenemangssektion -->
-  <section id="about" class="about">  
-      <div class="container">
+  <main>
+    <!-- Huvudsektion -->
+    <section class="banner">
+      <div class="wrapper">
+        <h2>Upplev filmmusikens magi</h2>
+        <p>Live orkester spelar tidernas mest ikoniska filmmusik</p>
+      </div>
+    </section>
+
+    <!-- Om oss delen -->
+    <section id="about" class="info-box">
+      <div class="wrapper">
         <h2>Om Movie Soundtrack Orchestra</h2>
         <p>Vi är en professionell orkester som specialiserat oss på att framföra filmmusikens mest älskade kompositioner. Från Hans Zimmers episka toner till John Williams klassiska melodier - vi ger dig en konsertupplevelse utöver det vanliga.</p>
         <p>Varje konsert är noggrant kurerad för att skapa en resa genom filmhistoriens största ögonblick, framförd live av våra begåvade musiker.</p>
       </div>
     </section>
 
-    <section id="events" class="events">
-      <div class="container">
+    <!-- Events kommer att laddas in här -->
+    <section id="events" class="show-list">
+      <div class="wrapper">
         <h2>Kommande Evenemang</h2>
-        
-        <div class="events-grid" id="events-grid">
-          <!-- Events kommer att laddas här med JavaScript -->
+        <div class="shows" id="show-container">
+          <!-- JS laddar events här -->
         </div>
-
       </div>
     </section>
 
+    <!-- Admin grejer (bara för den som har access) -->
+    <section id="admin" class="backstage">
+      <div class="wrapper">
+        <h2>Admin Panel</h2>
+        <button id="admin-btn" class="show-hide-btn">Visa Admin</button>
 
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Upplev filmmusikens magi</h2>
-        <p>Live orkester spelar tidernas mest ikoniska filmmusik</p>
+        <!-- admin formulär - göms som default -->
+        <div id="admin-stuff" class="admin-box hide">
+          <h3>Lägg till nytt evenemang</h3>
+          <form id="new-event" class="add-form">
+            <!-- basic event info -->
+            <input type="text" id="event-name" placeholder="T.ex Hans Zimmer Live" required>
+            
+            <!-- dropdown för att välja typ av event -->
+            <select id="event-category" required>
+              <option value="">Välj kategori</option>
+              <option value="music">Music</option>
+              <option value="orchestra">Orchestra</option>
+              <option value="soundtrack">Soundtrack</option>
+            </select>
+            
+            <!-- när och var -->
+            <input type="datetime-local" id="event-when" required>
+            <input type="text" id="event-where" placeholder="Vilken sal?" required>
+            
+            <!-- längre beskrivning -->
+            <textarea id="event-info" placeholder="Vad händer på evenemanget?" required></textarea>
+            
+            <!-- pengar och platser -->
+            <input type="number" id="event-cost" placeholder="Pris i kronor" min="0" step="0.01" required>
+            <input type="number" id="event-max" placeholder="Max antal biljetter" min="1" required>
+            
+            <!-- bild för eventet (optional) -->
+            <input type="text" id="event-img" placeholder="Bildnamn (t.ex hans-zimmer.jpg)">
+            
+            <button type="submit">Skapa evenemang</button>
+          </form>
+        </div>
       </div>
     </section>
+
+    <!-- Bokning av biljetter -->
+    <section id="booking" class="tickets">
+      <div class="wrapper">
+        <h2>Boka Biljetter</h2>
+        
+        <form id="ticket-form" class="buy-tickets">
+          <select id="pick-show" required>
+            <option value="">Vilket event vill du gå på?</option>
+            <!-- fylls med JS -->
+          </select>
+          
+          <input type="text" id="your-name" placeholder="Vad heter du?" required>
+          <input type="email" id="your-email" placeholder="Din mejl" required>
+          <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" max="10" required>
+          
+          <button type="submit">Boka nu!</button>
+        </form>
+        
+        <div id="booking-message" class="confirmation hide"></div>
+      </div>
+    </section>
+
   </main>
 </body>
 
