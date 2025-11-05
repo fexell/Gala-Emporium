@@ -7,7 +7,31 @@
       "datetime": "2024-07-15T20:00:00",
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
-      "price": 25.00
+      "price": 25.00,
+      "club": 1,
+      "ticketCount": 100,
+      "maxTickets": 200,
+      "eventImage": "jazz-night.jpg"
+    }
+  ],
+  "clubs": [
+    {
+      "id": 1,
+      "name": "The Blue Note",
+      "location": "123 Main St, Cityville",
+      "description": "A premier jazz club featuring live performances every night.",
+      "email": "test@test.com",
+      "phone": "555-1234",
+      "clubImage": "blue-note.jpg"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "eventId": 1,
+      "date": "2024-07-10",
+      "time": "19:00",
+      "totalTickets": 2,
     }
   ]
 }
