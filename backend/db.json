@@ -8,7 +8,7 @@
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
       "price": 25.00,
-      "club": 1,
+      "clubId": 1,
       "ticketCount": 100,
       "maxTickets": 200,
       "eventImage": "jazz-night.jpg"
