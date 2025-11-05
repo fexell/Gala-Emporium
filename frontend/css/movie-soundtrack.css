@@ -50,3 +50,26 @@ body {
 .menu a:hover { /* när man hovrar över nav-länkarna */
   color: #d4af37; /* blir guld när man hovrar */
 }
+
+
+/* banner sektion - hero området */
+.banner { /* hela banner-sektionen */
+  background-color: #1e1e1e; /* bara en mörk grå bakgrund tills vidare */
+  padding: 80px 0;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.banner h2 { /* "Upplev filmmusikens magi" rubriken */
+  font-size: 3em;
+  color: #d4af37; /* guld */
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+.banner p { /* undertexten under rubriken */
+  font-size: 1.4em;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto; /* centrerar texten */
+}
