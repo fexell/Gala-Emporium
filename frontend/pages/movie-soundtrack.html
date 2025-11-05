@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <!-- Om oss delen -->
+    <!-- Om oss delen. Länken Om oss hoppar hit -->
     <section id="about" class="info-box">
       <div class="wrapper">
         <h2>Om Movie Soundtrack Orchestra</h2>
@@ -40,7 +40,7 @@
       </div>
     </section>
 
-    <!-- Events kommer att laddas in här -->
+    <!-- Events kommer att laddas in här. Länken Evenemang hoppar hit -->
     <section id="events" class="show-list">
       <div class="wrapper">
         <h2>Kommande Evenemang</h2>
@@ -59,19 +59,22 @@
         <!-- admin formulär - göms som default -->
         <div id="admin-stuff" class="admin-box hide">
           <h3>Lägg till nytt evenemang</h3>
+          
           <form id="new-event" class="add-form">
             <!-- basic event info -->
             <input type="text" id="event-name" placeholder="T.ex Hans Zimmer Live" required>
             
             <!-- när och var -->
             <input type="datetime-local" id="event-when" required>
+
             <input type="text" id="event-where" placeholder="Vilken sal?" required>
             
             <!-- längre beskrivning -->
             <textarea id="event-info" placeholder="Vad händer på evenemanget?" required></textarea>
             
             <!-- pengar och platser -->
-            <input type="number" id="event-cost" placeholder="Pris i kronor" min="0" step="0.01" required>
+            <input type="number" id="event-cost" placeholder="Pris i kronor" min="0" step="0.10" required>
+
             <input type="number" id="event-max" placeholder="Max antal biljetter" min="1" required>
             
             <!-- bild för eventet (optional) -->
@@ -83,19 +86,22 @@
       </div>
     </section>
 
-    <!-- Bokning av biljetter -->
+    <!-- Bokning av biljetter. Länken Boka hoppar hit -->
     <section id="booking" class="tickets">
       <div class="wrapper">
         <h2>Boka Biljetter</h2>
         
         <form id="ticket-form" class="buy-tickets">
           <select id="pick-show" required>
-            <option value="">Vilket event vill du gå på?</option>
+            
+            <option value="">Vilket event vill du gå på?</option>      
             <!-- fylls med JS -->
           </select>
           
           <input type="text" id="your-name" placeholder="Vad heter du?" required>
+
           <input type="email" id="your-email" placeholder="Din mejl" required>
+          
           <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" max="10" required>
           
           <button type="submit">Boka nu!</button>

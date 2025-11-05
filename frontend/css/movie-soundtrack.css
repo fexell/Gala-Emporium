@@ -20,6 +20,11 @@ body {
   padding: 0 20px;
 }
 
+
+
+
+
+
 /* header styling */
 .top-bar { /* själva header-elementet */
   background: linear-gradient(135deg, #2c1810, #1a1a1a); /* mörk gradient som ser fancy ut. 135 grader går från ljus till mörk diagonal */
@@ -52,9 +57,14 @@ body {
 }
 
 
+
+
+
+
+
 /* banner sektion - hero området */
 .banner { /* hela banner-sektionen */
-  background-color: #1e1e1e; /* bara en mörk grå bakgrund tills vidare */
+  background-color: #313131; /* bara en mörk grå bakgrund tills vidare */
   padding: 80px 0;
   text-align: center;
   border-bottom: 1px solid #444;
@@ -96,6 +106,11 @@ body {
 }
 
 
+
+
+
+
+
 /* evenemang sektionen */
 .show-list { /* hela evenemang-sektionen */
   padding: 60px 0;
@@ -131,3 +146,94 @@ body {
   transform: translateY(-5px); /* lyfter upp kortet lite */
   border-color: #d4af37; /* guld kant */
 }
+
+
+
+
+
+
+
+/* admin sektion */
+.backstage { /* hela admin-sektionen */
+  padding: 60px 0;
+  background-color: #2d1b1b; /* lite rödaktig för "backstage" känsla */
+}
+
+.backstage h2 { /* "Admin Panel" rubriken */
+  font-size: 2.2em;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.show-hide-btn { /* knappen som visar/döljer admin-formuläret */
+  background-color: #d4af37; /* guld bakgrund */
+  color: #1a1a1a; /* mörk text */
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* block för att kunna centrera */
+  margin: 0 auto 30px auto; /* centrerad */
+  transition: background-color 0.3s; /* smooth hover-effekt */
+}
+
+.show-hide-btn:hover { /* när man hovrar över admin-knappen */
+  background-color: #b8941f; /* mörkare guld */
+}
+
+.admin-box { /* admin-formuläret som döljs/visas */
+  max-width: 700px; /* lite bredare */
+  margin: 0 auto;
+  background-color: #333;
+  padding: 40px; /* mer luft */
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+.admin-box h3 { /* "Lägg till nytt evenemang" rubriken */
+  color: #d4af37;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.add-form { /* själva formuläret */
+  display: grid;
+  gap: 20px; /* jämnt mellanrum mellan alla fält */
+}
+
+.add-form input, 
+.add-form textarea, 
+.add-form select { /* alla input-fält */
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  font-size: 1em;
+  width: 100%; /* alla lika breda */
+}
+
+.add-form button { /* "Skapa evenemang" knappen */
+  background-color: #d4af37;
+  color: #1a1a1a;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.add-form button:hover { /* hover på submit-knappen */
+  background-color: #b8941f;
+}
+
+.hide { /* klass för att dölja element */
+  display: none;
+}
+
