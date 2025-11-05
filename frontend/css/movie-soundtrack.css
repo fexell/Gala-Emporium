@@ -10,12 +10,43 @@ body {
   font-family: Arial, sans-serif;
   background-color: #1a1a1a;
   color: #f5f5f5;
-  line-height: 1.6;
+  line-height: 1.6; /* radavstånd - gör texten luftigare och lättare att läsa */
 }
 
 /* wrapper för all content */
 .wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* begränsar bredden på innehållet */
+  margin: 0 auto; /* centrerar innehållet */
   padding: 0 20px;
+}
+
+/* header styling */
+.top-bar { /* själva header-elementet */
+  background: linear-gradient(135deg, #2c1810, #1a1a1a); /* mörk gradient som ser fancy ut. 135 grader går från ljus till mörk diagonal */
+  padding: 20px 0;
+  border-bottom: 2px solid #d4af37; /* guld linje under */
+}
+
+.site-name { /* huvudrubriken "Movie Soundtrack Orchestra" */
+  font-size: 2.5em;
+  color: #d4af37; /* guld färg för namnet */
+  text-align: center; 
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* skugga så det poppar */
+}
+
+.menu { /* navigationslänkarna */
+  text-align: center;
+}
+
+.menu a { /* varje enskild länk i navigationen */
+  color: #f5f5f5; /* vit text */
+  text-decoration: none; /* ingen underline */
+  margin: 0 25px; /* mellanrum mellan länkar */
+  font-size: 1.1em;
+  transition: color 0.3s; /* smooth färgändring */
+}
+
+.menu a:hover { /* när man hovrar över nav-länkarna */
+  color: #d4af37; /* blir guld när man hovrar */
 }
