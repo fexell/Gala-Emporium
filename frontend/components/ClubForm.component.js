@@ -1,4 +1,4 @@
-
+import { createClub } from '../helpers/Api.helper.js'
 
 async function loadTemplate() {
   const response                            = await fetch( '/components/ClubForm.component.html' )
@@ -41,7 +41,7 @@ class ClubFormComponent extends HTMLElement {
 
       this.requiredInputs                   = this.shadowRoot.querySelectorAll( '[required]' )
       this.form.addEventListener( 'input', this.validateForm.bind( this ) )
-      // this.form.addEventListener( 'submit', this.handleSubmit.bind( this ) )
+      this.form.addEventListener( 'submit', this.handleSubmit.bind( this ) )
 
       const overlay                         = this.shadowRoot.querySelector( '.overlay' )
       overlay.addEventListener( 'click', () => this.close() )
@@ -57,6 +57,26 @@ class ClubFormComponent extends HTMLElement {
       this.submitButton.removeAttribute( 'disabled' )
     } else {
       this.submitButton.setAttribute( 'disabled', 'true' )
+    }
+  }
+
+  handleSubmit( event ) {
+    event.preventDefault()
+
+    try {
+      const formData                        = new FormData( event.target )
+
+      const data                            = Object.fromEntries( formData )
+      data.capacity                         = parseInt( data.capacity, 10 )
+
+      const response                        = createClub( data )
+
+      if( response ) {
+        this.form.reset()
+        this.validateForm()
+      }
+    } catch( error ) {
+      console.error( 'Error creating event:', error )
     }
   }
 
