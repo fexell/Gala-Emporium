@@ -65,3 +65,35 @@ async function loadBookingEvents() {
         console.error('Fel vid laddning av booking events:', error);
     }
 }
+
+
+
+// Hantera bokningsformulär submission
+async function handleBooking(event) {
+    event.preventDefault(); // Stoppa formuläret från att ladda om sidan
+    
+    // Hämta formulärdata och tilldela till variabler
+    const eventId = document.getElementById('pick-show').value;
+    const customerName = document.getElementById('your-name').value;
+    const customerEmail = document.getElementById('your-email').value;
+    const ticketCount = parseInt(document.getElementById('how-many').value);
+    
+    // Validera att ett event är valt annars visa alert
+    if (!eventId) {
+        alert('Välj vilket event du vill gå på!');
+        return;
+    }
+    
+    try {
+        // Hämta event-information från servern
+        // Kolla om det finns tillräckligt med biljetter
+        // Skapa bokningsobjekt
+        // Spara bokning till databasen
+        // Uppdatera event med nya ticket count
+        // Visa bekräftelse och rensa formulär
+        
+    } catch (error) {
+        console.error('Fel vid bokning:', error);
+        alert('Något gick fel vid bokningen. Försök igen!');
+    }
+}
