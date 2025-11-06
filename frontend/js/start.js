@@ -14,7 +14,7 @@ export default function start() {
             <span class="weekday">Onsdag</span>
           </div>
           <div class="time"> 17:00</div>
-          <img src="images/opera.jpg" alt="La Traviata">
+          <img src="../frontend/img/opera.jpg" alt="La Traviata">
           <div class="event-text">
             <span class="event-type">Opera | Urpremiär</span>
             <h3>
@@ -33,7 +33,7 @@ export default function start() {
             <span class="weekday">Fredag</span>
           </div>
           <div class="time"> 17:00</div>
-          <img src="images/mozart.jpg" alt="Mozarts Requiem">
+          <img src="../frontend/img/mozart.jpg" alt="Mozarts Requiem">
           <div class="event-text">
             <span class="event-type">Opera | Nypremiär</span>
             <h3>
@@ -52,7 +52,7 @@ export default function start() {
             <span class="weekday">Måndag</span>
           </div>
           <div class="time"> 18:00</div>
-          <img src="images/operagala.jpg" alt="Operagala">
+          <img src="../frontend/img/operagala.jpg" alt="Operagala">
           <div class="event-text">
             <span class="event-type">Opera | Premiär</span>
             <h3>

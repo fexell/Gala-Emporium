@@ -1,9 +1,9 @@
 import { apiClient } from '../helpers/Api.helper.js'
 
 import start from './start.js';
-import traviata from './pages/traviata.js';
-import requiem from './pages/requiem.js';
-import operagala from './pages/operagala.js';
+import traviata from './traviata.js';
+import requiem from './requiem.js';
+import operagala from './operagala.js';
 
 const main = document.querySelector('main');
 
