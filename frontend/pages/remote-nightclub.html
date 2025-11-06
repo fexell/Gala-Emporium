@@ -7,12 +7,33 @@
     <title>Remote Nightclub</title></head>
 <body>
     
+
+                <!-- EVENT DISPLAY -->
+                <section class="television">
+                    <div class="video-container" id="video-container">
+                        <video class="video" id="event-video" autoplay muted loop> 
+                            <source src="disco.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="event-info">
+                        <div>
+                            <h1 id="event-title"></h1>
+                            <p id="event-details"></p>
+                            <p id="event-date"></p>
+                        </div>
+                        <div class="event-meta">
+                            <label id="event-price"></label>
+                            <label id="event-capacity"></label>
+                        </div>
+                    </div>
+                </section>
+                
             <!-- SCENE AND INTERIOR -->
             <section class="scene">
                 <img class="floor-img" src="floor.png" alt="floor">
             </section>
             <div class="tabelfoot"></div>
-            
+
     <script type="module" src="./js/remote-nightclub-main.js"></script>
 </body>
 </html>
