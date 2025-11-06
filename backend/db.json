@@ -1,37 +1,152 @@
 {
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "category": "music",
       "title": "Jazz Night",
       "datetime": "2024-07-15T20:00:00",
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
-      "price": 25.00,
+      "price": 25,
       "clubId": 1,
       "ticketCount": 100,
       "maxTickets": 200,
       "eventImage": "jazz-night.jpg"
+    },
+    {
+      "id": "09ec",
+      "title": "Best of Hans Zimmer Live",
+      "datetime": "2025-12-20T19:30",
+      "location": "TUC Matsalen",
+      "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
+      "price": 450,
+      "maxTickets": 200,
+      "ticketCount": 86,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "hans-zimmer.jpg"
+    },
+    {
+      "id": "8a6a",
+      "title": "Titanic - Love Theme Orchestra",
+      "datetime": "2025-12-30T19:00",
+      "location": "TUC Matsal",
+      "description": "James Horners hjärtvärmande Titanic soundtrack med \"My Heart Will Go On\". En romantisk avslutning på året! Perfect för par som vill dela en pasta innan konserten. Tårhandukar finns vid ingången.",
+      "price": 290,
+      "maxTickets": 150,
+      "ticketCount": 13,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "f324",
+      "title": "Matrix - Digital Symphony",
+      "datetime": "2025-12-06T19:00",
+      "location": "TUC Matsal",
+      "description": "Upplev The Matrix soundtrack som aldrig förr! Don Davis episka musik möter elektroniska beats i en audio-visuell resa genom Matrix. Röda och blå lampor inkluderade. Kan du känna skillnaden mellan pizza och kött-pasta efter konserten?",
+      "price": 380,
+      "maxTickets": 150,
+      "ticketCount": 5,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "58db",
+      "title": "Disney Gala - Magical Evening",
+      "datetime": "2025-12-14T16:00",
+      "location": "TUC Matsal",
+      "description": "Från Toy Story till Frozen 2! Vi spelar Randy Newman, Michael Giacchino och Kristen Anderson-Lopez magiska kompositioner. Specialgäst: Någon klädd som Olaf (troligtvis en hungrig student). Tårhandukar finns för känslosamma föräldrar.",
+      "price": 250,
+      "maxTickets": 300,
+      "ticketCount": 15,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
     }
   ],
   "clubs": [
     {
-      "id": 1,
+      "id": "1",
       "name": "The Blue Note",
       "location": "123 Main St, Cityville",
       "description": "A premier jazz club featuring live performances every night.",
       "email": "test@test.com",
       "phone": "555-1234",
       "clubImage": "blue-note.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Movie Soundtrack Orchestra Sweden",
+      "location": "TUC Matsalen, Linköping",
+      "description": "Sveriges enda orkester som framför filmmusik. Vi förvandlar TUC matsal till en magisk konsertsal mellan lunch och middag. Våra två scener: 'Stora Scenen' (sittplatserna i stora rummet) och 'Barnscenen' (vid kaffemaskinen).",
+      "email": "info@tucorkester.se",
+      "phone": "013-TUC-MUSIK",
+      "clubImage": "orchestra.jpg"
     }
   ],
   "bookings": [
     {
-      "id": 1,
+      "id": "1",
       "eventId": 1,
       "date": "2024-07-10",
       "time": "19:00",
-      "totalTickets": 2,
+      "totalTickets": 2
+    },
+    {
+      "id": "d92d",
+      "eventId": "09ec",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 7,
+      "bookingDate": "2025-11-06T17:32:17.253Z",
+      "totalPrice": 3150
+    },
+    {
+      "id": "6449",
+      "eventId": "8a6a",
+      "customerName": "Albert Einstein",
+      "customerEmail": "AlbertE@test.test",
+      "ticketCount": 3,
+      "bookingDate": "2025-11-06T17:33:05.299Z",
+      "totalPrice": 870
+    },
+    {
+      "id": "be59",
+      "eventId": "f324",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 5,
+      "bookingDate": "2025-11-06T17:33:26.846Z",
+      "totalPrice": 1900
+    },
+    {
+      "id": "9703",
+      "eventId": "58db",
+      "customerName": "Thomas Bell",
+      "customerEmail": "Bell@test.test",
+      "ticketCount": 15,
+      "bookingDate": "2025-11-06T17:34:07.329Z",
+      "totalPrice": 3750
+    },
+    {
+      "id": "a0f8",
+      "eventId": "09ec",
+      "customerName": "Jan A",
+      "customerEmail": "Janne@test.test",
+      "ticketCount": 79,
+      "bookingDate": "2025-11-06T17:35:55.640Z",
+      "totalPrice": 35550
+    },
+    {
+      "id": "16bf",
+      "eventId": "8a6a",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-06T17:55:24.985Z",
+      "totalPrice": 2900
     }
   ]
 }

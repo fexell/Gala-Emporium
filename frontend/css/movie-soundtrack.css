@@ -1,0 +1,527 @@
+/* grundläggande för att ta bort marginaler och padding från alla element */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* mjuk scrollning för nav-länkar */
+}
+
+
+/* Design av body för en mörk tema */
+body {
+  font-family: 'Georgia', serif; /* mer elegant serif för filmmusik-känsla */
+  background-color: #0f0f0f; /* djupare svart */
+  color: #f8f8f8; /* lite varmare vit */
+  line-height: 1.7; /* radavstånd - gör texten luftigare och lättare att läsa */
+}
+
+/* wrapper för all content */
+.wrapper {
+  max-width: 1200px; /* begränsar bredden på innehållet */
+  margin: 0 auto; /* centrerar innehållet */
+  padding: 0 20px;
+}
+
+
+
+
+
+
+/* header styling */
+.top-bar { /* själva header-elementet */
+  background: linear-gradient(135deg, #2c1810, #1a1a1a); /* mörk gradient som ser fancy ut. 135 grader går från ljus till mörk diagonal */
+  padding: 20px 0;
+  border-bottom: 2px solid #d4af37; /* guld linje under */
+}
+
+.site-name { /* huvudrubriken "Movie Soundtrack Orchestra" */
+  font-size: 2.5em;
+  color: #d4af37; /* guld färg för namnet */
+  text-align: center; 
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* skugga så det poppar */
+}
+
+.menu { /* navigationslänkarna */
+  text-align: center;
+}
+
+.menu a { /* varje enskild länk i navigationen */
+  color: #f5f5f5; /* vit text */
+  text-decoration: none; /* ingen underline */
+  margin: 0 25px; /* mellanrum mellan länkar */
+  font-size: 1.1em;
+  transition: color 0.3s; /* smooth färgändring */
+}
+
+.menu a:hover { /* när man hovrar över nav-länkarna */
+  color: #d4af37; /* blir guld när man hovrar */
+}
+
+
+
+
+
+
+
+/* banner sektion - hero området */
+.banner { /* hela banner-sektionen */
+  background: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), /* mörk overlay för text-läsbarhet */
+    url('../images/theatre.jpg') center/cover,
+    #2c1810; /* fallback färg om bilden inte laddar */
+  padding: 100px 0; 
+  text-align: center;
+  border-bottom: 3px solid #d4af37; /* tjockare guld-linje */
+}
+
+.banner h2 { /* "Upplev filmmusikens magi" rubriken */
+  font-size: 3.5em; 
+  color: #d4af37;
+  margin-bottom: 25px;
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9); /* starkare skugga */
+}
+
+.banner p { /* undertexten under rubriken */
+  font-size: 1.4em;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto; /* centrerar texten */
+}
+
+/* alternera sektioner för bättre kontrast */
+.info-box { /* hela "om oss" sektionen */
+  padding: 80px 0;
+  background-color: #2a2a2a; /* lite ljusare för kontrast */
+}
+
+
+.info-box h2 { /* "Om Movie Soundtrack Orchestra" rubriken */
+  font-size: 2.2em;
+  color: #d4af37; /* guld som vanligt */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.info-box p { /* textstyckena med info om orkestern */
+  font-size: 1.2em; /* lite större text */
+  color: #e0e0e0;
+  line-height: 1.8; /* mer luftig text */
+  max-width: 700px; /* smalare för bättre läsning */
+  margin: 0 auto 20px auto; /* centrerat med mellanrum under */
+  text-align: center;
+}
+
+
+
+
+
+
+
+.show-list { /* hela evenemang-sektionen */
+  padding: 80px 0;
+  background-color: #1a1a1a; /* samma som body */
+}
+
+.show-list h2 { /* "Kommande Evenemang" rubriken */
+  font-size: 2.2em;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.shows { /* containern som håller alla event-kort */
+  display: grid;
+  /* korten blir minst 300px breda, men växer för att fylla utrymmet */
+  /* auto-fit = browsern räknar ut hur många som får plats per rad */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px; /* mellanrum mellan korten */
+  margin-top: 20px;
+}
+
+/* event kort (kommer att skapas av JS) */
+.event-card { /* varje enskilt evenemang-kort */
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e); /* subtil gradient */
+  border: 1px solid #444;
+  border-radius: 12px; /* rundare hörn */
+  padding: 25px;
+  transition: all 0.4s ease; /* längre, mjukare transition */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* skugga för djup */
+}
+
+
+.event-card:hover { /* när man hovrar över ett event-kort */
+  transform: translateY(-8px); /* mer dramatisk hover */
+  border-color: #d4af37; /* guld kant */
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2); /* guld-glöd */
+}
+
+
+
+
+
+
+
+/* admin sektion */
+.backstage { /* hela admin-sektionen */
+  padding: 40px 0; /* mindre padding - tar mindre plats */
+  background-color: #1e1e1e; /* mer diskret färg, inte så rödaktig */
+  /* ta bort border-top för renare övergång */
+}
+
+.backstage h2 { /* "Admin Panel" rubriken */
+  font-size: 1.8em; /* mindre rubrik */
+  color: #888; /* mindre flashig färg */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.show-hide-btn { /* knappen som visar/döljer admin-formuläret */
+  background-color: #444; /* diskret grå istället för guld */
+  color: #ccc;
+  border: none;
+  padding: 10px 20px; /* mindre knapp */
+  font-size: 0.9em; /* mindre text */
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto 20px auto;
+  transition: background-color 0.3s;
+}
+
+.show-hide-btn:hover { /* när man hovrar över admin-knappen */
+  background-color: #b8941f; /* mörkare guld */
+}
+
+.admin-box { /* admin-formuläret som döljs/visas */
+  max-width: 700px; /* lite bredare */
+  margin: 0 auto;
+  background-color: #333;
+  padding: 40px; /* mer luft */
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+.admin-box h3 { /* "Lägg till nytt evenemang" rubriken */
+  color: #d4af37;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.add-form { /* själva formuläret */
+  display: grid;
+  gap: 20px; /* jämnt mellanrum mellan alla fält */
+}
+
+.add-form input, 
+.add-form textarea, 
+.add-form select { /* alla input-fält */
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  font-size: 1em;
+  width: 100%; /* alla lika breda */
+}
+
+.add-form button { /* "Skapa evenemang" knappen */
+  background-color: #d4af37;
+  color: #1a1a1a;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.add-form button:hover { /* hover på submit-knappen */
+  background-color: #b8941f;
+}
+
+
+/* dölja tab-content som default (när de inte är aktiva) */
+.tab-content.hide { /* när tab-content har både tab-content OCH hide klasserna */
+  display: none; /* göm helt */
+}
+
+.tab-content { /* alla tab-innehåll som default */
+  display: block; /* visa som default */
+}
+
+.hide { /* klass för att dölja element Kan användas till det man vill gömma*/
+  display: none;
+} 
+
+
+
+
+/* admin tabs styling */
+.admin-tabs { /* containern för tab-knapparna */
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #444; /* linje under knapparna */
+}
+
+.tab-btn { /* varje tab-knapp */
+  background-color: transparent;
+  color: #ccc;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  border-bottom: 3px solid transparent; /* osynlig kant som default */
+  transition: all 0.3s; /* smooth övergång */
+}
+
+.tab-btn:hover { /* när man hovrar över en tab */
+  color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.1); /* subtil guld-bakgrund */
+}
+
+.tab-btn.active { /* den aktiva tab-knappen */
+  color: #d4af37;
+  border-bottom-color: #d4af37; /* guld linje under */
+  background-color: rgba(212, 175, 55, 0.2);
+}
+
+.tab-content { /* innehållet i varje tab */
+  margin-top: 20px;
+}
+
+.tab-content h4 { /* rubriker i tabs */
+  color: #d4af37;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+
+
+
+
+/* bokning sektion */
+.tickets { /* hela boknings-sektionen */
+  padding: 60px 0;
+  background-color: #1f2937; /* lite blåaktig för variation */
+}
+
+
+.tickets h2 { /* "Boka Biljetter" rubriken */
+  font-size: 2.2em;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.buy-tickets { /* boknings-formuläret */
+  max-width: 500px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px; /* samma spacing som admin-formuläret */
+}
+
+
+.buy-tickets select,
+.buy-tickets input { /* alla fält i boknings-formuläret */
+  padding: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  font-size: 1em;
+}
+
+.buy-tickets button { /* "Boka nu!" knappen */
+  background-color: #22c55e; /* grön för "köp" */
+  color: white;
+  padding: 18px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-tickets button:hover { /* hover på boka-knappen */
+  background-color: #16a34a; /* mörkare grön */
+}
+
+.confirmation { /* bekräftelsemeddelandet */
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(34, 197, 94, 0.2); /* transparent grön bakgrund */
+  color: #22c55e; /* grön text istället */
+  border: 1px solid #22c55e; /* tunn grön ram */
+  border-radius: 5px;
+  text-align: center;
+  max-width: 500px; /* samma som formuläret */
+  margin: 20px auto; /* centrerad som andra element */
+}
+
+/* Admin delete-knapp styling */
+.delete-btn {
+  background-color: #dc2626; /* röd färg för "farlig" action */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #991b1b; /* mörkare röd vid hover */
+  transform: translateY(-1px); /* liten "lyft" effekt */
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3); /* röd glöd */
+}
+
+.delete-btn:active {
+  transform: translateY(0); /* tillbaka till normal position vid klick */
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Admin event item styling */
+.admin-event-item {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.admin-event-item:hover {
+  border-color: #d4af37; /* guld-kant vid hover */
+}
+
+.admin-event-item h4 {
+  color: #d4af37; /* guld för titeln */
+  margin-bottom: 10px;
+}
+
+.admin-event-item p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+
+
+
+
+
+/* Event cards för kunder på huvudsidan */
+.shows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.event-card {
+  background: linear-gradient(145deg, #2a2a2a 0%, #1e1e1e 100%);
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  
+  /* Gör alla kort lika höga och placera knappen längst ner */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d4af37, #f4d03f);
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  border-color: #d4af37;
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+}
+
+.event-card h3 {
+  color: #d4af37;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.event-card p {
+  color: #ccc;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.event-card p:last-of-type {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+/* Event bottom section - pris, biljetter och knapp */
+.event-bottom {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+}
+
+.price-info {
+  color: #f4d03f !important;
+  font-weight: bold !important;
+  font-size: 1.1em;
+  margin: 8px 0 !important;
+}
+
+.ticket-info {
+  color: #ccc !important;
+  font-size: 0.9em;
+  margin: 5px 0 15px 0 !important;
+}
+
+/* Boka biljetter knapp */
+.book-btn {
+  background: linear-gradient(145deg, #d4af37, #f4d03f);
+  color: #1e1e1e;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.book-btn:hover {
+  background: linear-gradient(145deg, #f4d03f, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.book-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
