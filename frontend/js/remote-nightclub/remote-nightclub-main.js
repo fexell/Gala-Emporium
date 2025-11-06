@@ -39,3 +39,27 @@ function updateTelevisonen(eventIndex) {
     eventVideo.load();
     eventVideo.play();
 }
+
+
+// Event navigation buttons
+const nextEventButton = document.getElementById('next-event')
+const previousEventButton = document.getElementById('previous-event')
+
+let currentEventIndex = 0
+
+nextEventButton.addEventListener('click', () => {
+    console.log('click')
+    currentEventIndex++
+    if (currentEventIndex >= eventData.length) {
+        currentEventIndex = 0
+    }
+    updateTelevisonen(currentEventIndex)
+})
+
+previousEventButton.addEventListener('click', () => {
+    currentEventIndex--
+    if (currentEventIndex < 0) {
+        currentEventIndex = eventData.length - 1
+    }
+    updateTelevisonen(currentEventIndex)
+})
