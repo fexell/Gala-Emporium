@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie Soundtrack</title>
   <link rel="stylesheet" href="/css/movie-soundtrack.css">
-  <script src="/js/movie-soundtrack.js" defer></script>
+  <script src="/js/movie-soundtrack/movie-soundtrack-main.js" defer></script>
+  <script src="/js/movie-soundtrack/movie-soundtrack-admin.js" defer></script>
+  <script src="/js/movie-soundtrack/movie-soundtrack-booking.js" defer></script>
 </head>
 
 <body>
@@ -85,6 +87,14 @@
         <!-- admin formulär - göms som default -->
         <div id="admin-stuff" class="admin-box hide">
           <h3>Lägg till nytt evenemang</h3>
+
+        <div class="admin-tabs">
+          <button class="tab-btn active" data-tab="add-event">Lägg till event</button>
+          <button class="tab-btn" data-tab="manage-events">Hantera events</button>
+          <button class="tab-btn" data-tab="view-bookings">Se bokningar</button>
+        </div>
+
+        <div class="tab-content" id="add-event">
           
           <form id="new-event" class="add-form">
             <!-- basic event info -->
@@ -109,8 +119,26 @@
             <button type="submit">Skapa evenemang</button>
           </form>
         </div>
-      </div>
-    </section>
+      
+        <!-- sektion för att hantera befintliga events -->
+        <div class="tab-content hide" id="manage-events">
+          <h4>Hantera befintliga events</h4>
+          <div id="admin-events-list">
+            <!-- JS fyller detta med alla events + delete-knappar -->
+          </div>
+        </div>
+
+        <!-- sektion för att se alla bokningar -->
+        <div class="tab-content hide" id="view-bookings">
+          <h4>Alla bokningar</h4>
+          <div id="bookings-list">
+            <!-- JS fyller detta med bokningar + refund-knappar -->
+          </div>
+        </div>
+
+        </div> 
+      </div> 
+    </section> 
 
 
   </main>

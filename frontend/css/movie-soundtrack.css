@@ -169,7 +169,7 @@ body {
 .backstage { /* hela admin-sektionen */
   padding: 40px 0; /* mindre padding - tar mindre plats */
   background-color: #1e1e1e; /* mer diskret färg, inte så rödaktig */
-  border-top: 1px solid #333; /* subtil avgränsning */
+  /* ta bort border-top för renare övergång */
 }
 
 .backstage h2 { /* "Admin Panel" rubriken */
@@ -246,10 +246,61 @@ body {
   background-color: #b8941f;
 }
 
-.hide { /* klass för att dölja element */
-  display: none;
+
+/* dölja tab-content som default (när de inte är aktiva) */
+.tab-content.hide { /* när tab-content har både tab-content OCH hide klasserna */
+  display: none; /* göm helt */
 }
 
+.tab-content { /* alla tab-innehåll som default */
+  display: block; /* visa som default */
+}
+
+.hide { /* klass för att dölja element Kan användas till det man vill gömma*/
+  display: none;
+} 
+
+
+
+
+/* admin tabs styling */
+.admin-tabs { /* containern för tab-knapparna */
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #444; /* linje under knapparna */
+}
+
+.tab-btn { /* varje tab-knapp */
+  background-color: transparent;
+  color: #ccc;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  border-bottom: 3px solid transparent; /* osynlig kant som default */
+  transition: all 0.3s; /* smooth övergång */
+}
+
+.tab-btn:hover { /* när man hovrar över en tab */
+  color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.1); /* subtil guld-bakgrund */
+}
+
+.tab-btn.active { /* den aktiva tab-knappen */
+  color: #d4af37;
+  border-bottom-color: #d4af37; /* guld linje under */
+  background-color: rgba(212, 175, 55, 0.2);
+}
+
+.tab-content { /* innehållet i varje tab */
+  margin-top: 20px;
+}
+
+.tab-content h4 { /* rubriker i tabs */
+  color: #d4af37;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
 
 
 
@@ -306,8 +357,60 @@ body {
 .confirmation { /* bekräftelsemeddelandet */
   margin-top: 20px;
   padding: 15px;
-  background-color: #22c55e;
-  color: white;
+  background-color: rgba(34, 197, 94, 0.2); /* transparent grön bakgrund */
+  color: #22c55e; /* grön text istället */
+  border: 1px solid #22c55e; /* tunn grön ram */
   border-radius: 5px;
   text-align: center;
+  max-width: 500px; /* samma som formuläret */
+  margin: 20px auto; /* centrerad som andra element */
+}
+
+/* Admin delete-knapp styling */
+.delete-btn {
+  background-color: #dc2626; /* röd färg för "farlig" action */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #991b1b; /* mörkare röd vid hover */
+  transform: translateY(-1px); /* liten "lyft" effekt */
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3); /* röd glöd */
+}
+
+.delete-btn:active {
+  transform: translateY(0); /* tillbaka till normal position vid klick */
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Admin event item styling */
+.admin-event-item {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.admin-event-item:hover {
+  border-color: #d4af37; /* guld-kant vid hover */
+}
+
+.admin-event-item h4 {
+  color: #d4af37; /* guld för titeln */
+  margin-bottom: 10px;
+}
+
+.admin-event-item p {
+  margin: 5px 0;
+  color: #ccc;
 }

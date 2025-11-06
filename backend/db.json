@@ -1,33 +1,55 @@
 {
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "category": "music",
       "title": "Jazz Night",
       "datetime": "2024-07-15T20:00:00",
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
-      "price": 25.00,
+      "price": 25,
       "clubId": 1,
       "ticketCount": 100,
       "maxTickets": 200,
       "eventImage": "jazz-night.jpg"
+    },
+    {
+      "id": "09ec",
+      "title": "Best of Hans Zimmer Live",
+      "datetime": "2025-12-20T19:30",
+      "location": "TUC Matsalen",
+      "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
+      "price": 450,
+      "maxTickets": 200,
+      "ticketCount": 0,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "hans-zimmer.jpg"
     }
   ],
   "clubs": [
     {
-      "id": 1,
+      "id": "1",
       "name": "The Blue Note",
       "location": "123 Main St, Cityville",
       "description": "A premier jazz club featuring live performances every night.",
       "email": "test@test.com",
       "phone": "555-1234",
       "clubImage": "blue-note.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Movie Soundtrack Orchestra Sweden",
+      "location": "TUC Matsalen, Linköping",
+      "description": "Sveriges enda orkester som framför filmmusik. Vi förvandlar TUC matsal till en magisk konsertsal mellan lunch och middag. Våra två scener: 'Stora Scenen' (sittplatserna i stora rummet) och 'Barnscenen' (vid kaffemaskinen).",
+      "email": "info@tucorkester.se",
+      "phone": "013-TUC-MUSIK",
+      "clubImage": "orchestra.jpg"
     }
   ],
   "bookings": [
     {
-      "id": 1,
+      "id": "1",
       "eventId": 1,
       "date": "2024-07-10",
       "time": "19:00",
