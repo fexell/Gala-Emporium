@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
               if (response.ok) {
                   alert('Event skapat!');
                   form.reset(); // Rensa formuläret
+                  
+                  // Uppdatera både admin-listan och kundsidan automatiskt
+                  loadAdminEvents(); // Uppdatera admin-panelen
+                  loadCustomerEvents(); // Uppdatera kundsidan
               } else {
                   alert('Något gick fel!');
               }
@@ -84,6 +88,9 @@ async function loadAdminEvents() {
         
         // Filtrera bara movie-soundtrack events (våra events)
         const movieEvents = allEvents.filter(event => event.category === 'movie-soundtrack');
+        
+        // Sortera events efter datum (tidigaste först)
+        movieEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
         
         // Hitta containern där vi ska visa events
         const adminEventsList = document.getElementById('admin-events-list');
@@ -144,8 +151,9 @@ async function deleteEvent(eventId) {
         
         if (response.ok) {
             alert('Event borttaget!');
-            // Ladda om listan så den borttagna försvinner
+            // Ladda om både admin-listan och kundsidan
             loadAdminEvents();
+            loadCustomerEvents(); // Uppdatera kundsidan också
         } else {
             alert('Kunde inte ta bort eventet!');
         }

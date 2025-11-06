@@ -25,6 +25,45 @@
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "hans-zimmer.jpg"
+    },
+    {
+      "id": "8a6a",
+      "title": "Titanic - Love Theme Orchestra",
+      "datetime": "2025-12-30T19:00",
+      "location": "TUC Matsal",
+      "description": "James Horners hjärtvärmande Titanic soundtrack med \"My Heart Will Go On\". En romantisk avslutning på året! Perfect för par som vill dela en pasta innan konserten. Tårhandukar finns vid ingången.",
+      "price": 290,
+      "maxTickets": 150,
+      "ticketCount": 0,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "f324",
+      "title": "Matrix - Digital Symphony",
+      "datetime": "2025-12-06T19:00",
+      "location": "TUC Matsal",
+      "description": "Upplev The Matrix soundtrack som aldrig förr! Don Davis episka musik möter elektroniska beats i en audio-visuell resa genom Matrix. Röda och blå lampor inkluderade. Kan du känna skillnaden mellan pizza och kött-pasta efter konserten?",
+      "price": 380,
+      "maxTickets": 150,
+      "ticketCount": 0,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "58db",
+      "title": "Disney Gala - Magical Evening",
+      "datetime": "2025-12-14T16:00",
+      "location": "TUC Matsal",
+      "description": "Från Toy Story till Frozen 2! Vi spelar Randy Newman, Michael Giacchino och Kristen Anderson-Lopez magiska kompositioner. Specialgäst: Någon klädd som Olaf (troligtvis en hungrig student). Tårhandukar finns för känslosamma föräldrar.",
+      "price": 250,
+      "maxTickets": 300,
+      "ticketCount": 0,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
     }
   ],
   "clubs": [

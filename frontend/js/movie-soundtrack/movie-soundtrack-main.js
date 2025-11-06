@@ -45,3 +45,83 @@ tabButtons.forEach(button => {
     document.getElementById(targetTab).classList.remove('hide');
   });
 });
+
+
+
+
+
+
+// Funktion för att ladda och visa events för kunder på huvudsidan
+async function loadCustomerEvents() {
+    try {
+        // Hämta alla events från servern
+        const response = await fetch('http://localhost:5000/events');
+        const allEvents = await response.json();
+        
+        // Filtrera bara movie-soundtrack events
+        const movieEvents = allEvents.filter(event => event.category === 'movie-soundtrack');
+        
+        // Sortera events efter datum (tidigaste först)
+        movieEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+        
+        // Hitta containern där events ska visas
+        const showContainer = document.getElementById('show-container');
+        
+        // Rensa befintligt innehåll
+        showContainer.innerHTML = '';
+        
+        // Om inga events finns
+        if (movieEvents.length === 0) {
+            showContainer.innerHTML = '<p>Inga kommande evenemang just nu. Håll utkik!</p>';
+            return;
+        }
+        
+        // Skapa HTML för varje event
+        movieEvents.forEach(event => {
+            // Formatera datum och tid så att det visas på ett läsbart sätt
+            const eventDate = new Date(event.datetime);
+            const formattedDate = eventDate.toLocaleDateString('sv-SE');
+            const formattedTime = eventDate.toLocaleTimeString('sv-SE', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            // Beräkna tillgängliga biljetter
+            const availableTickets = event.maxTickets - event.ticketCount;
+            
+            // Skapa event-kort
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+
+            eventCard.innerHTML = `
+                <h3>${event.title}</h3>
+                <p>${formattedDate} kl ${formattedTime}</p>
+                <p>Plats: ${event.location}</p>
+                <p>${event.description}</p>
+                <div class="event-bottom">
+                    <p class="price-info">Pris: ${event.price} kr</p>
+                    <p class="ticket-info">${availableTickets} biljetter kvar av ${event.maxTickets}</p>
+                    <button class="book-btn" onclick="scrollToBooking('${event.id}')">Boka Biljetter</button>
+                </div>
+            `;
+            
+            showContainer.appendChild(eventCard); // lägg till event-kortet i containern show-container
+        });
+        
+    } catch (error) {
+        console.error('Fel vid laddning av events:', error);
+        document.getElementById('show-container').innerHTML = '<p>Kunde inte ladda evenemang. Försök igen senare.</p>';
+    }
+}
+
+// Placeholder för bokning (vi skapar denna senare)
+function scrollToBooking(eventId) {
+    // Scrolla till bokningssektionen
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    
+    // TODO: Förifyll formuläret med valt event
+    alert(`Bokningsfunktion för event ${eventId} kommer snart!`);
+}
+
+// Ladda events när sidan laddas
+document.addEventListener('DOMContentLoaded', loadCustomerEvents);
