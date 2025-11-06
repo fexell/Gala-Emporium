@@ -2,26 +2,32 @@
   "events": [
     {
       "id": 1,
-      "category": "music",
-      "title": "Jazz Night",
-      "datetime": "2024-07-15T20:00:00",
-      "location": "The Blue Note",
-      "description": "An evening of smooth jazz with local artists.",
-      "price": 25.00,
       "clubId": 1,
-      "ticketCount": 100,
-      "maxTickets": 200,
+      "name": "Jazz Night",
+      "description": "An evening of smooth jazz with renowned artists.",
+      "date": "2024-07-10",
+      "time": "19:00",
+      "ticketPrice": 50,
+      "availableTickets": 150,
       "eventImage": "jazz-night.jpg"
+    },
+    {
+      "name": "AVICII",
+      "description": "AVICII",
+      "date": "2025-11-27",
+      "time": "16:40",
+      "ticketPrice": 1000,
+      "availableTickets": 50000,
+      "clubId": 1,
+      "id": 2
     }
   ],
   "clubs": [
     {
       "id": 1,
       "name": "The Blue Note",
-      "location": "123 Main St, Cityville",
-      "description": "A premier jazz club featuring live performances every night.",
-      "email": "test@test.com",
-      "phone": "555-1234",
+      "location": "123 Jazz St, Music City",
+      "capacity": 200,
       "clubImage": "blue-note.jpg"
     }
   ],
@@ -29,9 +35,11 @@
     {
       "id": 1,
       "eventId": 1,
-      "date": "2024-07-10",
-      "time": "19:00",
-      "totalTickets": 2,
+      "customerName": "John Doe",
+      "numberOfTickets": 2,
+      "totalPrice": 100,
+      "bookingDate": "2024-06-15",
+      "bookingTime": "14:30"
     }
   ]
 }

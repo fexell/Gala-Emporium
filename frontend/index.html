@@ -4,9 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css' />
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type='module' src='./components/EventForm.component.js'></script>
+  <script type='module' src='./components/ClubForm.component.js'></script>
 </head>
 <body>
-  
+  <button id="open-event-form" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">Add Event</button>
+  <button id='open-club-form' class='bg-green-500 text-white px-4 py-2 rounded cursor-pointer'>Add Club</button>
+  <event-form id='eventForm' club-id='1'></event-form>
+  <club-form id='clubForm'></club-form>
   <script type="module" src="./js/main.js"></script>
+  <script type='module'>
+    const eventForm = document.getElementById( 'eventForm' )
+    
+    document.querySelector( '#open-event-form' ).addEventListener( 'click', () => {
+      eventForm.open()
+    } )
+
+    const clubForm = document.getElementById( 'clubForm' )
+
+    document.querySelector( '#open-club-form' ).addEventListener( 'click', () => {
+      clubForm.open()
+    } )
+  </script>
 </body>
 </html>
