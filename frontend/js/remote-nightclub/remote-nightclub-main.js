@@ -65,3 +65,15 @@ previousEventButton.addEventListener('click', () => {
 })
 
 updateTelevisonen(currentEventIndex)
+
+// Light/Dark mode toggle
+const lightToggle = document.getElementById('light-toggle')
+const darkMode = document.querySelector('.dark-mode')
+const crowdVisible = document.querySelector('.crowd')
+const eventInfoVisible = document.querySelector('.event-info')
+
+lightToggle.addEventListener('click', () => {
+    darkMode.classList.toggle('hidden')
+    crowdVisible.classList.toggle('hidden')
+    eventInfoVisible.classList.toggle('hidden')
+})
