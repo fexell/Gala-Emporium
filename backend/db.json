@@ -64,6 +64,45 @@
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
+    },
+    {
+      "id": "6",
+      "category": "music",
+      "title": "DISCO FEVER",
+      "datetime": "2025-07-01T20:00:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "ALL THE BEST HITS FROM THE 80s",
+      "price": 199,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 100,
+      "eventImage": "disco"
+    },
+    {
+      "id": "7",
+      "category": "music",
+      "title": "INDIE ROCK",
+      "datetime": "2025-07-08T21:00:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "Sense the good vibes of indie rock.",
+      "price": 149,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 75,
+      "eventImage": "rock"
+    },
+    {
+      "id": "8",
+      "category": "music",
+      "title": "TECHNO BASS BLAST",
+      "datetime": "2025-07-15T22:30:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "Hard and fast techno from local legends.",
+      "price": 249,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 150,
+      "eventImage": "techno"
     }
   ],
   "clubs": [
@@ -84,6 +123,15 @@
       "email": "info@tucorkester.se",
       "phone": "013-TUC-MUSIK",
       "clubImage": "orchestra.jpg"
+    },
+    {
+      "id": "3",
+      "name": "REMOTE NIGHTCLUB",
+      "location": "TUC Event Hall",
+      "description": "Nattklubb på distans för alla de bästa evenemangen. Här hittar du allt från 80-tals disko till techno.",
+      "email": "info@remotenightclub.se",
+      "phone": "123-321-1",
+      "clubImage": "remote-nightclub.jpg"
     }
   ],
   "bookings": [

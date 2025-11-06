@@ -10,7 +10,7 @@ ticketForm.addEventListener('submit', (e) => {
 
 // Event data fetching and display
 
-const rawEvent = await fetch('event.json')
+const rawEvent = await fetch('http://localhost:5000/events')
 const eventData = await rawEvent.json()
 
 const eventTitle = document.getElementById('event-title')
@@ -23,23 +23,23 @@ const eventVideo = document.getElementById('event-video')
 function updateTelevisonen(eventIndex) {
     const eventObject = eventData[eventIndex];
 
-    eventTitle.textContent = eventObject.Title;
-    eventDetails.textContent = eventObject.Description;
+    eventTitle.textContent = eventObject.title; // Använd 'title' istället för 'Title'
+    eventDetails.textContent = eventObject.description; // Använd 'description' istället för 'Description'
 
-    const [fullDate, fullTime] = eventObject['Date Time'].split(' ');
+    const [fullDate, fullTimeWithSeconds] = eventObject['datetime'].split('T');
     const [year, month, day] = fullDate.split('-');
-    const cleanTime = fullTime.slice(0, 5);
+    const cleanTime = fullTimeWithSeconds.slice(0, 5); 
+    
     eventDate.textContent = `Time: ${day.replace(/^0+/, '')}/${month.replace(/^0+/, '')} ${cleanTime}`;
 
-    eventPrice.textContent = `Price: ${eventObject.Price}kr`;
+    eventPrice.textContent = `Price: ${eventObject.price}kr`; // Använd 'price' istället för 'Price'
 
-    eventCapacity.textContent = `Capacity: ${eventObject.Capacity} people`;
+    eventCapacity.textContent = `Capacity: ${eventObject.maxTickets} people`; // Använd 'maxTickets' för kapacitet
 
-    eventVideo.src = eventObject.Image;
+    eventVideo.src = eventObject.eventImage + '.mp4'; // Du behöver troligen lägga till filändelsen
     eventVideo.load();
     eventVideo.play();
 }
-
 
 // Event navigation buttons
 const nextEventButton = document.getElementById('next-event')
