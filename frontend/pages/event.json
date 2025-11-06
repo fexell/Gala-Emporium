@@ -1,0 +1,32 @@
+[
+    {
+      "ID": 1,
+      "Title": "DISCO FEVER",
+      "Club": "REMOTE NIGHTCLUB",
+      "Date Time": "2025-07-01 20:00:00",
+      "Description": "ALL THE BEST HITS FROM THE 80s",
+      "Price": 199,
+      "Capacity": 100,
+      "Image": "/images/disco.mp4"
+    },
+    {
+      "ID": 2,
+      "Title": "INDIE ROCK",
+      "Club": "REMOTE NIGHTCLUB",
+      "Date Time": "2025-07-08 21:00:00",
+      "Description": "Sense the good vibes of indie rock.",
+      "Price": 149,
+      "Capacity": 75,
+      "Image": "/images/rock.mp4"
+    },
+    {
+      "ID": 3,
+      "Title": "TECHNO BASS BLAST",
+      "Club": "REMOTE NIGHTCLUB",
+      "Date Time": "2025-07-15 22:30:00",
+      "Description": "Hard and fast techno from local legends.",
+      "Price": 249,
+      "Capacity": 150,
+      "Image": "/images/techno.mp4"
+    }
+  ]

@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/remote-nightclub.css">
+    <link rel="stylesheet" href="/css/remote-nightclub.css">
     <title>Remote Nightclub</title>
+    <script type="module" src="/js/remote-nightclub/remote-nightclub-main.js" defer></script>
 </head>
 
-<body>
+<body class="remote-nightclub-body">
     <main>
-
         <!-- EVENT DISPLAY -->
         <section class="television">
             <div class="video-container" id="video-container">
                 <video class="video" id="event-video" autoplay muted loop>
-                    <source src="disco.mp4" type="video/mp4">
+                    <source src="/images/disco.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="event-info">
@@ -38,9 +38,9 @@
                 <div>
                     <label for="artist-select">Event:</label>
                     <select name="artists" id="artist-select">
-                        <option value="Dance">Dance</option>
-                        <option value="Chill">Chill</option>
-                        <option value="Lounge">Lounge</option>
+                        <option value="Dance">Indie rock</option>
+                        <option value="Chill">Techno</option>
+                        <option value="Lounge">Disco</option>
                     </select>
                 </div>
                 <div>
@@ -75,15 +75,14 @@
 
         <!-- SCENE AND INTERIOR -->
         <section class="scene">
-            <img class="floor-img" src="floor.png" alt="floor">
+            <img class="floor-img" src="/images/floor.png" alt="floor">
         </section>
         <div class="tabelfoot"></div>
 
         <!-- DARK MODE -->
         <section class="dark-mode hidden">
         </section>
-        <img class="crowd hidden" src="crowd.png" alt="crowd">
+        <img class="crowd hidden" src="/images/crowd.png" alt="crowd">
     </main>
-    <script type="module" src="./js/remote-nightclub-main.js"></script>
 </body>
 </html>
