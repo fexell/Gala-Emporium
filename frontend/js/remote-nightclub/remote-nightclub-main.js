@@ -63,3 +63,5 @@ previousEventButton.addEventListener('click', () => {
     }
     updateTelevisonen(currentEventIndex)
 })
+
+updateTelevisonen(currentEventIndex)
