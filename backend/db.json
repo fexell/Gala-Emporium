@@ -21,7 +21,7 @@
       "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
       "price": 450,
       "maxTickets": 200,
-      "ticketCount": 5,
+      "ticketCount": 86,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "hans-zimmer.jpg"
@@ -34,7 +34,7 @@
       "description": "James Horners hjärtvärmande Titanic soundtrack med \"My Heart Will Go On\". En romantisk avslutning på året! Perfect för par som vill dela en pasta innan konserten. Tårhandukar finns vid ingången.",
       "price": 290,
       "maxTickets": 150,
-      "ticketCount": 0,
+      "ticketCount": 13,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
@@ -47,7 +47,7 @@
       "description": "Upplev The Matrix soundtrack som aldrig förr! Don Davis episka musik möter elektroniska beats i en audio-visuell resa genom Matrix. Röda och blå lampor inkluderade. Kan du känna skillnaden mellan pizza och kött-pasta efter konserten?",
       "price": 380,
       "maxTickets": 150,
-      "ticketCount": 0,
+      "ticketCount": 5,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
@@ -60,7 +60,7 @@
       "description": "Från Toy Story till Frozen 2! Vi spelar Randy Newman, Michael Giacchino och Kristen Anderson-Lopez magiska kompositioner. Specialgäst: Någon klädd som Olaf (troligtvis en hungrig student). Tårhandukar finns för känslosamma föräldrar.",
       "price": 250,
       "maxTickets": 300,
-      "ticketCount": 0,
+      "ticketCount": 15,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
@@ -95,13 +95,58 @@
       "totalTickets": 2
     },
     {
-      "id": "635a",
+      "id": "d92d",
       "eventId": "09ec",
       "customerName": "Daniel Aldemir",
       "customerEmail": "aldemir@test.test",
+      "ticketCount": 7,
+      "bookingDate": "2025-11-06T17:32:17.253Z",
+      "totalPrice": 3150
+    },
+    {
+      "id": "6449",
+      "eventId": "8a6a",
+      "customerName": "Albert Einstein",
+      "customerEmail": "AlbertE@test.test",
+      "ticketCount": 3,
+      "bookingDate": "2025-11-06T17:33:05.299Z",
+      "totalPrice": 870
+    },
+    {
+      "id": "be59",
+      "eventId": "f324",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
       "ticketCount": 5,
-      "bookingDate": "2025-11-06T13:19:22.114Z",
-      "totalPrice": 2250
+      "bookingDate": "2025-11-06T17:33:26.846Z",
+      "totalPrice": 1900
+    },
+    {
+      "id": "9703",
+      "eventId": "58db",
+      "customerName": "Thomas Bell",
+      "customerEmail": "Bell@test.test",
+      "ticketCount": 15,
+      "bookingDate": "2025-11-06T17:34:07.329Z",
+      "totalPrice": 3750
+    },
+    {
+      "id": "a0f8",
+      "eventId": "09ec",
+      "customerName": "Jan A",
+      "customerEmail": "Janne@test.test",
+      "ticketCount": 79,
+      "bookingDate": "2025-11-06T17:35:55.640Z",
+      "totalPrice": 35550
+    },
+    {
+      "id": "16bf",
+      "eventId": "8a6a",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-06T17:55:24.985Z",
+      "totalPrice": 2900
     }
   ]
 }

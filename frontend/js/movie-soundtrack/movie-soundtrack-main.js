@@ -1,3 +1,10 @@
+/* 
+   MOVIE SOUNDTRACK ORCHESTRA - MAIN JS
+   Ansvar: Kundfunktionalitet och event-visning
+   - Admin-panel toggle och tab-switching
+   - Ladda och visa events för kunder
+   - Hantera "Boka Biljetter" knapp-klick */
+
 // Admin-knapp funktionalitet - visa/dölj admin-formulär
 const adminBtn = document.getElementById('admin-btn');
 const adminStuff = document.getElementById('admin-stuff');
@@ -51,7 +58,11 @@ tabButtons.forEach(button => {
 
 
 
-// Funktion för att ladda och visa events för kunder på huvudsidan
+/* 
+   HUVUDFUNKTION: Ladda events för kunder
+   Detta är hjärtat i kundsidan - visar alla
+   kommande filmmusikkonserter sorterat efter datum*/
+
 async function loadCustomerEvents() {
     try {
         // Hämta alla events från servern
@@ -105,7 +116,7 @@ async function loadCustomerEvents() {
                 </div>
             `;
             //button ovan anropar scrollToBooking med event.id när den klickas
-            
+
             showContainer.appendChild(eventCard); // lägg till event-kortet i containern show-container
         });
         

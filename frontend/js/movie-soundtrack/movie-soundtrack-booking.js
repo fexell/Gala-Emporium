@@ -1,4 +1,10 @@
-// Bokningssystem för Movie Soundtrack Orchestra
+/* MOVIE SOUNDTRACK ORCHESTRA - BOOKING JS
+   Ansvar: Bokningssystem och biljethantering
+   - Ladda events till dropdown-meny
+   - Hantera bokningsformulär och validering
+   - Kontrollera biljetttillgänglighet
+   - Spara bokningar till databas
+   - Uppdatera biljetträknare i realtid */
 
 // Vi börjar med att ladda events när sidan laddas
 document.addEventListener('DOMContentLoaded', function() {
