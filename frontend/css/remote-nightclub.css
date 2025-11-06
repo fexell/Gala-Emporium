@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Ephesis&family=Poiret+One&display=swap');
+
+.remote-nightclub-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(225, 225, 225);
+    color: white;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    color: black;
+    font-size: 0.8em;
+    h1 {
+        margin-top: 40px; 
+        font-family: "Bungee", sans-serif;
+
+    }
+
+    
+}
+
+.television {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40%;
+    min-height: 250px;
+    
+    width: 70%;
+    max-width: 500px;
+    z-index: 10;
+    position: absolute;
+    border: 10px solid rgb(0, 0, 0);
+}
+
+.event-info {
+    position: absolute;
+    display: flex;
+    height: 96%;
+    width: 96%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2%;
+    color: rgb(255, 255, 255);
+    z-index: 5;
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+
+    h1 {
+        margin: 0;
+        font-family: "Bungee", sans-serif;
+
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.event-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 5%;
+    left: 5%;
+}
+.video-container {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+}
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+}
+
+
+
+
+.floor-img {
+    position: absolute;
+    height: 100%;
+    width: 102%;
+    left: 50%;
+    top: 70%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.ticketwrapper {
+    position: absolute;
+    background-color: rgb(108, 108, 108);
+    border-radius: 10px;
+    width: 300px;
+    height: 33%;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.ticket-form {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 2.5px solid rgb(181, 181, 181);
+    color: black;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 55px);
+    width: calc(100% - 55px);
+    margin: 5px;
+    padding: 20px;
+
+    div {
+        display: flex;
+        justify-content:space-between;
+        align-items: stretch;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+    }
+    button {
+        margin: 0;
+    }
+    input {
+        width: auto;
+        flex-grow: 1; 
+    }
+    select {
+        flex-grow: 1; 
+    }
+    .customerName {
+        white-space: nowrap;
+    }
+
+}
+
+.tabelfoot {
+    position: absolute;
+    width: 30px;
+    height: 200px;
+    bottom: 0;
+    margin-bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background-color: rgb(168, 168, 168);
+    border-right: 3px solid rgb(120, 120, 120);
+    border-left: 3px solid rgb(223, 223, 223);
+}
