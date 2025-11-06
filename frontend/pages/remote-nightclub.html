@@ -27,7 +27,39 @@
                         </div>
                     </div>
                 </section>
-                
+
+                            <!-- BOOKING -->
+            <section class="ticketwrapper">
+                <form class="ticket-form">
+                    <h1>BOOKING</h1>
+                    <div>
+                        <label for="artist-select">Event:</label>
+                        <select name="artists" id="artist-select">
+                            <option value="Dance">Dance</option>
+                            <option value="Chill">Chill</option>
+                            <option value="Lounge">Lounge</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="artist-select">Time:</label>
+                        <select name="artists" id="artist-select">
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="22:00">22:00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="customerName" for="customerName">Your Name:</label>
+                        <input type="customerName" name="customerName" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="ticket-quantity">Number of tickets:</label>
+                        <input type="number" id="ticket-quantity" name="quantity" min="1" max="10" value="1">
+                    </div>
+                    <button type="submit">Get Ticket</button>
+                </form>
+            </section>
+
             <!-- SCENE AND INTERIOR -->
             <section class="scene">
                 <img class="floor-img" src="floor.png" alt="floor">
