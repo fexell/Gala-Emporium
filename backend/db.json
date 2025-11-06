@@ -21,7 +21,7 @@
       "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
       "price": 450,
       "maxTickets": 200,
-      "ticketCount": 0,
+      "ticketCount": 5,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "hans-zimmer.jpg"
@@ -93,6 +93,15 @@
       "date": "2024-07-10",
       "time": "19:00",
       "totalTickets": 2
+    },
+    {
+      "id": "635a",
+      "eventId": "09ec",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 5,
+      "bookingDate": "2025-11-06T13:19:22.114Z",
+      "totalPrice": 2250
     }
   ]
 }

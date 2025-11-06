@@ -104,6 +104,7 @@ async function loadCustomerEvents() {
                     <button class="book-btn" onclick="scrollToBooking('${event.id}')">Boka Biljetter</button>
                 </div>
             `;
+            //button ovan anropar scrollToBooking med event.id när den klickas
             
             showContainer.appendChild(eventCard); // lägg till event-kortet i containern show-container
         });
@@ -114,13 +115,17 @@ async function loadCustomerEvents() {
     }
 }
 
-// Placeholder för bokning (vi skapar denna senare)
+
+// Funktion för att scrolla till bokning och formuläret
 function scrollToBooking(eventId) {
     // Scrolla till bokningssektionen
     document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
     
-    // TODO: Förifyll formuläret med valt event
-    alert(`Bokningsfunktion för event ${eventId} kommer snart!`);
+    // Vänta lite så att scrollningen hinner slutföras, sedan förifyll dropdown
+    setTimeout(() => {
+        const eventSelect = document.getElementById('pick-show'); // eventSelect blir dropdown-menyn
+        eventSelect.value = eventId; // sätt dropdown till valt event
+    }, 500);
 }
 
 // Ladda events när sidan laddas
