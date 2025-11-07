@@ -3,11 +3,13 @@ const ticketWrapper = document.querySelector('.ticketwrapper');
 const ticketButton = document.getElementById('ticket-button');
 const floorImage = document.querySelector('.floor-img');
 const television = document.querySelector('.television');
+const headerTitle = document.querySelector('header h1');
 
 ticketButton.addEventListener('click', () => {
     ticketWrapper.classList.toggle('visible');
     floorImage.classList.toggle('floor-raised');
     television.classList.toggle('television-change-size');
+    headerTitle.classList.toggle('header-shrunk');
 });
 
 // BOOKING FORM FUNCTIONALITY

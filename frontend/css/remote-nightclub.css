@@ -10,19 +10,30 @@
 }
 
 header {
+    position: absolute;
     text-align: center;
+    top: 3%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
     color: black;
-    font-size: 0.8em;
+    font-size: 0.9em;
     h1 {
         margin-top: 40px; 
         font-family: "Bungee", sans-serif;
+        transition: 0.5s ease-out;
     }
+}
+
+header h1.header-shrunk {
+    font-size: 1.2em;
+    margin-top: 114px;
 }
 
 .television {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
-    top: 12%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
     height: 50%;
@@ -94,8 +105,8 @@ video {
 
 .floor-img {
     position: absolute;
-    height: 180%;
-    width: 120%;
+    height: 200%;
+    width: 160%;
     left: 50%;
     top: 50%;
     z-index: 1;
@@ -114,13 +125,19 @@ video {
     position: fixed;
     background-color: rgb(108, 108, 108);
     border-radius: 10px;
-    width: 300px;
+    width: 500px;
     height: 33%;
     bottom: -50%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    transition: bottom 0.5s ease-out;
+    transition: 0.5s ease-out;
+}
+
+.ticketwrapper.visible {
+    bottom: 8%;
+    width: 300px;
+    height: 33%;
 }
 
 .tabelfoot {
@@ -137,9 +154,7 @@ video {
 }
 
 
-.ticketwrapper.visible {
-    bottom: 8%; /* Den slutliga positionen när den visas */
-}
+
 
 .ticket-form {
     background-color: rgb(255, 255, 255);
