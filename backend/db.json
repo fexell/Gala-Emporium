@@ -7,7 +7,43 @@
       "datetime": "2024-07-15T20:00:00",
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
-      "price": 25.00
+      "price": 25
+    }
+  ],
+  "bookings": [
+    {
+      "eventId": 3,
+      "eventDateTime": "2024-12-28T18:00:00",
+      "eventTitle": "Operagala",
+      "id": 1
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "Operagala – De största ariorna",
+      "eventDateTime": "2024-12-28T18:00:00",
+      "bookingDate": "2025-11-07T10:52:53.036Z",
+      "id": 2
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "Operagala – De största ariorna",
+      "eventDateTime": "2024-12-28T18:00:00",
+      "bookingDate": "2025-11-07T10:53:02.729Z",
+      "id": 3
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "Operagala – De största ariorna",
+      "eventDateTime": "2024-12-28T18:00:00",
+      "bookingDate": "2025-11-07T11:26:21.351Z",
+      "id": 4
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "Operagala – De största ariorna",
+      "eventDateTime": "2024-12-28T18:00:00",
+      "bookingDate": "2025-11-07T11:32:51.735Z",
+      "id": 5
     }
   ]
-},
+}
