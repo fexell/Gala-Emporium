@@ -1,19 +1,71 @@
+// SHOW BOOKING FORM
+const ticketWrapper = document.querySelector('.ticketwrapper');
+const ticketButton = document.getElementById('ticket-button');
+const floorImage = document.querySelector('.floor-img');
+const television = document.querySelector('.television');
+
+ticketButton.addEventListener('click', () => {
+    ticketWrapper.classList.toggle('visible');
+    floorImage.classList.toggle('floor-raised');
+    television.classList.toggle('television-change-size');
+});
+
 // BOOKING FORM FUNCTIONALITY
 const eventTitle = document.getElementById('event-title');
 const eventDetails = document.getElementById('event-details');
 const eventDate = document.getElementById('event-date');
+const timeSelect = document.getElementById('booking-time-select');
+
 const eventPrice = document.getElementById('event-price');
 const eventCapacity = document.getElementById('event-capacity');
 const eventVideo = document.getElementById('event-video');
+const eventSelect = document.getElementById('event-select');
+
 
 const ticketForm = document.querySelector('.ticket-form');
 
-ticketForm.addEventListener('submit', (e) => {
+ticketForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(ticketForm);
     const customerData = Object.fromEntries(formData.entries());
+
+    const selectedEvent = eventData.find(event => event.id == customerData.eventId);
+    const totalPrice = selectedEvent.price * parseInt(customerData.tickets);
+    const newId = Math.random().toString(16).slice(2, 6);
+
+
+    const newBooking = {
+    id: newId,
+    eventId: customerData.eventId,
+    customerName: customerData.name,
+    customerEmail: customerData.email,
+    ticketCount: parseInt(customerData.tickets),
+    bookingDate: customerData['event-date'],
+    totalPrice: totalPrice
+    }
+
+    try {
+        const response = await fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newBooking)
+        });
+        if (response.ok) {
+            const responseData = await response.json();
+            console.log('Booking created successfully:', responseData);
+        } else {
+            console.error('Failed to create booking:', response.statusText);
+        }
+    }
+    catch (error) {
+        console.error('Error creating booking:', error);
+    }
     console.log(customerData);
 });
+
+
 
 // LIGHT TOGGLE FUNCTIONALITY
 
@@ -28,17 +80,34 @@ lightToggle.addEventListener('click', () => {
     eventInfoVisible?.classList.toggle('hidden')
 })
 
+
+let currentEventIndex = 0;
+let eventData = [];
+
 // SHOW EVENTS ON TELEVISONEN
 async function initRemoteNightclub() {
-    let currentEventIndex = 0;
     const CLUB_ID = 3; 
 
     // Hämta data
-    const rawResponse = await fetch('http://localhost:5000/events');
-    let eventData = await rawResponse.json(); 
+    const response = await fetch('http://localhost:5000/events');
+    eventData = await response.json(); 
 
     //Filtrera 
     eventData = eventData.filter(event => event.clubId == CLUB_ID);
+
+    // Lägga till options i bookningsmeny
+    for (const eventObject of eventData) {
+        const optionElement = document.createElement('option');
+        
+        optionElement.value = eventObject.id;
+        
+        optionElement.textContent = eventObject.title; 
+        
+        // 3. Lägg till det skapade elementet i select-menyn
+        eventSelect.appendChild(optionElement); 
+    }
+
+    //Updatera televisonen
     updateTelevisonen(currentEventIndex);
 
     function updateTelevisonen(eventIndex) {
@@ -69,6 +138,21 @@ async function initRemoteNightclub() {
         eventVideo.src = `/images/${eventObject.eventImage}.mp4`;
         eventVideo.load();
         eventVideo.play();
+        
+
+        eventSelect.value = eventObject.id; 
+        
+
+        timeSelect.innerHTML = ''; 
+        
+        const timeOption = document.createElement('option');
+        timeOption.value = eventObject.datetime; 
+        
+        timeOption.textContent = `${formattedDate} ${formattedTime}`; 
+
+        timeSelect.appendChild(timeOption);
+
+
     }
 
     const nextEventButton = document.getElementById('next-event');
@@ -90,6 +174,15 @@ async function initRemoteNightclub() {
         }
         updateTelevisonen(currentEventIndex)
     })
+
+    // Lyssna på ändringar i Event-selecten (dropdown)
+    eventSelect.addEventListener('change', (e) => {
+        const selectedId = e.target.value; 
+        const newIndex = eventData.findIndex(event => event.id == selectedId); 
+        currentEventIndex = newIndex; 
+        
+        updateTelevisonen(currentEventIndex); 
+    });
 };
 
 initRemoteNightclub();

@@ -25,14 +25,23 @@ header {
     top: 12%;
     left: 50%;
     transform: translateX(-50%);
-    height: 40%;
+    height: 50%;
     min-height: 250px;
     
-    width: 70%;
-    max-width: 500px;
+    width: 80%;
+    max-width: 700px;
     z-index: 10;
     position: absolute;
     border: 10px solid rgb(0, 0, 0);
+
+    transition: 0.5s ease-out;
+}
+
+.television.television-change-size {
+    width: 50%;
+    max-width: 400px;
+    height: 30%;
+    top: 20%;
 }
 
 .event-info {
@@ -85,24 +94,51 @@ video {
 
 .floor-img {
     position: absolute;
-    height: 100%;
-    width: 102%;
+    height: 180%;
+    width: 120%;
     left: 50%;
-    top: 70%;
+    top: 50%;
     z-index: 1;
     transform: translate(-50%, -50%);
+    transition: 0.5s ease-out;
+}
+
+.floor-img.floor-raised {
+    height: 120%; 
+    width: 102%;
+
+    top: 45%; 
 }
 
 .ticketwrapper {
-    position: absolute;
+    position: fixed;
     background-color: rgb(108, 108, 108);
     border-radius: 10px;
     width: 300px;
     height: 33%;
-    bottom: 8%;
+    bottom: -50%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 2;
+    transition: bottom 0.5s ease-out;
+}
+
+.tabelfoot {
+    position: absolute;
+    width: 30px;
+    height: 200px;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background-color: rgb(168, 168, 168);
+    border-right: 3px solid rgb(120, 120, 120);
+    border-left: 3px solid rgb(223, 223, 223);
+}
+
+
+.ticketwrapper.visible {
+    bottom: 8%; /* Den slutliga positionen när den visas */
 }
 
 .ticket-form {
@@ -112,6 +148,8 @@ video {
     color: black;
     position: absolute;
     display: flex;
+    z-index: 5;
+
     flex-direction: column;
     justify-content: space-between;
     height: calc(100% - 55px);
@@ -149,19 +187,6 @@ video {
 
 }
 
-.tabelfoot {
-    position: absolute;
-    width: 30px;
-    height: 200px;
-    bottom: 0;
-    margin-bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    background-color: rgb(168, 168, 168);
-    border-right: 3px solid rgb(120, 120, 120);
-    border-left: 3px solid rgb(223, 223, 223);
-}
 
 
 .remote {
@@ -199,6 +224,11 @@ video {
         transform: rotate(90deg);
 
     }
+}
+
+.ticket-img {
+    width: 40px;
+    transform: rotate(90deg);
 }
 
 .light-toggle {
