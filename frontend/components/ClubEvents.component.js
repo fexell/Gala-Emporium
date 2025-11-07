@@ -16,6 +16,10 @@ class ClubEvents extends HTMLElement {
       return
     }
 
+    this.addEventListener( 'booking-changed', async () => {
+      await this.render( clubId )
+    })
+
     await this.render( clubId )
   }
 
@@ -25,7 +29,7 @@ class ClubEvents extends HTMLElement {
         apiClient.get( `/clubs/${ clubId }` ),
         apiClient.get( '/events', { params: { clubId } } ),
       ])
-      
+
       if( !events.length ) {
         this.shadowRoot.innerHTML           = `<p>No events found for ${ club.name }</p>`
         return

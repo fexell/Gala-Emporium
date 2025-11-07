@@ -1,17 +1,6 @@
 {
   "events": [
     {
-      "id": 1,
-      "clubId": 1,
-      "name": "Jazz Night",
-      "description": "An evening of smooth jazz with renowned artists.",
-      "date": "2024-07-10",
-      "time": "19:00",
-      "ticketPrice": 50,
-      "availableTickets": 150,
-      "eventImage": "jazz-night.jpg"
-    },
-    {
       "name": "AVICII",
       "description": "AVICII",
       "date": "2025-11-27",
@@ -19,33 +8,16 @@
       "ticketPrice": 1000,
       "availableTickets": 1000,
       "clubId": 1,
-      "id": 2
+      "id": 1
     }
   ],
   "clubs": [
     {
-      "id": 1,
-      "name": "The Blue Note",
-      "location": "123 Jazz St, Music City",
-      "capacity": 200,
-      "clubImage": "blue-note.jpg"
-    },
-    {
       "name": "EDM Club",
       "location": "Linköping",
-      "capacity": 10000,
-      "id": 2
+      "capacity": 16000,
+      "id": 1
     }
   ],
-  "bookings": [
-    {
-      "id": 1,
-      "eventId": 1,
-      "customerName": "John Doe",
-      "numberOfTickets": 2,
-      "totalPrice": 100,
-      "bookingDate": "2024-06-15",
-      "bookingTime": "14:30"
-    }
-  ]
+  "bookings": []
 }
