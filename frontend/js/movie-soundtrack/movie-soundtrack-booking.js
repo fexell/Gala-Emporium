@@ -6,6 +6,63 @@
    - Spara bokningar till databas
    - Uppdatera biljetträknare i realtid */
 
+// Hjälpfunktion: Generera unikt referensnummer (8 tecken)
+function generateReferenceNumber() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // lätt att läsa, inga förvillande tecken
+  let reference = '';
+  for (let i = 0; i < 8; i++) {
+    reference += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return reference;
+}
+
+// Hjälpfunktion: Visa bokningsbekräftelse modal
+function showBookingModal(bookingDetails) {
+  const modal = document.getElementById('booking-modal');
+  const modalBody = document.getElementById('modal-body-content');
+
+  // Formatera datum
+  const bookingDate = new Date(bookingDetails.bookingDate);
+  const formattedDate = bookingDate.toLocaleDateString('sv-SE');
+  const formattedTime = bookingDate.toLocaleTimeString('sv-SE', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  // Bygg modalinnehåll
+  modalBody.innerHTML = `
+    <div class="booking-detail">
+      <strong>Kund:</strong> ${bookingDetails.customerName}
+    </div>
+    <div class="booking-detail">
+      <strong>E-post:</strong> ${bookingDetails.customerEmail}
+    </div>
+    <div class="booking-detail">
+      <strong>Event:</strong> ${bookingDetails.eventTitle}
+    </div>
+    <div class="booking-detail">
+      <strong>Antal biljetter:</strong> ${bookingDetails.ticketCount} st
+    </div>
+    <div class="booking-detail">
+      <strong>Totalkostnad:</strong> ${bookingDetails.totalPrice} kr
+    </div>
+    <div class="reference-number">
+      Bokningsnummer: ${bookingDetails.referenceNumber}
+    </div>
+    <p style="text-align: center; margin-top: 20px; color: #ccc;">
+      Spara ditt bokningsnummer för framtida referens!
+    </p>
+  `;
+
+  modal.classList.add('show');
+}
+
+// Hjälpfunktion: Stäng modal
+function closeBookingModal() {
+  const modal = document.getElementById('booking-modal');
+  modal.classList.remove('show');
+}
+
 // Vi börjar med att ladda events när sidan laddas
 document.addEventListener('DOMContentLoaded', function () {
   console.log('Bokningssystem laddat!');
@@ -107,9 +164,12 @@ async function handleBooking(event) {
       return;
     }
 
+    // Generera unikt referensnummer för bokningen
+    const referenceNumber = generateReferenceNumber();
 
     // Skapa bokningsobjekt som ska sparas i databasen
     const booking = {
+      referenceNumber: referenceNumber, // nytt fält!
       eventId: eventId,
       customerName: customerName,
       customerEmail: customerEmail,
@@ -152,8 +212,16 @@ async function handleBooking(event) {
       throw new Error('Kunde inte uppdatera biljetträknare');
     }
 
-    // Visa bekräftelse och rensa formulär
-    alert(`Grattis ${customerName}! Din bokning är bekräftad. Du har bokat ${requestedTickets} biljetter till "${selectedEvent.title}". Totalkostnad: ${booking.totalPrice} kr.`);
+    // Visa bekräftelse i modal istället för alert
+    showBookingModal({
+      referenceNumber: referenceNumber,
+      customerName: customerName,
+      customerEmail: customerEmail,
+      eventTitle: selectedEvent.title,
+      ticketCount: requestedTickets,
+      totalPrice: booking.totalPrice,
+      bookingDate: booking.bookingDate
+    });
 
     document.getElementById('ticket-form').reset();
     loadCustomerEvents(); // Uppdatera kundsidan
