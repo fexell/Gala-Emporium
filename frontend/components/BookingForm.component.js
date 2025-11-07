@@ -21,8 +21,6 @@ class BookingForm extends HTMLElement {
       const bookings                        = await apiClient.get( `/bookings?eventId=${ eventId }` )
       this.existingBooking                  = bookings.length > 0 ? bookings[ 0 ] : null
 
-      console.log( bookings[ 0 ] )
-
       if( this.existingBooking ) {
         this.shadowRoot.innerHTML           = `
           <p>You have already made a booking for this event.</p>
@@ -107,14 +105,12 @@ class BookingForm extends HTMLElement {
 
       this.showMessage( `Successfully booked ${ numberOfTickets } tickets for ${ this.event.name }! Total: ${ totalPrice } SEK`, 'green' )
 
-      console.log( 'Booking created successfully: ', newBooking )
-
       this.dispatchEvent(new CustomEvent('booking-changed', {
         bubbles: true,   // allows event to bubble up to parent
         composed: true,  // allows crossing shadow DOM boundaries
         detail: { eventId: this.event.id }
       }))
-      
+
       this.render( this.eventId )
 
     } catch( error ) {
