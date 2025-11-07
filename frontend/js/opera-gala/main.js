@@ -1,4 +1,4 @@
-import { apiClient } from '../helpers/Api.helper.js'
+import { apiClient } from '../../helpers/Api.helper.js'
 
 import start from './start.js';
 import traviata from './traviata.js';
@@ -156,6 +156,7 @@ function render() {
     main.innerHTML = start();
     document.title = "Opera Emporium";
     attachBookingListeners();
+    setupBookingForm();
     return;
   }
 
@@ -184,6 +185,7 @@ function render() {
     main.innerHTML = start();
     document.title = "Opera Emporium";
     attachBookingListeners();
+    setupBookingForm();
     return;
   }
 
@@ -203,21 +205,61 @@ function render() {
 window.addEventListener('DOMContentLoaded', render);
 window.addEventListener('hashchange', render);
 
-async function submitBooking({ eventId, eventTitle, eventDateTime, name, email, tickets }) {
-  const res = await fetch('http://localhost:5000/bookings', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      eventId,
-      eventTitle,
-      eventDateTime,
-      customer: { name, email },
-      tickets: Number(tickets),
-      status: 'pending'
-    })
+// Funktion för att skicka bokningsdata till backend
+function setupBookingForm() {
+  const form = document.getElementById('booking-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const eventSelect = form.querySelector('#event');
+    const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+
+    try {
+      const bookingData = {
+        eventId: eventSelect.value,
+        eventTitle: selectedOption.text.split(' (')[0],
+        eventDateTime: selectedOption.dataset.datetime,
+        name: form.querySelector('#name').value,
+        email: form.querySelector('#email').value,
+        phone: form.querySelector('#phone').value,
+        tickets: Number(form.querySelector('#tickets').value),
+        message: form.querySelector('#message').value,
+        status: 'pending'
+      };
+
+      const res = await fetch('http://localhost:5000/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...bookingData,
+          customer: {
+            name: bookingData.name,
+            email: bookingData.email,
+            phone: bookingData.phone
+          }
+        })
+      });
+
+      if (!res.ok) throw new Error('Kunde inte spara bokningen');
+
+      const saved = await res.json();
+      console.log('Sparad bokning:', saved);
+
+      form.innerHTML = `
+        <div class="booking-success">
+          <h3>Tack för din bokning!</h3>
+          <p>Din bokning är nu registrerad. Vi har skickat en bekräftelse till din e-post.</p>
+          <p><strong>Bokningsnummer:</strong> ${saved.id}</p>
+          <p><strong>Föreställning:</strong> ${saved.eventTitle}</p>
+          <p><strong>Datum:</strong> ${new Date(saved.eventDateTime).toLocaleDateString('sv-SE')}</p>
+          <p><strong>Antal biljetter:</strong> ${saved.tickets}</p>
+        </div>
+      `;
+    } catch (error) {
+      console.error('Bokningsfel:', error);
+      alert('Något gick fel vid bokningen. Försök igen eller kontakta oss.');
+    }
   });
-  if (!res.ok) throw new Error('Kunde inte spara bokningen');
-  const saved = await res.json();
-  console.log('Sparad bokning:', saved);
-  alert('Bokningen är skickad!');
 }
