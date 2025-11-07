@@ -1,4 +1,4 @@
-// SHOW BOOKING FORM
+// SHOW BOOKING FORM AND ANIMATE FLOOR AND TELEVISION
 const ticketWrapper = document.querySelector('.ticketwrapper');
 const ticketButton = document.getElementById('ticket-button');
 const floorImage = document.querySelector('.floor-img');
