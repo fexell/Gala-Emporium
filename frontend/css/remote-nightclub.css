@@ -180,7 +180,7 @@ video {
     }
 
     label {
-        margin-right: 10px;
+        margin-right: 0px;
     }
 
     h1 {
@@ -194,6 +194,7 @@ video {
         margin: 0;
     }
     input {
+        margin-left: 5px;
         width: auto;
         flex-grow: 1; 
     }
