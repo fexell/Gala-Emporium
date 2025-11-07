@@ -1,4 +1,5 @@
 export default function operagala() {
+  
   return `
     <section class="opera-page">
 
