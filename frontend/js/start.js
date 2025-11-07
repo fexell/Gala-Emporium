@@ -3,7 +3,7 @@
 export default function start() {
   return `
   <h1>Gala Emporium: Opera Hall</h1>
-    <h2> Föreställningar Kalender </h2>
+    <h2> Föreställningar </h2>
   
     <div class="container">
       <div class="event-box">
@@ -59,8 +59,9 @@ export default function start() {
               <a href="#operagala">Operagala – De största ariorna</a>
             </h3>
             <p>En kväll med de mest kända ariorna från operor som Carmen, Tosca och Figaros bröllop.</p>
-            <button class="btn-prebook">Boka</button>
-            
+            <button class="btn-prebook"data-event-id="3"data-event-title="Operagala – De största ariorna"data-event-datetime="2024-12-28T18:00:00">
+              Boka
+            </button>
           </div>
         </div>
       </div>
