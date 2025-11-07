@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hitta formuläret
     const form = document.getElementById('new-event');
     
-    // Lyssna på när formuläret skickas
+    
+    //Skapa nytt event
+    //Lyssna på när formuläret skickas
     form.addEventListener('submit', function(event) {
         // Förhindra att sidan laddas om
         event.preventDefault();
