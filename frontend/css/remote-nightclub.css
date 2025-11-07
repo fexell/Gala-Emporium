@@ -25,6 +25,7 @@ header {
     }
 }
 
+
 header h1.header-shrunk {
     font-size: 1.2em;
     margin-top: 114px;
@@ -108,7 +109,7 @@ video {
     height: 200%;
     width: 160%;
     left: 50%;
-    top: 50%;
+    top: 47%;
     z-index: 1;
     transform: translate(-50%, -50%);
     transition: 0.5s ease-out;
@@ -118,7 +119,7 @@ video {
     height: 120%; 
     width: 102%;
 
-    top: 45%; 
+    top: 40%; 
 }
 
 .ticketwrapper {
@@ -184,7 +185,10 @@ video {
 
     h1 {
         margin: 0;
+        margin-top: -10px;
+        font-family: "Bungee", sans-serif;
         text-align: center;
+        font-weight: 100;
     }
     button {
         margin: 0;
@@ -212,8 +216,8 @@ video {
     align-items: center;
     height: 150px;
     width: 30px;
-    bottom: 16%;
-    right: 5%;
+    bottom: 15%;
+    right: 10%;
     z-index: 25; /* Lägg till detta för att säkerställa att fjärrkontrollen ligger högst upp */
     background-color: rgb(46, 46, 46);
     border-radius: 10px;
