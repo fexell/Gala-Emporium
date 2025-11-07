@@ -59,7 +59,8 @@ export default function start() {
               <a href="#operagala">Operagala – De största ariorna</a>
             </h3>
             <p>En kväll med de mest kända ariorna från operor som Carmen, Tosca och Figaros bröllop.</p>
-            <button class="btn-prebook">Förboka</button>
+            <button class="btn-prebook">Boka</button>
+            
           </div>
         </div>
       </div>
