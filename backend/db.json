@@ -17,7 +17,7 @@
       "date": "2025-11-27",
       "time": "16:40",
       "ticketPrice": 1000,
-      "availableTickets": 50000,
+      "availableTickets": 1000,
       "clubId": 1,
       "id": 2
     }
@@ -31,9 +31,9 @@
       "clubImage": "blue-note.jpg"
     },
     {
-      "name": "ClubZero",
+      "name": "EDM Club",
       "location": "Linköping",
-      "capacity": 3000,
+      "capacity": 10000,
       "id": 2
     }
   ],

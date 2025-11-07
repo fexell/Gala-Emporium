@@ -8,7 +8,7 @@ class BookingForm extends HTMLElement {
   }
 
   async connectedCallback() {
-    const eventId                           = this.getAttribute( 'eventId' )
+    const eventId                           = this.getAttribute( 'event-id' )
 
     await this.render( eventId )
   }
