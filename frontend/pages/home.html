@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gala Emporium 2025 - Startsida</title>
     <link rel="stylesheet" href="../css/home.css">
+        <!-- JavaScript -->
+    <script src="../js/home.js" defer></script>
+    <script src="../js/home-admin.js" defer></script>
 </head>
+
+
 <body>
     <!-- HERO-SEKTION -->
     <header class="hero-section">
@@ -21,39 +26,35 @@
                     <span class="stat-number" id="total-clubs">-</span>
                     <span class="stat-label">Klubbar</span>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="available-tickets">-</span>
-                    <span class="stat-label">Tillgängliga biljetter</span>
-                </div>
             </div>
         </div>
         
-        <!-- Admin-knapp (höger övre hörn) -->
-        <button id="admin-btn" class="admin-toggle-btn">Visa Admin</button>
     </header>
 
-    <!-- SNABBFILTER SEKTION -->
+    <!-- PARTNERKLUBBBAR SEKTION -->
+    <section class="clubs-section">
+        <div class="clubs-container">
+            <h2>Våra partnerklubbbar</h2>
+            <p class="clubs-intro">Upptäck våra fantastiska partnerklubbbar och deras unika evenemang</p>
+            <div id="clubs-grid" class="clubs-grid">
+                <!-- Klubbar laddas dynamiskt här -->
+            </div>
+            <div class="clubs-actions">
+                <button id="view-all-clubs" class="view-all-btn">Visa alla klubbar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER SEKTION -->
     <section class="filter-section">
         <div class="filter-container">
             <h2>Hitta ditt nästa evenemang</h2>
             <div class="filter-controls">
                 <div class="filter-group">
-                    <label for="category-filter">Kategori:</label>
-                    <select id="category-filter" class="filter-select">
-                        <option value="">Alla kategorier</option>
-                        <option value="movie-soundtrack">Movie Soundtrack</option>
-                        <option value="music">Musik</option>
-                        <option value="remote-nightclub">Remote Nightclub</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="date-filter">Datum:</label>
-                    <select id="date-filter" class="filter-select">
-                        <option value="">Alla datum</option>
-                        <option value="week">Kommande veckan</option>
-                        <option value="month">Denna månad</option>
-                        <option value="next-month">Nästa månad</option>
+                    <label for="club-filter">Klubb:</label>
+                    <select id="club-filter" class="filter-select">
+                        <option value="">Alla klubbar</option>
+                        <!-- Alternativ laddas dynamiskt från databasen -->
                     </select>
                 </div>
                 
@@ -64,21 +65,10 @@
                         <option value="date-desc">Datum (senast först)</option>
                         <option value="price-asc">Pris (lägst först)</option>
                         <option value="price-desc">Pris (högst först)</option>
-                        <option value="tickets-desc">Mest tillgängliga biljetter</option>
                     </select>
                 </div>
                 
                 <button id="clear-filters" class="clear-btn">Rensa filter</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- KLUBB-OVERVIEW SEKTION -->
-    <section class="clubs-section">
-        <div class="clubs-container">
-            <h2>Våra partnerklubbbar</h2>
-            <div id="clubs-grid" class="clubs-grid">
-                <!-- Klubbar laddas dynamiskt här -->
             </div>
         </div>
     </section>
@@ -95,6 +85,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Admin-knapp (nedre högra hörn) -->
+    <button id="admin-btn" class="admin-toggle-btn">Visa Admin</button>
 
     <!-- ADMIN-PANEL (dolt som standard) -->
     <section id="admin-panel" class="admin-panel hide">
@@ -171,8 +164,5 @@
         </div>
     </section>
 
-    <!-- JavaScript -->
-    <script src="../js/home.js"></script>
-    <script src="../js/home-admin.js"></script>
 </body>
 </html>
