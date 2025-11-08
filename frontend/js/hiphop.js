@@ -46,8 +46,6 @@ async function createEvents() {
   }
 }
 
-    
-
 
 async function createHipHopClubPage() {
 
@@ -58,7 +56,7 @@ async function createHipHopClubPage() {
     <header> 
       <h1>🎧 Hip-Hop Klubben</h1> 
       <nav> 
-        <a href="index.html">Hem</a> 
+        <a href="home.html">Hem</a> 
         <a href="#kalender">Evenemang</a> 
         <a href="#om">Om Oss</a> 
       </nav> 
