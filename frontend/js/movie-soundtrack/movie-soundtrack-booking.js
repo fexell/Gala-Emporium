@@ -16,52 +16,7 @@ function generateReferenceNumber() {
   return reference;
 }
 
-// Hjälpfunktion: Visa bokningsbekräftelse modal
-function showBookingModal(bookingDetails) {
-  const modal = document.getElementById('booking-modal');
-  const modalBody = document.getElementById('modal-body-content');
 
-  // Formatera datum
-  const bookingDate = new Date(bookingDetails.bookingDate);
-  const formattedDate = bookingDate.toLocaleDateString('sv-SE');
-  const formattedTime = bookingDate.toLocaleTimeString('sv-SE', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
-  // Bygg modalinnehåll
-  modalBody.innerHTML = `
-    <div class="booking-detail">
-      <strong>Kund:</strong> ${bookingDetails.customerName}
-    </div>
-    <div class="booking-detail">
-      <strong>E-post:</strong> ${bookingDetails.customerEmail}
-    </div>
-    <div class="booking-detail">
-      <strong>Event:</strong> ${bookingDetails.eventTitle}
-    </div>
-    <div class="booking-detail">
-      <strong>Antal biljetter:</strong> ${bookingDetails.ticketCount} st
-    </div>
-    <div class="booking-detail">
-      <strong>Totalkostnad:</strong> ${bookingDetails.totalPrice} kr
-    </div>
-    <div class="reference-number">
-      Bokningsnummer: ${bookingDetails.referenceNumber}
-    </div>
-    <p style="text-align: center; margin-top: 20px; color: #ccc;">
-      Spara ditt bokningsnummer för framtida referens!
-    </p>
-  `;
-
-  modal.classList.add('show');
-}
-
-// Hjälpfunktion: Stäng modal
-function closeBookingModal() {
-  const modal = document.getElementById('booking-modal');
-  modal.classList.remove('show');
-}
 
 // Vi börjar med att ladda events när sidan laddas
 document.addEventListener('DOMContentLoaded', function () {
@@ -212,7 +167,7 @@ async function handleBooking(event) {
       throw new Error('Kunde inte uppdatera biljetträknare');
     }
 
-    // Visa bekräftelse i modal istället för alert
+    // Visa bekräftelse i modal istället för alert. objekt med all bokningsinfo skickas till showBookingModal.
     showBookingModal({
       referenceNumber: referenceNumber,
       customerName: customerName,
@@ -233,4 +188,53 @@ async function handleBooking(event) {
     console.error('Fel vid bokning:', error);
     alert('Något gick fel vid bokningen. Försök igen!');
   }
+}
+
+
+//Visa bokningsbekräftelse modal. BookingDetails är ett objekt med all bokningsinfo som ska visas i modalen. Skickas från handleBooking ovan.
+function showBookingModal(bookingDetails) {
+  // Hitta modal element och dess innehållscontainer
+  const modal = document.getElementById('booking-modal'); 
+  const modalBody = document.getElementById('modal-body-content');
+
+  // Formatera datum
+  const bookingDate = new Date(bookingDetails.bookingDate);
+  const formattedDate = bookingDate.toLocaleDateString('sv-SE');
+  const formattedTime = bookingDate.toLocaleTimeString('sv-SE', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  // Bygg modalinnehåll med bokningsdetaljer
+  modalBody.innerHTML = `
+    <div class="booking-detail">
+      <strong>Kund:</strong> ${bookingDetails.customerName}
+    </div>
+    <div class="booking-detail">
+      <strong>E-post:</strong> ${bookingDetails.customerEmail}
+    </div>
+    <div class="booking-detail">
+      <strong>Event:</strong> ${bookingDetails.eventTitle}
+    </div>
+    <div class="booking-detail">
+      <strong>Antal biljetter:</strong> ${bookingDetails.ticketCount} st
+    </div>
+    <div class="booking-detail">
+      <strong>Totalkostnad:</strong> ${bookingDetails.totalPrice} kr
+    </div>
+    <div class="reference-number">
+      Bokningsnummer: ${bookingDetails.referenceNumber}
+    </div>
+    <p style="text-align: center; margin-top: 20px; color: #ccc;">
+      Spara ditt bokningsnummer för framtida referens!
+    </p>
+  `;
+
+  modal.classList.add('show'); // Visa modalen
+}
+
+// Hjälpfunktion: Stäng modal
+function closeBookingModal() {
+  const modal = document.getElementById('booking-modal');
+  modal.classList.remove('show');
 }
