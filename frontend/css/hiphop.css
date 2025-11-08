@@ -76,3 +76,45 @@ p {
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
+
+/* Evenemang */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #333;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 85, 0, 0.4);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #ff5500;
+}
+
+.event-card h3 {
+  color: #ff9900;
+  padding: 1rem 1rem 0.5rem;
+  font-size: 1.4rem;
+}
+
+.event-card p {
+  padding: 0 1rem;
+}
+
+.event-card strong {
+  color: #ffcc00;
+}
