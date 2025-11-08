@@ -4,16 +4,20 @@ const ticketButton = document.getElementById('ticket-button');
 const floorImage = document.querySelector('.floor-img');
 const television = document.querySelector('.television');
 const headerTitle = document.querySelector('header h1');
+const eventTitle = document.getElementById('event-title');
 
-ticketButton.addEventListener('click', () => {
+const toggleBookingDisplay = () => {
     ticketWrapper.classList.toggle('visible');
     floorImage.classList.toggle('floor-raised');
     television.classList.toggle('television-change-size');
     headerTitle.classList.toggle('header-shrunk');
-});
+    eventTitle.classList.toggle('event-title-shrunk');
+};
+
+ticketButton.addEventListener('click', toggleBookingDisplay);
+television.addEventListener('click', toggleBookingDisplay);
 
 // BOOKING FORM FUNCTIONALITY
-const eventTitle = document.getElementById('event-title');
 const eventDetails = document.getElementById('event-details');
 const eventDate = document.getElementById('event-date');
 const timeSelect = document.getElementById('booking-time-select');

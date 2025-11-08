@@ -6,6 +6,7 @@
     font-family: 'Arial', sans-serif;
     background-color: rgb(225, 225, 225);
     color: white;
+    overflow: hidden;
 }
 
 header {
@@ -16,13 +17,14 @@ header {
     width: 100%;
     transform: translateX(-50%);
     color: black;
-    font-size: 0.9em;
     h1 {
         margin-top: 40px; 
         font-family: "Bungee", sans-serif;
         transition: 0.5s ease-out;
     }
 }
+
+
 
 
 header h1.header-shrunk {
@@ -67,14 +69,30 @@ header h1.header-shrunk {
     z-index: 5;
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
 
-    h1 {
-        margin: 0;
-        font-family: "Bungee", sans-serif;
 
-    }
     p {
-        margin-bottom: 0;
+        margin-top: 5px;
+        font-style: oblique;
+        width: 70%;
     }
+    
+}
+
+.event-title {
+    margin: 0;
+    line-height: 1.1;
+    font-size: 4rem;
+    color: rgb(255, 23, 93);
+    font-family: "Bungee", sans-serif;
+    transition: 0.5s ease-in-out;
+}
+
+.event-title-shrunk {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    text-shadow: none;
+
+
 }
 
 .event-meta {
@@ -101,12 +119,19 @@ video {
 }
 
 
-
+.scene {
+    position: absolute;
+    height: 100%;
+    width: 100%; 
+    bottom: 0;
+    left: 0;
+    overflow: hidden; 
+}
 
 .floor-img {
     position: absolute;
     height: 30%;
-    width: 300%;
+    width: 200%;
 
     left: 50%;
     bottom: 0%;
@@ -138,6 +163,9 @@ video {
     bottom: 8%;
     width: 280px;
     height: 33%;
+    .ticket-form > h1 {
+        font-size: 1.7em;
+    }
 }
 
 .tabelfoot {
@@ -159,7 +187,7 @@ video {
 .ticket-form {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
-    border: 2.5px solid rgb(181, 181, 181);
+    border: 7.5px solid rgb(181, 181, 181);
     color: black;
     position: absolute;
     display: flex;
@@ -167,20 +195,24 @@ video {
 
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 55px);
-    width: calc(100% - 55px);
+    height: calc(100% - 65px);
+    width: calc(100% - 65px);
     margin: 5px;
     padding: 20px;
 
     div {
         display: flex;
         justify-content:space-between;
-        align-items: stretch;
+        align-items: center;
+        max-width: 100%;
     }
 
     label {
         margin-right: 0px;
         flex-shrink: 0;
+        color: rgb(99, 99, 99);
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: oblique;
     }
 
     h1 {
@@ -188,7 +220,10 @@ video {
         margin-top: -10px;
         font-family: "Bungee", sans-serif;
         text-align: center;
-        font-weight: 100;
+        font-size: 7em;
+        transition: 0.5s ease-out;
+
+
     }
     button {
         margin: 0;
@@ -197,11 +232,14 @@ video {
         margin-left: 5px;
         width: 100%;
         flex-grow: 1; 
+        height: 15px;
+        padding-inline: 5px;
+        border: 2px solid rgba(190, 190, 190, 0.883);
     }
     select {
         margin-left: 5px;
-
         flex-grow: 1; 
+        border: 2px solid rgba(190, 190, 190, 0.883);
     }
     .customerName {
         white-space: nowrap;
