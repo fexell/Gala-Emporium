@@ -1,11 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Gala Emporium 2025 - Startsida</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <!-- JavaScript -->
+    <script src="../js/home/home.js" defer></script>
+    <script src="../js/home/home-admin.js" defer></script>
 </head>
+
+
 <body>
-    <h1>Welcome to the Home Page</h1>
+    <!-- HERO-SEKTION -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Gala Emporium</h1>
+            <p class="hero-subtitle">Din portal till exklusiva evenemang och underhållning</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="total-events">-</span>
+                    <span class="stat-label">Events</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="total-clubs">-</span>
+                    <span class="stat-label">Klubbar</span>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- PARTNERKLUBBBAR SEKTION -->
+    <section class="clubs-section">
+        <div class="clubs-container">
+            <h2>Våra partnerklubbbar</h2>
+            <p class="clubs-intro">Upptäck våra fantastiska partnerklubbbar och deras unika evenemang</p>
+            <div id="clubs-grid" class="clubs-grid">
+                <!-- Klubbar laddas dynamiskt här -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER SEKTION -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <h2>Hitta ditt nästa evenemang</h2>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="club-filter">Klubb:</label>
+                    <select id="club-filter" class="filter-select">
+                        <option value="">Alla klubbar</option>
+                        <!-- Alternativ laddas dynamiskt från databasen -->
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort-filter">Sortera efter:</label>
+                    <select id="sort-filter" class="filter-select">
+                        <option value="date-asc">Datum (tidigast först)</option>
+                        <option value="date-desc">Datum (senast först)</option>
+                        <option value="price-asc">Pris (lägst först)</option>
+                        <option value="price-desc">Pris (högst först)</option>
+                    </select>
+                </div>
+
+                <button id="clear-filters" class="clear-btn">Rensa filter</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENT-TIMELINE SEKTION -->
+    <section class="events-section">
+        <div class="events-container">
+            <h2>Kommande evenemang</h2>
+            <div id="events-timeline" class="events-timeline">
+                <!-- Events laddas dynamiskt här -->
+            </div>
+            <div id="no-events-message" class="no-events hide">
+                <p>Inga evenemang matchar dina filter. Prova att ändra filtren ovan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin-knapp (nedre högra hörn) -->
+    <button id="admin-btn" class="admin-toggle-btn">Visa Admin</button>
+
+    <!-- ADMIN-PANEL (dolt som standard) -->
+    <section id="admin-panel" class="admin-panel hide">
+        <div class="admin-container">
+            <h2>Admin-panel</h2>
+
+            <!-- Admin-tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="club-management">Klubbhantering</button>
+                <button class="admin-tab-btn" data-tab="statistics">Statistik</button>
+            </div>
+
+            <!-- Tab-innehåll -->
+            <div class="admin-tab-content">
+                <!-- Klubbhantering -->
+                <div id="club-management" class="admin-tab-pane active">
+                    <div class="admin-section">
+                        <h3>Lägg till ny klubb</h3>
+                        <form id="add-club-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="club-name">Klubbnamn:</label>
+                                <input type="text" id="club-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="club-location">Plats:</label>
+                                <input type="text" id="club-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="club-description">Beskrivning:</label>
+                                <textarea id="club-description" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="club-email">E-post:</label>
+                                <input type="email" id="club-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="club-phone">Telefon:</label>
+                                <input type="text" id="club-phone" required>
+                            </div>
+                            <button type="submit" class="admin-btn-primary">Lägg till klubb</button>
+                        </form>
+                    </div>
+
+                    <div class="admin-section">
+                        <h3>Befintliga klubbar</h3>
+                        <div id="admin-clubs-list" class="admin-list">
+                            <!-- Klubbar för hantering laddas här -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistik -->
+                <div id="statistics" class="admin-tab-pane">
+                    <div class="stats-grid">
+                        <div class="stats-card">
+                            <h4>Totalt antal events</h4>
+                            <span id="stats-total-events" class="stats-number">-</span>
+                        </div>
+                        <div class="stats-card">
+                            <h4>Totalt antal bokningar</h4>
+                            <span id="stats-total-bookings" class="stats-number">-</span>
+                        </div>
+                        <div class="stats-card">
+                            <h4>Total omsättning</h4>
+                            <span id="stats-total-revenue" class="stats-number">-</span>
+                        </div>
+                        <div class="stats-card">
+                            <h4>Mest populära kategori</h4>
+                            <span id="stats-popular-category" class="stats-text">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
+
 </html>
