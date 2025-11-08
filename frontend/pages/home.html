@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gala Emporium 2025 - Startsida</title>
     <link rel="stylesheet" href="../css/home.css">
-        <!-- JavaScript -->
+    <!-- JavaScript -->
     <script src="../js/home/home.js" defer></script>
     <script src="../js/home/home-admin.js" defer></script>
 </head>
@@ -28,7 +29,7 @@
                 </div>
             </div>
         </div>
-        
+
     </header>
 
     <!-- PARTNERKLUBBBAR SEKTION -->
@@ -38,9 +39,6 @@
             <p class="clubs-intro">Upptäck våra fantastiska partnerklubbbar och deras unika evenemang</p>
             <div id="clubs-grid" class="clubs-grid">
                 <!-- Klubbar laddas dynamiskt här -->
-            </div>
-            <div class="clubs-actions">
-                <button id="view-all-clubs" class="view-all-btn">Visa alla klubbar</button>
             </div>
         </div>
     </section>
@@ -57,7 +55,7 @@
                         <!-- Alternativ laddas dynamiskt från databasen -->
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label for="sort-filter">Sortera efter:</label>
                     <select id="sort-filter" class="filter-select">
@@ -67,7 +65,7 @@
                         <option value="price-desc">Pris (högst först)</option>
                     </select>
                 </div>
-                
+
                 <button id="clear-filters" class="clear-btn">Rensa filter</button>
             </div>
         </div>
@@ -93,13 +91,13 @@
     <section id="admin-panel" class="admin-panel hide">
         <div class="admin-container">
             <h2>Admin-panel</h2>
-            
+
             <!-- Admin-tabs -->
             <div class="admin-tabs">
                 <button class="admin-tab-btn active" data-tab="club-management">Klubbhantering</button>
                 <button class="admin-tab-btn" data-tab="statistics">Statistik</button>
             </div>
-            
+
             <!-- Tab-innehåll -->
             <div class="admin-tab-content">
                 <!-- Klubbhantering -->
@@ -130,7 +128,7 @@
                             <button type="submit" class="admin-btn-primary">Lägg till klubb</button>
                         </form>
                     </div>
-                    
+
                     <div class="admin-section">
                         <h3>Befintliga klubbar</h3>
                         <div id="admin-clubs-list" class="admin-list">
@@ -138,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Statistik -->
                 <div id="statistics" class="admin-tab-pane">
                     <div class="stats-grid">
@@ -165,4 +163,5 @@
     </section>
 
 </body>
+
 </html>
