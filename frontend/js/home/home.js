@@ -45,9 +45,6 @@ async function loadAllData() {
         allEvents = await eventsResponse.json();
         allClubs = await clubsResponse.json();
 
-        // returnera datan för eventuell vidare användning
-        return { events: allEvents, clubs: allClubs };
-
         //Fånga fel.
     } catch (error) {
         console.error('Fel vid laddning av data:', error);
