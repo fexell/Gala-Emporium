@@ -226,6 +226,8 @@ async function handleBooking(event) {
     document.getElementById('ticket-form').reset();
     loadCustomerEvents(); // Uppdatera kundsidan
     loadBookingEvents(); // Uppdatera dropdown
+    loadAdminBookings(); // Uppdatera admin-bokningslistan
+    
 
   } catch (error) {
     console.error('Fel vid bokning:', error);

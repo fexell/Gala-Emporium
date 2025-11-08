@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Uppdatera både admin-listan och kundsidan automatiskt
                     loadAdminEvents(); // Uppdatera admin-panelen
                     loadCustomerEvents(); // Uppdatera kundsidan
+                    loadBookingEvents(); // Uppdatera dropdown-menyn
+                    
                 } else {
                     alert('Något gick fel!');
                 }

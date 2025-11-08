@@ -21,7 +21,7 @@
       "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
       "price": 450,
       "maxTickets": 200,
-      "ticketCount": 104,
+      "ticketCount": 20,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "hans-zimmer.jpg"
@@ -34,7 +34,7 @@
       "description": "James Horners hjärtvärmande Titanic soundtrack med \"My Heart Will Go On\". En romantisk avslutning på året! Perfect för par som vill dela en pasta innan konserten. Tårhandukar finns vid ingången.",
       "price": 290,
       "maxTickets": 150,
-      "ticketCount": 50,
+      "ticketCount": 37,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
@@ -47,7 +47,7 @@
       "description": "Upplev The Matrix soundtrack som aldrig förr! Don Davis episka musik möter elektroniska beats i en audio-visuell resa genom Matrix. Röda och blå lampor inkluderade. Kan du känna skillnaden mellan pizza och kött-pasta efter konserten?",
       "price": 380,
       "maxTickets": 150,
-      "ticketCount": 20,
+      "ticketCount": 0,
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
@@ -90,6 +90,19 @@
       "ticketCount": 0,
       "maxTickets": 150,
       "eventImage": "techno"
+    },
+    {
+      "id": "b49e",
+      "title": "Disney Music",
+      "datetime": "2025-12-26T18:30",
+      "location": "TUC Matsal",
+      "description": "\"Magisk Disney-kväll med alla klassiker från Snövit till Encanto! Alan Menken, Randy Newman och Kristen Anderson-Lopez mästerverk live. Varning: Ohämmad mitsång och gråt under 'Remember Me' från Coco. Familjevänligt och hjärtvärmande!\"",
+      "price": 290,
+      "maxTickets": 300,
+      "ticketCount": 50,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
     }
   ],
   "clubs": [
@@ -130,78 +143,6 @@
       "totalTickets": 2
     },
     {
-      "id": "6449",
-      "eventId": "8a6a",
-      "customerName": "Albert Einstein",
-      "customerEmail": "AlbertE@test.test",
-      "ticketCount": 3,
-      "bookingDate": "2025-11-06T17:33:05.299Z",
-      "totalPrice": 870
-    },
-    {
-      "id": "a0f8",
-      "eventId": "09ec",
-      "customerName": "Jan A",
-      "customerEmail": "Janne@test.test",
-      "ticketCount": 79,
-      "bookingDate": "2025-11-06T17:35:55.640Z",
-      "totalPrice": 35550
-    },
-    {
-      "id": "16bf",
-      "eventId": "8a6a",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 10,
-      "bookingDate": "2025-11-06T17:55:24.985Z",
-      "totalPrice": 2900
-    },
-    {
-      "eventId": "f324",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 10,
-      "bookingDate": "2025-11-07T08:21:45.323Z",
-      "totalPrice": 3800,
-      "id": "2pndwDB"
-    },
-    {
-      "eventId": "09ec",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 10,
-      "bookingDate": "2025-11-07T08:26:51.626Z",
-      "totalPrice": 4500,
-      "id": "Ll6v4pV"
-    },
-    {
-      "eventId": "f324",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 5,
-      "bookingDate": "2025-11-07T09:38:06.383Z",
-      "totalPrice": 1900,
-      "id": "Y8yexY4"
-    },
-    {
-      "eventId": "f324",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 5,
-      "bookingDate": "2025-11-07T12:20:30.077Z",
-      "totalPrice": 1900,
-      "id": "waHHnIJ"
-    },
-    {
-      "eventId": "09ec",
-      "customerName": "Daniel Aldemir",
-      "customerEmail": "aldemir@test.test",
-      "ticketCount": 5,
-      "bookingDate": "2025-11-07T12:24:58.945Z",
-      "totalPrice": 2250,
-      "id": "z16lgWY"
-    },
-    {
       "referenceNumber": "SCF4AU9M",
       "eventId": "09ec",
       "customerName": "Daniel Aldemir",
@@ -220,6 +161,26 @@
       "bookingDate": "2025-11-07T14:41:30.414Z",
       "totalPrice": 10730,
       "id": "BJrcsf8"
+    },
+    {
+      "id": "10cf",
+      "referenceNumber": "88SCD2CG",
+      "eventId": "09ec",
+      "customerName": "Olof Svensson",
+      "customerEmail": "Olof@ola.se",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-08T10:22:38.057Z",
+      "totalPrice": 4500
+    },
+    {
+      "id": "7822",
+      "referenceNumber": "684NMATH",
+      "eventId": "b49e",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 50,
+      "bookingDate": "2025-11-08T10:27:07.113Z",
+      "totalPrice": 14500
     }
   ]
 }
