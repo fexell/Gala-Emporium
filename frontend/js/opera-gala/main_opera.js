@@ -1,6 +1,6 @@
 import { apiClient } from '../../helpers/Api.helper.js'
 
-import start from './start.js';
+import start from './start_opera.js';
 import traviata from './traviata.js';
 import requiem from './requiem.js';
 import operagala from './operagala.js';
