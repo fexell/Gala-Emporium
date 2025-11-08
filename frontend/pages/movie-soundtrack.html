@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
 </head>
 
 <body>
-  
+
   <!-- Header med navigation -->
   <header class="top-bar">
     <div class="wrapper">
@@ -37,8 +38,11 @@
     <section id="about" class="info-box">
       <div class="wrapper">
         <h2>Om Movie Soundtrack Orchestra</h2>
-        <p>Vi är en professionell orkester som specialiserat oss på att framföra filmmusikens mest älskade kompositioner. Från Hans Zimmers episka toner till John Williams klassiska melodier - vi ger dig en konsertupplevelse utöver det vanliga.</p>
-        <p>Varje konsert är noggrant kurerad för att skapa en resa genom filmhistoriens största ögonblick, framförd live av våra begåvade musiker.</p>
+        <p>Vi är en professionell orkester som specialiserat oss på att framföra filmmusikens mest älskade
+          kompositioner. Från Hans Zimmers episka toner till John Williams klassiska melodier - vi ger dig en
+          konsertupplevelse utöver det vanliga.</p>
+        <p>Varje konsert är noggrant kurerad för att skapa en resa genom filmhistoriens största ögonblick, framförd live
+          av våra begåvade musiker.</p>
       </div>
     </section>
 
@@ -57,28 +61,28 @@
     <section id="booking" class="tickets">
       <div class="wrapper">
         <h2>Boka Biljetter</h2>
-        
+
         <form id="ticket-form" class="buy-tickets">
           <select id="pick-show" required>
-            
-            <option value="">Vilket event vill du gå på?</option>      
+
+            <option value="">Vilket event vill du gå på?</option>
             <!-- fylls med JS -->
           </select>
-          
+
           <input type="text" id="your-name" placeholder="Vad heter du?" required>
 
           <input type="email" id="your-email" placeholder="Din mejl" required>
 
           <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" required>
-          
+
           <button type="submit">Boka nu!</button>
         </form>
-        
+
         <div id="booking-message" class="confirmation hide"></div>
       </div>
     </section>
 
-        <!-- Admin grejer (bara för den som har access) -->
+    <!-- Admin grejer (bara för den som har access) -->
     <section id="admin" class="backstage">
       <div class="wrapper">
         <h2>Admin Panel</h2>
@@ -88,60 +92,75 @@
         <div id="admin-stuff" class="admin-box hide">
           <h3>Lägg till nytt evenemang</h3>
 
-        <div class="admin-tabs">
-          <button class="tab-btn active" data-tab="add-event">Lägg till event</button>
-          <button class="tab-btn" data-tab="manage-events">Hantera events</button>
-          <button class="tab-btn" data-tab="view-bookings">Se bokningar</button>
-        </div>
-
-        <div class="tab-content" id="add-event">
-          
-          <form id="new-event" class="add-form">
-            <!-- basic event info -->
-            <input type="text" id="event-name" placeholder="T.ex Hans Zimmer Live" required>
-            
-            <!-- när och var -->
-            <input type="datetime-local" id="event-when" required>
-
-            <input type="text" id="event-where" placeholder="Vilken sal?" required>
-            
-            <!-- längre beskrivning -->
-            <textarea id="event-info" placeholder="Vad händer på evenemanget?" required></textarea>
-            
-            <!-- pengar och platser -->
-            <input type="number" id="event-cost" placeholder="Pris i kronor" min="0" step="0.10" required>
-
-            <input type="number" id="event-max" placeholder="Max antal biljetter" min="1" required>
-            
-            <!-- bild för eventet (optional) -->
-            <input type="text" id="event-img" placeholder="Bildnamn (t.ex hans-zimmer.jpg)">
-            
-            <button type="submit">Skapa evenemang</button>
-          </form>
-        </div>
-      
-        <!-- sektion för att hantera befintliga events -->
-        <div class="tab-content hide" id="manage-events">
-          <h4>Hantera befintliga events</h4>
-          <div id="admin-events-list">
-            <!-- JS fyller detta med alla events + delete-knappar -->
+          <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="add-event">Lägg till event</button>
+            <button class="tab-btn" data-tab="manage-events">Hantera events</button>
+            <button class="tab-btn" data-tab="view-bookings">Se bokningar</button>
           </div>
-        </div>
 
-        <!-- sektion för att se alla bokningar -->
-        <div class="tab-content hide" id="view-bookings">
-          <h4>Alla bokningar</h4>
-          <div id="bookings-list">
-            <!-- JS fyller detta med bokningar + refund-knappar -->
+          <div class="tab-content" id="add-event">
+
+            <form id="new-event" class="add-form">
+              <!-- basic event info -->
+              <input type="text" id="event-name" placeholder="T.ex Hans Zimmer Live" required>
+
+              <!-- när och var -->
+              <input type="datetime-local" id="event-when" required>
+
+              <input type="text" id="event-where" placeholder="Vilken sal?" required>
+
+              <!-- längre beskrivning -->
+              <textarea id="event-info" placeholder="Vad händer på evenemanget?" required></textarea>
+
+              <!-- pengar och platser -->
+              <input type="number" id="event-cost" placeholder="Pris i kronor" min="0" step="0.10" required>
+
+              <input type="number" id="event-max" placeholder="Max antal biljetter" min="1" required>
+
+              <!-- bild för eventet (optional) -->
+              <input type="text" id="event-img" placeholder="Bildnamn (t.ex hans-zimmer.jpg)">
+
+              <button type="submit">Skapa evenemang</button>
+            </form>
           </div>
-        </div>
 
-        </div> 
-      </div> 
-    </section> 
+          <!-- sektion för att hantera befintliga events -->
+          <div class="tab-content hide" id="manage-events">
+            <h4>Hantera befintliga events</h4>
+            <div id="admin-events-list">
+              <!-- JS fyller detta med alla events + delete-knappar -->
+            </div>
+          </div>
+
+          <!-- sektion för att se alla bokningar -->
+          <div class="tab-content hide" id="view-bookings">
+            <h4>Alla bokningar</h4>
+            <div id="bookings-list">
+              <!-- JS fyller detta med bokningar + refund-knappar -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
 
   </main>
+
+  <!-- Bokningsbekräftelse Modal -->
+  <div id="booking-modal" class="booking-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+      <div class="modal-header">
+        <div class="checkmark">✓</div>
+        <h2>Bokning Bekräftad!</h2>
+      </div>
+      <div class="modal-body" id="modal-body-content">
+        <!-- JS fyller detta med bokningsdetaljer -->
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
