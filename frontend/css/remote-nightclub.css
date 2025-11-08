@@ -6,7 +6,6 @@
     font-family: 'Arial', sans-serif;
     background-color: rgb(225, 225, 225);
     color: white;
-    overflow: hidden;
 }
 
 header {
@@ -106,27 +105,27 @@ video {
 
 .floor-img {
     position: absolute;
-    height: 200%;
-    width: 160%;
+    height: 30%;
+    width: 300%;
+
     left: 50%;
-    top: 47%;
+    bottom: 0%;
     z-index: 1;
-    transform: translate(-50%, -50%);
+    transform: translateX( -50%);
     transition: 0.5s ease-out;
 }
 
 .floor-img.floor-raised {
-    height: 120%; 
-    width: 102%;
-
-    top: 40%; 
+    height: 45%; 
+    width: 100%;
+    bottom: 0%;
 }
 
 .ticketwrapper {
     position: fixed;
     background-color: rgb(108, 108, 108);
     border-radius: 10px;
-    width: 500px;
+    width: 1000px;
     height: 33%;
     bottom: -50%;
     left: 50%;
@@ -137,7 +136,7 @@ video {
 
 .ticketwrapper.visible {
     bottom: 8%;
-    width: 300px;
+    width: 280px;
     height: 33%;
 }
 
@@ -181,6 +180,7 @@ video {
 
     label {
         margin-right: 0px;
+        flex-shrink: 0;
     }
 
     h1 {
@@ -195,10 +195,12 @@ video {
     }
     input {
         margin-left: 5px;
-        width: auto;
+        width: 100%;
         flex-grow: 1; 
     }
     select {
+        margin-left: 5px;
+
         flex-grow: 1; 
     }
     .customerName {
@@ -266,13 +268,33 @@ video {
     background-color: rgba(0, 0, 0, 0.916);
     color: white;
     pointer-events: none;
+    animation: dancelight 1s infinite;
+}
+
+@keyframes dancelight {
+    0% {
+        background-color: rgba(4, 55, 13, 0.916);
+    }
+    25% {
+        background-color: rgba(0, 14, 34, 0.899);
+    }
+    50% {
+        background-color: rgba(20, 2, 22, 0.916);
+    }
+    75% {
+        background-color: rgba(22, 16, 2, 0.916);
+    }
+    100% {
+        background-color: rgba(4, 55, 13, 0.916);
+    }
 }
 
 .crowd {
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0%;
     width: 100%;
-    height: 80%;
-    bottom: 0;
     z-index: 10;
     pointer-events: none;
     animation: dance 1s infinite;
@@ -280,13 +302,14 @@ video {
 
 @keyframes dance {
     0% {
-        height: 75%;
+        height: 85%;
     }
     50% {
-        height: 78%;
+        height: 88%;
+        bottom: 0%;
     }
     100% {
-        height: 75%;
+        height: 85%;
     }
 }
 

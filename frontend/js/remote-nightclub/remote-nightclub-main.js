@@ -80,6 +80,7 @@ lightToggle.addEventListener('click', () => {
     darkMode.classList.toggle('hidden')
     crowdVisible.classList.toggle('hidden')
     eventInfoVisible?.classList.toggle('hidden')
+    ticketWrapper.classList.toggle('hidden')
 })
 
 
