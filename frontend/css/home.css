@@ -1,0 +1,70 @@
+/* === ALLMÄN GRUND-STYLING === */
+/* Reset av alla element för konsistent styling */
+* {
+    margin: 0;          /* Ta bort alla automatiska marginaler */
+    padding: 0;         /* Ta bort alla automatiska paddings */
+    box-sizing: border-box;  /* Inkludera border och padding i width/height */
+}
+
+/* Huvudstyling för hela sidan */
+body {
+    font-family: 'Arial', sans-serif;    /* Snygg, läsbar font */
+    /* Skapar en blå gradient-bakgrund som går från mörkare till ljusare */
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;   /* Minst hela skärmhöjden */
+    color: #ffffff;      /* Vit text som syns mot mörk bakgrund */
+    line-height: 1.6;    /* Bra avstånd mellan textrader för läsbarhet */
+}
+
+/* Hjälpklass för att dölja element (används av JavaScript) */
+.hide {
+    display: none !important;  /* !important gör att den alltid gäller */
+}
+
+
+
+
+/* === HERO-SEKTION === */
+/* Huvudområdet överst på sidan med titel och statistik */
+.hero-section {
+    /* Lägger operabilden som bakgrund med mörk overlay för läsbarhet */
+    background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), /* Mörk overlay så texten syns */
+        url('../images/Home.webp') center/cover,            /* Vår vackra operabild */
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); /* Fallback om bilden inte laddas */
+    
+    padding: 80px 20px;     /* Stor padding för luftig känsla */
+    text-align: center;     /* Centrerar allt innehåll */
+    position: relative;     /* För att kunna placera admin-knappen absolut */
+    overflow: hidden;       /* Döljer eventuella element som går utanför */
+}
+
+/* Container för hero-innehållet */
+.hero-content {
+    max-width: 1200px;      /* Max bredd så det inte blir för brett */
+    margin: 0 auto;         /* Centrerar containern */
+}
+
+/* Huvudtiteln "Gala Emporium 2025" */
+.hero-title {
+    font-size: 4rem;        /* Stor, imponerande storlek */
+    font-weight: bold;      /* Fet text */
+    /* Skapar en guldgradient på texten */
+    background: linear-gradient(45deg, #d4af37, #f4e7aa);
+    -webkit-background-clip: text;        /* Klipper bakgrunden till texten */
+    -webkit-text-fill-color: transparent; /* Gör texten transparent så gradienten syns */
+    background-clip: text;                /* Standard version för andra webbläsare */
+    margin-bottom: 1rem;    /* Avstånd nedåt */
+    /* Lägg till en subtil glöd-effekt */
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Undertexten under titeln */
+.hero-subtitle {
+    font-size: 1.5rem;      /* Lagom stor */
+    color: #cccccc;         /* Ljusgrå för att inte konkurrera med titeln */
+    margin-bottom: 3rem;    /* Stort avstånd till statistik-korten */
+    max-width: 600px;       /* Begränsa bredden för bättre läsbarhet */
+    margin-left: auto;      /* Centrerar tillsammans med margin-right */
+    margin-right: auto;
+}
