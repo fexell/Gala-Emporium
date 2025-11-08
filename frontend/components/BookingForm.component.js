@@ -23,6 +23,22 @@ class BookingForm extends HTMLElement {
 
       if( this.existingBooking ) {
         this.shadowRoot.innerHTML           = `
+          <style>
+            #cancel-booking {
+              padding: 20px;
+              border: none;
+              border-radius: 8px;
+              outline: none;
+              font-size: 14px;
+              color: #000;
+              background-color: #faefd1;
+              cursor: pointer;
+
+              &:hover {
+                background-color: #c8bfa7;
+              }
+            }
+          </style>
           <p>You have already made a booking for this event.</p>
           <p>Tickets booked: <strong>${ this.existingBooking.numberOfTickets }</strong></p>
           <button id='cancel-booking'>Cancel booking</button>
@@ -34,32 +50,126 @@ class BookingForm extends HTMLElement {
       } else {
         this.shadowRoot.innerHTML             = `
           <style>
+            .flex {
+              display: flex;
+              gap: 8px;
+            }
+
+            .flex-row {
+              flex-direction: row;
+            }
+
+            .flex-1 {
+              flex: 1;
+            }
+
+            .rounded-full {
+              border-radius: 9999px;
+            }
+
+            input {
+              width: 100%;
+              border: 1px solid transparent;
+              border-radius: 8px;
+              outline: none;
+              padding: 18px;
+              padding-inline: 24px;
+              color: #f1f1f1;
+              background-color: oklch(25.5% 0 0);
+
+              &:focus {
+                border-color: #faefd1;
+                box-shadow: 0 10px 0 rgba(0, 0, 0, 1);
+              }
+            }
+
+            input[name='numberOfTickets'] {
+              border-bottom-color: #faefd1;
+
+              &:focus {
+                box-shadow: 0 10px 0 rgba(0, 0, 0, 1);
+              }
+            }
+
             input[readonly] {
-              color: #888;
+              border: none;
+              color: #f1f1f1;
+              background-color: transparent;
+              text-align: right;
               cursor: not-allowed;
+            }
+
+            input[name='numberOfTickets'] {
+              max-width: 80px;
+              width: 80px;
+              text-align: center;
+              font-size: 12px;
+              background-color: transparent;
+            }
+
+            input[name='totalPrice'] {
+              font-size: 42px;
+            }
+
+            button[type='submit'] {
+              padding: 20px;
+              border: none;
+              border-radius: 8px;
+              outline: none;
+              font-size: 14px;
+              color: #000;
+              background-color: #faefd1;
+              cursor: pointer;
+
+              &:hover {
+                background-color: #c8bfa7;
+              }
+            }
+
+            .form-wrapper {
+              padding: 16px;
+              border-radius: 8px;
+              background-color: #111217;
+            }
+
+            .form-wrapper .totalPrice {
+              color: #f1f1f1;
             }
           </style>
           <form id='bookingForm'>
             <h3>Book for ${ event.name }</h3>
-            <p>Available tickets: <strong id='available'>${ event.availableTickets }</strong></p>
-            <p>Price per ticket: <strong>${ event.ticketPrice } SEK</strong></p>
 
-            <input type='text' name='customerName' placeholder='Enter your name' required />
-            <input type='number' name='numberOfTickets' placeholder='Enter number of tickets' required />
-            <input type='number' name='totalPrice' value='0' required readonly />
+            <div class='form-wrapper'>
+              <div class='flex flex-row'>
+                <input class='flex-1' type='text' name='customerName' placeholder='Enter your name' required />
+                <input class='flex-1' type='number' name='numberOfTickets' min='1' placeholder='# of tickets' required />
+                <button type='submit'>Book tickets</button>
+              </div>
+            </div>
 
-            <button type='submit'>Confirm booking</button>
+            <div>
+              <div class='flex flex-row'>
+                <div class='flex-1'>
+                  <p>Available tickets: <strong id='available'>${ event.availableTickets }</strong></p>
+                  <p>Price per ticket: <strong>${ event.ticketPrice } SEK</strong></p>
+                </div>
+                <div class='flex-1'>
+                  <p class='totalPrice' style='display: block; text-align: right;'>Total: <strong id='total'>0</strong> SEK</p>
+                </div>
+              </div>
+            </div>
+
             <p id='bookingMessage'></p>
           </form>
         `
 
         const form                            = this.shadowRoot.querySelector( '#bookingForm' )
         const numberInput                     = this.shadowRoot.querySelector( 'input[name="numberOfTickets"]' )
-        const totalInput                      = this.shadowRoot.querySelector( 'input[name="totalPrice"]' )
+        const totalInput                      = this.shadowRoot.querySelector( '#total' )
 
         numberInput.addEventListener( 'input', () => {
           const quantity                      = Math.max( 0, Number( numberInput.value ) || 0 )
-          totalInput.value                    = quantity * event.ticketPrice
+          totalInput.textContent              = quantity * event.ticketPrice
         } )
 
         form.addEventListener( 'submit', this.handleSubmit.bind( this ) )

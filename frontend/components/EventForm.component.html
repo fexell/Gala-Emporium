@@ -35,7 +35,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      z-index: 0;
+      z-index: 10;
     }
 
     .modal > div {
@@ -53,8 +53,8 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
+      background: rgba(250, 239, 209, 0.5);
+      z-index: 15;
     }
 
     .modal > div > .modal-content {
@@ -65,7 +65,7 @@
       border-radius: 8px;
       background: oklch(14.5% 0 0);
       box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
-      z-index: 2;
+      z-index: 20;
     }
 
     .modal > div > .modal-content .close-button-container {
@@ -97,7 +97,7 @@
       margin-top: 0;
       padding-top: 0;
       text-align: center;
-      color: oklch(98.5% 0 0);
+      color: #f2e8cd;
     }
 
     .modal > div > .modal-content .input-container {
@@ -114,12 +114,12 @@
       border-radius: 8px;
       outline: none;
       font-size: 14px;
-      color: oklch(98.5% 0 0);
+      color: #faefd1;
       background-color: oklch(26.9% 0 0);
     }
 
     .modal > div > .modal-content form input:focus {
-      border-color: #007BFF;
+      border-color: #faefd1;
     }
 
     .modal > div > .modal-content form button {
@@ -131,8 +131,8 @@
       margin-bottom: 4px;
       outline: none;
       font-size: 14px;
-      color: #fff;
-      background-color: #007BFF;
+      color: #000;
+      background-color: #faefd1;
       cursor: pointer;
     }
 
@@ -146,7 +146,7 @@
       left: 24px;
       top: 50%;
       transform: translateY(-50%);
-      color: #888;
+      color: #faefd1;
     }
   </style>
   <div class='modal hidden'>
@@ -156,7 +156,7 @@
         <div>
           <div class='close-button-container'>
             <div>
-              <button>
+              <button style='color: #f2e8cd;'>
                 <i class='fa-solid fa-xmark'></i>
               </button>
             </div>

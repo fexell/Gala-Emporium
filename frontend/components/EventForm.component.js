@@ -42,8 +42,10 @@ class EventFormComponent extends HTMLElement {
       this.validateForm()
 
       this.requiredInputs                   = this.shadowRoot.querySelectorAll( '[required]' )
-      this.form.addEventListener( 'input', this.validateForm.bind( this ) )
-      this.form.addEventListener( 'submit', this.handleSubmit.bind( this ) )
+      this._boundValidateForm               = this.validateForm.bind( this )
+      this._boundHandleSubmit               = this.handleSubmit.bind( this )
+      this.form.addEventListener( 'input', this._boundValidateForm )
+      this.form.addEventListener( 'submit', this._boundHandleSubmit )
 
       const overlay                         = this.shadowRoot.querySelector( '.overlay' )
       overlay.addEventListener( 'click', () => this.close() )
@@ -80,12 +82,26 @@ class EventFormComponent extends HTMLElement {
     try {
       const response                        = await createEvent( clubId, data )
 
-      console.log( 'Event created successfully:', response )
-      console.log( formData )
-
       if( response ) {
         this.form.reset()
         this.validateForm()
+        this.close()
+
+        this.dispatchEvent(new CustomEvent('event-created', {
+          bubbles: true,   // allows event to bubble up to parent
+          composed: true,  // allows crossing shadow DOM boundaries
+          detail: { eventId: response.id }
+        }))
+
+        // Also dispatch a global event on window so sibling components or
+        // page-level scripts receive it even after client-side navigation.
+        try {
+          window.dispatchEvent(new CustomEvent('event-created', {
+            detail: { eventId: response.id }
+          }))
+        } catch (e) {
+          console.error( e )
+        }
       }
     } catch( error ) {
       console.error( 'Error creating event:', error )
@@ -93,8 +109,12 @@ class EventFormComponent extends HTMLElement {
   }
 
   disconnectedCallback() {
-    if( this.form )
-      this.form.removeEventListener( 'submit', this.handleSubmit )
+    if( this.form ) {
+      if ( this._boundHandleSubmit )
+        this.form.removeEventListener( 'submit', this._boundHandleSubmit )
+      if ( this._boundValidateForm )
+        this.form.removeEventListener( 'input', this._boundValidateForm )
+    }
   }
 
   open() {
