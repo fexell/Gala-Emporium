@@ -12,6 +12,33 @@
       "ticketCount": 100,
       "maxTickets": 200,
       "eventImage": "jazz-night.jpg"
+    },
+    {
+      "id": 2,
+      "category": "hiphop",
+      "title": "Yasin",
+      "date": "2025-11-29",
+      "image": "../images/yasin.webp",
+      "description": "Yasin - en av Sveriges mest hypade artister i en exklusiv spelning. Förvänta dig en kväll fylld av energi och ikoniska låtar.",
+      "location": "Hip-Hop Klubben"
+    },
+    {
+      "id": 3,
+      "category": "hiphop", 
+      "title": "Shiro",
+      "date": "2025-11-28",
+      "image": "../images/shiro.png",
+      "description": "Shiros unika blend av rap och melodi tar över klubban. Förvänta dig hit efter hit i en elektriserande liveuppvisning",
+      "location": "Hip-Hop Klubben"
+    },
+    {
+      "id": 4,
+      "category": "hiphop",
+      "title": "Snoop Dogg",
+      "date": "2025-12-10", 
+      "image": "../images/snoop.jpg",
+      "description": "The Doggfather himself tar över klubben! Snoop Dogg levererar en timslång resa genom hiphop-historiens mest ikoniska låtar.",
+      "location": "Hip-Hop Klubben"
     }
   ],
   "clubs": [
@@ -23,6 +50,15 @@
       "email": "test@test.com",
       "phone": "555-1234",
       "clubImage": "blue-note.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Hip-Hop Klubben", 
+      "location": "Gala Emporium, Stockholm",
+      "description": "Sveriges hetaste scen för hiphop-kultur sedan 2012.",
+      "email": "hiphop@klubben.se",
+      "phone": "555-5678",
+      "clubImage": "hiphop-klubben.jpg"
     }
   ],
   "bookings": [
@@ -31,7 +67,7 @@
       "eventId": 1,
       "date": "2024-07-10",
       "time": "19:00",
-      "totalTickets": 2,
+      "totalTickets": 2
     }
   ]
 }
