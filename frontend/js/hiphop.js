@@ -25,9 +25,18 @@ async function createHipHopClubPage() {
         <div id="event-list" class="event-grid"></div> 
       </section> 
        
+      <section id="om"> 
+        <h2>Om Oss</h2> 
+        <p>Hip-Hop Klubben på Gala Emporium är mer än bara en klubb - det är en kulturell institution. Sedan vår öppning 2012 har vi varit den främsta mötesplatsen för hiphop-älskare i regionen.</p> 
+        <p>Vi tror på äkta hiphop-kultur i alla dess former - från rap och beatbox till breakdance och graffiti. Vår scen har sett både lokala talanger och internationella stjärnor, allt i en atmosfär av respekt och gemenskap.</p> 
+        <p>Varje kväll på Hip-Hop Klubben är en unik upplevelse där musik, dans och konst sammanstrålar för att skapa magi. Oavsett om du är här för att lyssna, dansa eller bara njuta av stämningen - välkommen in i vår familj!</p> 
+      </section> 
+
     </main> 
      
-    
+    <footer>
+        <p>&copy; 2025 Hip-Hop Klubben | Gala Emporium</p>
+    </footer>
   `;
 
   
