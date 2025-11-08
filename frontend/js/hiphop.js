@@ -32,6 +32,7 @@ async function createEvents() {
           <h3>${event.title}</h3>
           <p><strong>${event.date}</strong></p>
           <p><strong>Plats: </strong>${event.location}</p>
+          <p>${event.description} </p>
         `;
         eventList.appendChild(card);
       });
