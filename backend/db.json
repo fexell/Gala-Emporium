@@ -14,7 +14,7 @@
       "eventImage": "jazz-night.jpg"
     },
     {
-      "id": 2,
+      "id": "4a",
       "category": "hiphop",
       "title": "Yasin",
       "date": "2025-11-29",
@@ -22,11 +22,12 @@
       "description": "Yasin - en av Sveriges mest hypade artister i en exklusiv spelning. Förvänta dig en kväll fylld av energi och ikoniska låtar.",
       "location": "Hip-Hop Klubben",
       "price" : 799,
+      "clubId": 4,
       "ticketCount": 0,
       "maxTickets": 300
     },
     {
-      "id": 3,
+      "id": "4b",
       "category": "hiphop", 
       "title": "Shiro",
       "date": "2025-11-28",
@@ -34,11 +35,12 @@
       "description": "Shiros unika blend av rap och melodi tar över klubban. Förvänta dig hit efter hit i en elektriserande liveuppvisning",
       "location": "Hip-Hop Klubben",
       "price" : 599,
+      "clubId": 4,
       "ticketCount": 0,
       "maxTickets": 300
     },
     {
-      "id": 4,
+      "id": "4c",
       "category": "hiphop",
       "title": "Snoop Dogg",
       "date": "2025-12-10", 
@@ -46,6 +48,7 @@
       "description": "The Doggfather himself tar över klubben! Snoop Dogg levererar en timslång resa genom hiphop-historiens mest ikoniska låtar.",
       "location": "Hip-Hop Klubben",
       "price" : 999,
+      "clubId": 4,
       "ticketCount": 0,
       "maxTickets": 300
     }
@@ -61,7 +64,7 @@
       "clubImage": "blue-note.jpg"
     },
     {
-      "id": 2,
+      "id": 4,
       "name": "Hip-Hop Klubben", 
       "location": "Gala Emporium, Stockholm",
       "description": "Sveriges hetaste scen för hiphop-kultur sedan 2012.",

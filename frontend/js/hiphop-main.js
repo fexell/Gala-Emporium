@@ -133,7 +133,7 @@ async function createHipHopClubPage() {
 
   //ladda events och initiera bokkningen 
   await createEvents();
-  //await loadBookingEvents();
+  await loadBookingEvents();
 
   //lyssna på bokningsformuläret
   const bookingForm = document.getElementById('booking-form');
