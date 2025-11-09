@@ -7,7 +7,7 @@ async function loadBookingEvents() {
         const allEvents = await response.json();
         
         const hiphopEvents = allEvents.filter(event => event.category === 'hiphop');
-        hiphopEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+        hiphopEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
         
         const eventSelect = document.getElementById('booking-event');
         
@@ -18,7 +18,7 @@ async function loadBookingEvents() {
             
             const option = document.createElement('option');
             option.value = event.id;
-            option.textContent = `${event.title} - ${event.date} (${availableTickets} biljetter kvar)`;
+            option.textContent = `${event.title} - ${event.datetime} (${availableTickets} biljetter kvar)`;
             
             if (availableTickets === 0) {
                 option.disabled = true;

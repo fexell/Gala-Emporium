@@ -9,7 +9,7 @@ async function createEvents() {
     const hiphopEvents = allEvents.filter(event => event.category === 'hiphop');
     
     // Sortera efter datum
-    hiphopEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    hiphopEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
     
     const eventList = document.getElementById('event-list');
     
@@ -30,7 +30,7 @@ async function createEvents() {
         card.innerHTML = ` 
           <img src="${event.image}" alt="${event.title}">
           <h3>${event.title}</h3>
-          <p><strong>${event.date}</strong></p>
+          <p><strong>${event.datetime}</strong></p>
           <p><strong>Plats: </strong>${event.location}</p>
           <p>${event.description} </p>
           <button class = "book-event-btn" onclick = "scroolToBooking('${event.id}')">Boka Biljetter</button>
