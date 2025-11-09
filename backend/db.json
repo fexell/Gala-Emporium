@@ -12,62 +12,21 @@
   ],
   "bookings": [
     {
-      "eventId": 3,
-      "eventDateTime": "2024-12-28T18:00:00",
-      "eventTitle": "Operagala",
-      "id": 1
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala – De största ariorna",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "bookingDate": "2025-11-07T10:52:53.036Z",
-      "id": 2
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala – De största ariorna",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "bookingDate": "2025-11-07T10:53:02.729Z",
-      "id": 3
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala – De största ariorna",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "bookingDate": "2025-11-07T11:26:21.351Z",
-      "id": 4
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala – De största ariorna",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "bookingDate": "2025-11-07T11:32:51.735Z",
-      "id": 5
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala – De största ariorna",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "bookingDate": "2025-11-07T11:41:20.987Z",
-      "id": 6
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "name": "test",
+      "eventId": "1",
+      "eventTitle": "La Traviata",
+      "eventDateTime": "2024-11-06T17:00:00",
+      "name": "daniel al",
       "email": "test@test.sr",
-      "phone": "111111111",
-      "tickets": 3,
+      "phone": "",
+      "tickets": 1,
       "message": "",
       "status": "pending",
       "customer": {
-        "name": "test",
+        "name": "daniel al",
         "email": "test@test.sr",
-        "phone": "111111111"
+        "phone": ""
       },
-      "id": 7
+      "id": 1
     }
   ]
 }

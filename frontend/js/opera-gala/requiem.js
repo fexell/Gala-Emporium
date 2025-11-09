@@ -31,7 +31,7 @@ export default function requiem() {
     </p>
 
     <p>
-      <a href="#operagala">← Tillbaka till startsida</a>
+      <a href="#start">← Tillbaka till startsida</a>
     </p>
 
   </section>

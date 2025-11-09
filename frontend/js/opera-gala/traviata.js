@@ -30,7 +30,7 @@ export default function traviata() {
       och den hjärtskärande finalen där Violetta kämpar mot tiden och sin sjukdom.
     </p>
     <p>
-      <a href="#operagala">← Tillbaka till startsida</a>
+      <a href="#start">← Tillbaka till startsida</a>
     </p>
   </section>
   `;
