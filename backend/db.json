@@ -23,7 +23,7 @@
       "location": "Hip-Hop Klubben",
       "price": 799,
       "clubId": 4,
-      "ticketCount": 0,
+      "ticketCount": 10,
       "maxTickets": 300
     },
     {
@@ -89,6 +89,15 @@
       "bookingDate": "2025-11-09T21:20:02.283Z",
       "totalPrice": 599,
       "id": 2
+    },
+    {
+      "eventId": 4,
+      "customerName": "ali",
+      "customerEmail": "nanana@gmail.com",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-09T21:40:29.743Z",
+      "totalPrice": 7990,
+      "id": 3
     }
   ]
 }

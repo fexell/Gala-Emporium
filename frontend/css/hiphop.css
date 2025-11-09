@@ -117,74 +117,74 @@ p {
 }
 
 .booking-container {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .booking-form {
-    background: linear-gradient(145deg, #1a1a1a, #222222);
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid #333;
+  background: linear-gradient(145deg, #1a1a1a, #222222);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid #333;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #ff9900;
-    font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff9900;
+  font-weight: 600;
 }
 
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 0.75rem;
-    background: #333;
-    border: 1px solid #555;
-    border-radius: 4px;
-    color: white;
-    font-size: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: #333;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: #ff5500;
+  outline: none;
+  border-color: #ff5500;
 }
 
 .book-btn {
-    background: linear-gradient(to right, #ff5500, #ff9900);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s;
-    width: 100%;
+  background: linear-gradient(to right, #ff5500, #ff9900);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+  width: 100%;
 }
 
 .book-btn:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .book-event-btn {
-    background: linear-gradient(to right, #ff5500, #ff9900);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: transform 0.3s;
+  background: linear-gradient(to right, #ff5500, #ff9900);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: transform 0.3s;
 }
 
 .book-event-btn:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
