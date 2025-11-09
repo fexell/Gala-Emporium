@@ -32,7 +32,6 @@ const noEventsMessage = document.getElementById('no-events-message');
 // Globala variabler som fylls med data från servern
 let allEvents = [];
 let allClubs = [];
-let originalEvents = [];
 
 // Hämta all data från servern en gång
 async function loadAllData() {
@@ -44,7 +43,7 @@ async function loadAllData() {
         ]);
 
         // Spara datan i de globala variablerna skapade ovan
-        allEvents = originalEvents = await eventsResponse.json();
+        allEvents = await eventsResponse.json();
         allClubs = await clubsResponse.json();
 
     } catch (error) {
@@ -183,7 +182,9 @@ async function sortByClub() {
     const selectElement = document.getElementById('club-filter');
     const selectedValue = selectElement.value;
 
-    allEvents = selectedValue !== 'all' ? await apiClient.get( `/events?clubId=${selectedValue}` ) : await apiClient.get( '/events' );
+    allEvents = selectedValue !== 'all'
+        ? await apiClient.get( `/events?clubId=${selectedValue}` )
+        : await apiClient.get( '/events' );
 }
 
 // ================================
