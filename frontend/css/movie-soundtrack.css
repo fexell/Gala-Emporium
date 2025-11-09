@@ -33,6 +33,83 @@ body {
 }
 
 
+/* ================================
+   TILLBAKA TILL HEM-KNAPP
+   ================================ */
+/* Fast knapp i övre vänstra hörnet med genomskinlig bakgrund och pil */
+.back-to-home-btn {
+  position: fixed;
+  /* Fast position som följer med vid scroll */
+  top: 20px;
+  /* 20px från toppen */
+  left: 20px;
+  /* 20px från vänster */
+  display: flex;
+  /* Flex för att placera pil och text bredvid varandra */
+  align-items: center;
+  /* Centrerar vertikalt */
+  gap: 8px;
+  /* Mellanrum mellan pil och text */
+  padding: 12px 20px;
+  /* Luftig padding */
+  background: rgba(212, 175, 55, 0.15);
+  /* Genomskinlig guldig bakgrund */
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  /* Guldig kant */
+  border-radius: 30px;
+  /* Rundad som en pille */
+  color: #d4af37;
+  /* Guldtext */
+  text-decoration: none;
+  /* Ingen understrykning */
+  font-weight: 600;
+  /* Lite fetare text */
+  font-size: 0.95rem;
+  /* Lagom storlek */
+  backdrop-filter: blur(10px);
+  /* Suddig glaseffekt */
+  transition: all 0.3s ease;
+  /* Smooth animationer */
+  z-index: 1000;
+  /* Ligger ovanpå allt annat */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  /* Subtil skugga */
+}
+
+/* Pilen i knappen */
+.back-arrow {
+  font-size: 1.3rem;
+  /* Större pil */
+  line-height: 1;
+  /* Tar bort extra utrymme */
+}
+
+/* Hover-effekt på tillbaka-knappen */
+.back-to-home-btn:hover {
+  background: rgba(212, 175, 55, 0.3);
+  /* Starkare bakgrund vid hover */
+  border-color: #d4af37;
+  /* Solid guldkant */
+  transform: translateX(-3px);
+  /* Flyttar knappen lite till vänster (indikerar "bakåt") */
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  /* Guldaktig glöd */
+}
+
+/* Responsiv: Mindre text på mobil */
+@media (max-width: 768px) {
+  .back-to-home-btn {
+    padding: 10px 15px;
+    /* Mindre padding */
+    font-size: 0.85rem;
+    /* Mindre text */
+  }
+
+  .back-text {
+    display: none;
+    /* Dölj texten på mobil, visa bara pilen */
+  }
+}
 
 
 

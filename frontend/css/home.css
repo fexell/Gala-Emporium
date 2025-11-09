@@ -804,3 +804,114 @@ body {
     filter: brightness(1.1);
     /* Gör knappen lite ljusare */
 }
+
+
+/* ================================
+   EVENEMANG-SEKTION (Event Cards)
+   ================================ */
+
+/* Individuella evenemangskort */
+.event-card {
+    background: rgba(255, 255, 255, 0.1);  /* Glasaktig bakgrund */
+    backdrop-filter: blur(15px);            /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtil kant */
+    border-radius: 15px;    /* Rundade hörn */
+    padding: 1.5rem;        /* Luftig padding */
+    margin-bottom: 1.5rem;  /* Avstånd mellan korten */
+    display: flex;          /* Flex layout för datum + info + actions */
+    gap: 1.5rem;            /* Avstånd mellan sektionerna */
+    transition: all 0.3s ease; /* Smooth animationer */
+    cursor: pointer;        /* Visar att kortet är klickbart */
+}
+
+.event-card:hover {
+    transform: translateY(-3px); /* Lyfter kortet */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2); /* Guldaktig skugga */
+    border-color: rgba(212, 175, 55, 0.4); /* Starkare guldkant */
+}
+
+/* Datum-sektion (vänster sida) */
+.event-date {
+    background: linear-gradient(135deg, #d4af37, #f4d03f); /* Guldgradient */
+    color: #1a1a2e;        /* Mörk text för kontrast */
+    border-radius: 12px;   /* Rundad låda */
+    padding: 1rem;         /* Luftig padding */
+    text-align: center;    /* Centrerad text */
+    min-width: 80px;       /* Fast bredd för enhetlighet */
+    display: flex;         /* Flex för centrering */
+    flex-direction: column; /* Vertikal staplning */
+    justify-content: center; /* Centrerad vertikalt */
+}
+
+.event-day {
+    font-size: 2rem;       /* Stor siffra för dagen */
+    font-weight: 700;      /* Fet stil */
+    line-height: 1;        /* Tight line-height */
+}
+
+.event-month {
+    font-size: 0.9rem;     /* Mindre text för månaden */
+    font-weight: 600;      /* Medel-fet */
+    text-transform: uppercase; /* Versaler */
+    margin-top: 0.2rem;    /* Lite mellanrum */
+}
+
+/* Info-sektion (mitten) */
+.event-info {
+    flex: 1;               /* Tar upp resterande utrymme */
+}
+
+.event-title {
+    color: #d4af37;        /* Guldtema */
+    font-size: 1.4rem;     /* Stor rubrik */
+    margin: 0 0 0.5rem 0;  /* Bara margin nedåt */
+    font-weight: 600;      /* Lite fetare */
+}
+
+.event-club {
+    color: rgba(255, 255, 255, 0.8); /* Ljusgrå text */
+    margin: 0 0 0.8rem 0;  /* Margin nedåt */
+    font-weight: 500;      /* Medel-fet */
+}
+
+.event-description {
+    color: rgba(255, 255, 255, 0.7); /* Dämpad vit text */
+    line-height: 1.5;      /* Luftig radavstånd */
+    margin-bottom: 1rem;   /* Mellanrum till detaljer */
+}
+
+.event-details {
+    display: flex;         /* Flex för tid och pris */
+    gap: 2rem;             /* Avstånd mellan tid och pris */
+    margin-bottom: 1rem;   /* Mellanrum till actions */
+}
+
+.event-time,
+.event-price {
+    color: rgba(255, 255, 255, 0.9); /* Ljus text */
+    font-weight: 500;      /* Medel-fet */
+    font-size: 0.95rem;    /* Lagom storlek */
+}
+
+/* Actions-sektion (höger sida) */
+.event-actions {
+    display: flex;         /* Flex för knapp-alignment */
+    align-items: center;   /* Centrerad vertikalt */
+}
+
+.book-ticket-btn {
+    background: linear-gradient(135deg, #d4af37, #f4d03f); /* Guldgradient */
+    border: none;          /* Ingen kant */
+    border-radius: 10px;   /* Rundade hörn */
+    padding: 0.8rem 1.5rem; /* Luftig padding */
+    color: #1a1a2e;        /* Mörk text för kontrast */
+    font-weight: 600;      /* Fet text */
+    cursor: pointer;       /* Visar att den är klickbar */
+    transition: all 0.3s ease; /* Smooth animationer */
+    white-space: nowrap;   /* Förhindrar radbrytning */
+}
+
+.book-ticket-btn:hover {
+    transform: translateY(-2px); /* Lyfter knappen */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); /* Guldaktig skugga */
+}

@@ -46,7 +46,11 @@ class BookingForm extends HTMLElement {
         `
 
         this.shadowRoot.querySelector( '#cancel-booking' )
-          .addEventListener( 'click', () => this.handleCancel() )
+          .addEventListener( 'click', () => {
+            if( window.confirm( 'Are you sure you want to cancel your booking?' ) ) {
+              this.handleCancel()
+            }
+          } )
       } else {
         this.shadowRoot.innerHTML             = `
           <style>

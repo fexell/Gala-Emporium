@@ -1,14 +1,14 @@
 {
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "title": "AVICII",
       "datetime": "2025-11-15T21:00",
       "location": "Linköping",
       "description": "AVICII",
       "price": 1000,
-      "maxTickets": 995,
-      "clubId": 4
+      "maxTickets": 990,
+      "clubId": "4"
     },
     {
       "title": "Swedish House Mafia",
@@ -16,8 +16,8 @@
       "datetime": "2025-12-24T20:00",
       "price": 500,
       "maxTickets": 1000,
-      "clubId": 4,
-      "id": 2
+      "clubId": "4",
+      "id": "2"
     },
     {
       "id": "09ec",
@@ -62,7 +62,7 @@
       "id": "6",
       "category": "music",
       "title": "DISCO FEVER",
-      "datetime": "2025-07-01T20:00:00",
+      "datetime": "2025-12-01T20:00:00",
       "location": "REMOTE NIGHTCLUB",
       "description": "ALL THE BEST HITS FROM THE 80s",
       "price": 199,
@@ -75,7 +75,7 @@
       "id": "7",
       "category": "music",
       "title": "INDIE ROCK",
-      "datetime": "2025-07-08T21:00:00",
+      "datetime": "2025-12-08T21:00:00",
       "location": "REMOTE NIGHTCLUB",
       "description": "Sense the good vibes of indie rock.",
       "price": 149,
@@ -88,7 +88,7 @@
       "id": "8",
       "category": "music",
       "title": "TECHNO BASS BLAST",
-      "datetime": "2025-07-15T22:30:00",
+      "datetime": "2025-12-15T22:30:00",
       "location": "REMOTE NIGHTCLUB",
       "description": "Hard and fast techno from local legends.",
       "price": 249,
@@ -113,7 +113,7 @@
   ],
   "clubs": [
     {
-      "id": 4,
+      "id": "4",
       "name": "EDM Club",
       "location": "Linköping",
       "description": "Här möts bas, beats och blinkande ljus i en explosion av energi. Oavsett om du är DJ, producent eller bara älskar att dansa, är detta platsen för dig. Upptäck ny musik, träffa likasinnade och känn pulsen från elektronisk dansmusik i varje takt. Hos oss handlar allt om gemenskap, kreativitet och kärleken till EDM!",
@@ -139,15 +139,6 @@
     }
   ],
   "bookings": [
-    {
-      "eventId": 1,
-      "customerName": "Felix",
-      "numberOfTickets": 5,
-      "totalPrice": 5000,
-      "bookingDate": "2025-11-09",
-      "bookingTime": "9:39:05 AM",
-      "id": 1
-    },
     {
       "referenceNumber": "SCF4AU9M",
       "eventId": "09ec",
@@ -206,6 +197,15 @@
       "ticketCount": 1,
       "bookingDate": "2025-07-01T20:00:00",
       "totalPrice": 199
+    },
+    {
+      "id": "d565",
+      "eventId": "1",
+      "customerName": "Felix",
+      "numberOfTickets": 10,
+      "totalPrice": 10000,
+      "bookingDate": "2025-11-09",
+      "bookingTime": "3:34:46 PM"
     }
   ]
 }

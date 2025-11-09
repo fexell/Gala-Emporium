@@ -9,7 +9,7 @@ class ClubEvents extends HTMLElement {
   }
 
   async connectedCallback() {
-    const clubId                            = Number( this.getAttribute( 'club-id' ) )
+    const clubId                            = this.getAttribute( 'club-id' )
 
     if( !clubId ) {
       console.error( 'Club ID is required' )
@@ -95,12 +95,13 @@ class ClubEvents extends HTMLElement {
               `
               ) : '' }
               <h2>${ event.title }</h2>
+              <p>${ event.description }</p>
               <p><strong>Date:</strong> ${ event.datetime }</p>
               <p><strong>Tickets left:</strong> ${ event.maxTickets }</p>
               <p><strong>Price:</strong> ${ event.price } SEK</p>
             </div>
           </div>
-          <booking-form event-id='${ Number( event.id ) }'></booking-form>
+          <booking-form event-id='${ event.id }'></booking-form>
         `
 
         eventsContainer.appendChild( eventDiv )
