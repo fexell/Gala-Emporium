@@ -32,6 +32,7 @@ const noEventsMessage = document.getElementById('no-events-message');
 // Globala variabler som fylls med data från servern
 let allEvents = [];
 let allClubs = [];
+let originalEvents = [];
 
 // Hämta all data från servern en gång
 async function loadAllData() {
@@ -43,7 +44,7 @@ async function loadAllData() {
         ]);
 
         // Spara datan i de globala variablerna skapade ovan
-        allEvents = await eventsResponse.json();
+        allEvents = originalEvents = await eventsResponse.json();
         allClubs = await clubsResponse.json();
 
     } catch (error) {
@@ -98,6 +99,8 @@ function renderClubs() {
         // appendChild lägger till det nya klubbkortet i clubs-grid
         // Nu syns kortet på sidan!
         clubsGrid.appendChild(clubCard);
+
+        clubFilter.appendChild( new Option( club.name, club.id) );
     });
 
     // Lägg till event listeners för "Besök klubb"-knapparna
@@ -172,6 +175,15 @@ function sortEvents() {
     } else if( selectedValue === 'price-desc' ) {
         allEvents.sort( (a, b) => b.price - a.price )
     }
+}
+
+async function sortByClub() {
+
+    // Hitta den valda klubben
+    const selectElement = document.getElementById('club-filter');
+    const selectedValue = selectElement.value;
+
+    allEvents = selectedValue !== 'all' ? await apiClient.get( `/events?clubId=${selectedValue}` ) : await apiClient.get( '/events' );
 }
 
 // ================================
@@ -335,6 +347,20 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('sort-filter').addEventListener('change', () => {
         sortEvents()
         loadEvents()
+    })
+
+    document.getElementById('club-filter').addEventListener('change', async () => {
+        await sortByClub()
+        sortEvents()
+        loadEvents()
+    })
+
+    clearFiltersBtn.addEventListener('click', () => {
+        clubFilter.value = 'all';
+        sortFilter.value = 'date-asc';
+
+        sortEvents();
+        loadEvents();
     })
     
     // Sortering, efter att sidan laddats
