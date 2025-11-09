@@ -139,25 +139,6 @@ function sortEvents() {
     renderEvents( allEvents );
 }
 
-// Rendera events
-function renderEvents( events ) {
-    const eventsElement = document.getElementById('events-timeline');
-
-    eventsElement.innerHTML = '';
-
-    for( const event of allEvents ) {
-        const e = document.createElement('div');
-        e.classList.add('event');
-        e.innerHTML = `
-            <h3>${event.title}</h3>
-            <p>${event.datetime}</p>
-            <p>${event.description}</p>
-            <p><strong>Pris: </strong>${event.price} kr</p>
-        `;
-        eventsElement.appendChild(e);
-    }
-}
-
 // ================================
 // KÖRS NÄR SIDAN LADDAS
 // ================================
