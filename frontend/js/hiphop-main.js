@@ -33,6 +33,7 @@ async function createEvents() {
           <p><strong>${event.date}</strong></p>
           <p><strong>Plats: </strong>${event.location}</p>
           <p>${event.description} </p>
+          <button class = "book-event-btn" onclick = "scroolToBooking('${event.id}')">Boka Biljetter</button>
         `;
         eventList.appendChild(card);
       });
@@ -44,6 +45,16 @@ async function createEvents() {
       eventList.innerHTML = '<p>Kunde inte ladda evenemang. Försök igen senare.</p>';
     }
   }
+}
+
+//för att scroola till bokningen
+function scrollToBooking(eventId) {
+  document.getElementById('booking').scrollIntoView({ behavior: 'smooth'});
+
+  setTimeout(() => {
+    const eventSelect = document.getElementById('booking-event');
+    eventSelect.value = eventId;
+  }, 500);
 }
 
 
@@ -58,6 +69,7 @@ async function createHipHopClubPage() {
       <nav> 
         <a href="home.html">Hem</a> 
         <a href="#kalender">Evenemang</a> 
+        <a href="#booking">Boka biljetter</a>
         <a href="#om">Om Oss</a> 
       </nav> 
     </header> 
@@ -72,6 +84,38 @@ async function createHipHopClubPage() {
         <h2>🎤 Kommande Evenemang</h2> 
         <div id="event-list" class="event-grid"></div> 
       </section> 
+
+      <!--För bokingen -->
+      <section id = "booking">
+        <h2>Boka biljetter</h2>
+        <div class = "booking-container">
+          <form id = "booking-form" class = "booking-form">
+            <div class = "form-group">
+              <label for="booking-event">Välj Event:</label>
+              <select id ="booking-event" required>
+                <option value = "">Välj ett event...</option>
+              </select>
+            </div>
+
+            <div class = "form-group">
+              <label for="booking-name">Ditt Namn:</label>
+              <input type = "text" id = "booking-name" required>
+            </div>
+
+            <div class = "form-group">
+              <label for = "booking-email">Ditt Email:</label>
+              <input type = "text" id = "booking-email" required>
+            </div>
+
+            <div class = "form-group">
+              <label for = "booking-tickets">Antal Biljetter:</label>
+              <input type = "number" id = "booking-tickets" min = "1" max = "10" value = "1" required>
+            </div>
+
+            <button type = "submit" class = "book-btn">Boka Biljetter</button>
+          </form>
+        </div>
+      </section>
        
       <section id="om"> 
         <h2>Om Oss</h2> 
@@ -87,10 +131,15 @@ async function createHipHopClubPage() {
     </footer>
   `;
 
-  
+  //ladda events och initiera bokkningen 
   await createEvents();
+  //await loadBookingEvents();
 
-  console.log("Hip-Hop Klubben-sidan är laddad!");
+  //lyssna på bokningsformuläret
+  const bookingForm = document.getElementById('booking-form');
+  bookingForm.addEventListener('submit', handleBooking);
+
+  console.log("Hip-Hop Klubben-sidan är laddad med bookings funktion!");
 }
 
 document.addEventListener("DOMContentLoaded", createHipHopClubPage);
