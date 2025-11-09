@@ -20,7 +20,10 @@
       "date": "2025-11-29",
       "image": "../images/yasin.webp",
       "description": "Yasin - en av Sveriges mest hypade artister i en exklusiv spelning. Förvänta dig en kväll fylld av energi och ikoniska låtar.",
-      "location": "Hip-Hop Klubben"
+      "location": "Hip-Hop Klubben",
+      "price" : 799,
+      "ticketCount": 0,
+      "maxTickets": 300
     },
     {
       "id": 3,
@@ -29,7 +32,10 @@
       "date": "2025-11-28",
       "image": "../images/shiro.png",
       "description": "Shiros unika blend av rap och melodi tar över klubban. Förvänta dig hit efter hit i en elektriserande liveuppvisning",
-      "location": "Hip-Hop Klubben"
+      "location": "Hip-Hop Klubben",
+      "price" : 599,
+      "ticketCount": 0,
+      "maxTickets": 300
     },
     {
       "id": 4,
@@ -38,7 +44,10 @@
       "date": "2025-12-10", 
       "image": "../images/snoop.jpg",
       "description": "The Doggfather himself tar över klubben! Snoop Dogg levererar en timslång resa genom hiphop-historiens mest ikoniska låtar.",
-      "location": "Hip-Hop Klubben"
+      "location": "Hip-Hop Klubben",
+      "price" : 999,
+      "ticketCount": 0,
+      "maxTickets": 300
     }
   ],
   "clubs": [
