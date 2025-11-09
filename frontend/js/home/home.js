@@ -12,6 +12,7 @@
 
  */
 
+import { apiClient } from '../../helpers/Api.helper.js';
 
 // ================================
 // DOM ELEMENT REFERENSER
@@ -103,6 +104,7 @@ function renderClubs() {
             <button class="club-btn" data-club-id="${club.id}">Besök klubb</button>
         `;
 
+        // Ta användaren till klubb-sidan genom att klicka på "klubbkortet"
         clubCard.addEventListener('click', () => {
             window.location.href = clubUrl;
         })
@@ -110,13 +112,51 @@ function renderClubs() {
         // appendChild lägger till det nya klubbkortet i clubs-grid
         // Nu syns kortet på sidan!
         clubsGrid.appendChild(clubCard);
+
+        // Lägg till klubbar i filtermenyn
+        const clubFilterSelect = document.querySelector( '#club-filter' )
+        clubFilterSelect.append( new Option( club.name, club.id ) )
     });
 
 
 }
 
+// Sortering
+function sortEvents() {
+    const selectElement = document.getElementById('sort-filter');
+    const selectedValue = selectElement.value;
 
+    if( selectedValue === 'date-asc' ) {
+        allEvents.sort( (a, b) => new Date(a.datetime) - new Date(b.datetime) )
+    } else if( selectedValue === 'date-desc' ) {
+        allEvents.sort( (a, b) => new Date(b.datetime) - new Date(a.datetime) )
+    } else if( selectedValue === 'price-asc' ) {
+        allEvents.sort( (a, b) => a.price - b.price )
+    } else if( selectedValue === 'price-desc' ) {
+        allEvents.sort( (a, b) => b.price - a.price )
+    }
 
+    renderEvents( allEvents );
+}
+
+// Rendera events
+function renderEvents( events ) {
+    const eventsElement = document.getElementById('events-timeline');
+
+    eventsElement.innerHTML = '';
+
+    for( const event of allEvents ) {
+        const e = document.createElement('div');
+        e.classList.add('event');
+        e.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>${event.datetime}</p>
+            <p>${event.description}</p>
+            <p><strong>Pris: </strong>${event.price} kr</p>
+        `;
+        eventsElement.appendChild(e);
+    }
+}
 
 // ================================
 // KÖRS NÄR SIDAN LADDAS
@@ -131,5 +171,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     updateStatistics(); // Anropa funktionen för att uppdatera statistik.
 
     renderClubs();      // Anropa funktionen för att visa klubbar.
+
+    // Sortering, när användaren ändrar vad att sortera på
+    document.getElementById('sort-filter').addEventListener('change', sortEvents)
+
+    // Sortering, efter att sidan laddats
+    sortEvents();
 
 });
