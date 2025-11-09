@@ -71,13 +71,13 @@ class EventFormComponent extends HTMLElement {
 
     const clubId                            = Number( this.clubId )
 
-    const ticketPriceString                 = formData.get( 'ticketPrice' )
+    const ticketPriceString                 = formData.get( 'price' )
     const ticketPrice                       = parseInt( ticketPriceString, 10 )
 
     const data                              = Object.fromEntries( formData )
     data.clubId                             = clubId
-    data.ticketPrice                        = ticketPrice
-    data.availableTickets                   = parseInt( data.availableTickets, 10 )
+    data.price                              = ticketPrice
+    data.maxTickets                         = parseInt( data.maxTickets, 10 )
 
     try {
       const response                        = await createEvent( clubId, data )

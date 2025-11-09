@@ -47,6 +47,13 @@
   <script type='module' src='../components/EventForm.component.js'></script>
 </head>
 <body class='relative min-h-screen font-[Poppins] bg-[#050609]'>
+  <div class='fixed top-0 left-0 text-white'>
+    <div class=''>
+      <button onclick='window.location.href = "/"' class='w-24 h-24 rounded-xl hover:cursor-pointer hover:bg-neutral-950'>
+        <i class='fa-solid fa-arrow-left'></i>
+      </button>
+    </div>
+  </div>
   <main class='relative lg:w-[950px] max-lg:w-full max-lg:px-4 top-0 mx-auto px-4'>
     <div>
       <header class='fixed lg:w-[950px] max-lg:w-full top-8 left-0 right-0 mx-auto p-4 border-2 border-[#201e22] rounded-xl bg-[#0d0c11] z-10'>
@@ -57,11 +64,11 @@
         </nav>
       </header>
       <section id='Content' class='relative top-42 text-[#f2e8cd]'>
-        <club-events club-id='1'></club-events>
+        <club-events club-id='4'></club-events>
       </section>
       <footer></footer>
 
-      <event-form id='eventForm' club-id='1'></event-form>
+      <event-form id='eventForm' club-id='4'></event-form>
     </div>
   </main>
   <script type='module'>

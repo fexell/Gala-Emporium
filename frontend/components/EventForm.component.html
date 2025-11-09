@@ -18,12 +18,14 @@
     }
 
     input[type='date'],
-    input[type='time'] {
+    input[type='time'],
+    input[type='datetime-local'] {
       margin-bottom: 0 !important;
     }
 
     input[type='date']::-webkit-calendar-picker-indicator,
-    input[type='time']::-webkit-calendar-picker-indicator {
+    input[type='time']::-webkit-calendar-picker-indicator,
+    input[type='datetime-local']::-webkit-calendar-picker-indicator {
       filter: invert(1);
 
       -webkit-appearance: none;
@@ -173,7 +175,7 @@
                     <i class='fa-solid fa-pen'></i>
                   </div>
                 </div>
-                <input type='text' name='name' placeholder='Enter event name' required />
+                <input type='text' name='title' placeholder='Enter event title' required />
               </div>
             </div>
             <div class='input-container'>
@@ -186,28 +188,14 @@
                 <input type='text' name='description' placeholder='Enter event description' required />
               </div>
             </div>
-            <div>
-              <div class='flex flex-row'>
-                <div class='input-container' style='flex: 1; margin-right: 2px;'>
+            <div class='input-container' style='flex: 1; margin-right: 2px;'>
+              <div>
+                <div class='input-icon-container'>
                   <div>
-                    <div class='input-icon-container'>
-                      <div>
-                        <i class='fa-solid fa-calendar-days'></i>
-                      </div>
-                    </div>
-                    <input type='date' name='date' required />
+                    <i class='fa-solid fa-calendar-days'></i>
                   </div>
                 </div>
-                <div class='input-container' style='flex: 1; margin-left: 2px;'>
-                  <div>
-                    <div class='input-icon-container'>
-                      <div>
-                        <i class='fa-solid fa-clock'></i>
-                      </div>
-                    </div>
-                    <input type='time' name='time' style='height: 61px;' required />
-                  </div>
-                </div>
+                <input type='datetime-local' name='datetime' required />
               </div>
             </div>
             <div class='input-container'>
@@ -217,7 +205,7 @@
                     <i class='fa-solid fa-dollar-sign'></i>
                   </div>
                 </div>
-                <input type='number' min='1' step='any' name='ticketPrice' placeholder='Enter event ticket price' style='margin-top: 4px;' required />
+                <input type='number' min='1' step='any' name='price' placeholder='Enter event ticket price' style='margin-top: 4px;' required />
               </div>
             </div>
             <div class='input-container'>
@@ -227,7 +215,7 @@
                     <i class='fa-solid fa-hashtag'></i>
                   </div>
                 </div>
-                <input type='number' min='1' step='any' name='availableTickets' placeholder='Enter available tickets' style='margin-top: 4px;' required />
+                <input type='number' min='1' step='any' name='maxTickets' placeholder='Enter available tickets' style='margin-top: 4px;' required />
               </div>
             </div>
             <div>

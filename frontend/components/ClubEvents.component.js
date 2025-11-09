@@ -94,11 +94,10 @@ class ClubEvents extends HTMLElement {
               </div>
               `
               ) : '' }
-              <h2>${ event.name }</h2>
-              <p><strong>Date:</strong> ${ event.date }</p>
-              <p><strong>Time:</strong> ${ event.time }</p>
-              <p><strong>Tickets left:</strong> ${ event.availableTickets }</p>
-              <p><strong>Price:</strong> ${ event.ticketPrice } SEK</p>
+              <h2>${ event.title }</h2>
+              <p><strong>Date:</strong> ${ event.datetime }</p>
+              <p><strong>Tickets left:</strong> ${ event.maxTickets }</p>
+              <p><strong>Price:</strong> ${ event.price } SEK</p>
             </div>
           </div>
           <booking-form event-id='${ Number( event.id ) }'></booking-form>

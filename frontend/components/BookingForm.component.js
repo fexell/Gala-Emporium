@@ -137,7 +137,7 @@ class BookingForm extends HTMLElement {
             }
           </style>
           <form id='bookingForm'>
-            <h3>Book for ${ event.name }</h3>
+            <h3>Book for ${ event.title }</h3>
 
             <div class='form-wrapper'>
               <div class='flex flex-row'>
@@ -150,8 +150,8 @@ class BookingForm extends HTMLElement {
             <div>
               <div class='flex flex-row'>
                 <div class='flex-1'>
-                  <p>Available tickets: <strong id='available'>${ event.availableTickets }</strong></p>
-                  <p>Price per ticket: <strong>${ event.ticketPrice } SEK</strong></p>
+                  <p>Available tickets: <strong id='available'>${ event.maxTickets }</strong></p>
+                  <p>Price per ticket: <strong>${ event.price } SEK</strong></p>
                 </div>
                 <div class='flex-1'>
                   <p class='totalPrice' style='display: block; text-align: right;'>Total: <strong id='total'>0</strong> SEK</p>
@@ -169,7 +169,7 @@ class BookingForm extends HTMLElement {
 
         numberInput.addEventListener( 'input', () => {
           const quantity                      = Math.max( 0, Number( numberInput.value ) || 0 )
-          totalInput.textContent              = quantity * event.ticketPrice
+          totalInput.textContent              = quantity * event.price
         } )
 
         form.addEventListener( 'submit', this.handleSubmit.bind( this ) )
@@ -192,7 +192,7 @@ class BookingForm extends HTMLElement {
       return
     }
 
-    const totalPrice                        = numberOfTickets * this.event.ticketPrice
+    const totalPrice                        = numberOfTickets * this.event.price
 
     try {
       const newBooking                      = await apiClient.post( '/bookings', {
@@ -204,11 +204,11 @@ class BookingForm extends HTMLElement {
         bookingTime: new Date().toLocaleTimeString(),
       } )
 
-      const updatedTickets                  = this.event.availableTickets - numberOfTickets
+      const updatedTickets                  = this.event.maxTickets - numberOfTickets
 
       await apiClient.put( `/events/${ this.event.id }`, {
         ...this.event,
-        availableTickets: updatedTickets,
+        maxTickets: updatedTickets,
       } )
 
       availableElement.textContent          = updatedTickets
@@ -237,11 +237,11 @@ class BookingForm extends HTMLElement {
 
       console.log( response )
 
-      const updatedTickets                  = this.event.availableTickets + this.existingBooking.numberOfTickets
+      const updatedTickets                  = this.event.maxTickets + this.existingBooking.numberOfTickets
 
       await apiClient.put( `/events/${ this.event.id }`, {
         ...this.event,
-        availableTickets: updatedTickets,
+        maxTickets: updatedTickets,
       } )
 
       this.showMessage( `Successfully canceled booking for ${ this.event.name }!`, 'green' )

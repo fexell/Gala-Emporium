@@ -6,7 +6,7 @@ const initRouter                            = () => {
   const content                             = document.querySelector( '#Content' )
 
   const routes                              = {
-    home                                    : `<club-events club-id='1'></club-events>`,
+    home                                    : `<club-events club-id='4'></club-events>`,
     about                                   : `<about-component></about-component>`,
     contact                                 : `<p>contact</p>`,
   }
