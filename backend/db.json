@@ -1,33 +1,42 @@
 {
   "events": [
     {
-      "name": "AVICII",
+      "id": 1,
+      "title": "AVICII",
+      "datetime": "2025-11-15T21:00",
+      "location": "Linköping",
       "description": "AVICII",
-      "date": "2025-11-27",
-      "time": "16:40",
-      "ticketPrice": 1000,
-      "availableTickets": 1000,
-      "clubId": 1,
-      "id": 1
+      "price": 1000,
+      "maxTickets": 995,
+      "clubId": 4
     },
     {
-      "name": "Swedish House Mafia",
-      "description": "A party to remember",
-      "date": "2026-01-16",
-      "time": "18:00",
-      "ticketPrice": 500,
-      "availableTickets": 1000,
-      "clubId": 1,
+      "title": "Swedish House Mafia",
+      "description": "A magical event with Swedish House Mafia",
+      "datetime": "2025-12-24T20:00",
+      "price": 500,
+      "maxTickets": 1000,
+      "clubId": 4,
       "id": 2
     }
   ],
   "clubs": [
     {
+      "id": 4,
       "name": "EDM Club",
       "location": "Linköping",
-      "capacity": 16000,
-      "id": 1
+      "capacity": 16000
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "eventId": 1,
+      "customerName": "Felix",
+      "numberOfTickets": 5,
+      "totalPrice": 5000,
+      "bookingDate": "2025-11-09",
+      "bookingTime": "9:39:05 AM",
+      "id": 1
+    }
+  ]
 }
