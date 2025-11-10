@@ -1,145 +1,75 @@
-async function createEvents() {
-  try {
-    // hämta events från servern
-    const response = await fetch("http://localhost:5000/events");
-    const allEvents = await response.json();
+// hiphop-main.js
+// hiphop-main.js - Huvudfil för Hip-Hop Klubben
 
-    // Filtrera bara hiphop events
-    const hiphopEvents = allEvents.filter(
-      (event) => event.category === "hiphop"
-    );
+// Ladda events när sidan laddas
+document.addEventListener('DOMContentLoaded', function() {
+    loadShows();
+});
 
-    // Sortera efter datum
-    hiphopEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+// Ladda och visa events
+async function loadShows() {
+    try {
+        const response = await fetch('http://localhost:5000/events');
+        const allEvents = await response.json();
 
-    const eventList = document.getElementById("event-list");
+        // Filtrera bara hiphop events
+        const hiphopEvents = allEvents.filter(event => event.category === 'hiphop');
+        hiphopEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
 
-    if (eventList) {
-      eventList.innerHTML = "";
+        const showContainer = document.getElementById('show-container');
 
-      // Om det inte finns events
-      if (hiphopEvents.length === 0) {
-        eventList.innerHTML =
-          "<p>Inga kommande evenemang just nu. Håll utkik!</p>";
-        return;
-      }
+        if (showContainer) {
+            showContainer.innerHTML = '';
 
-      //html för varje evnt
-      hiphopEvents.forEach((event) => {
-        const card = document.createElement("div");
-        card.className = "event-card";
-        card.innerHTML = ` 
-          <img src="${event.image}" alt="${event.title}">
-          <h3>${event.title}</h3>
-          <p><strong>${event.datetime}</strong></p>
-          <p><strong>Plats: </strong>${event.location}</p>
-          <p>${event.description} </p>
-          <button class = "book-event-btn" onclick = "scrollToBooking('${event.id}')">Boka Biljetter</button>
-        `;
-        eventList.appendChild(card);
-      });
+            if (hiphopEvents.length === 0) {
+                showContainer.innerHTML = '<p>Inga kommande evenemang just nu. Håll utkik!</p>';
+                return;
+            }
+
+            // Skapa HTML för varje event
+            hiphopEvents.forEach(event => {
+                const eventDate = new Date(event.datetime);
+                const formattedDate = eventDate.toLocaleDateString('sv-SE');
+                const formattedTime = eventDate.toLocaleTimeString('sv-SE', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+
+                const card = document.createElement('div');
+                card.className = 'show-card';
+                card.innerHTML = ` 
+                    <img src="${event.image || '../images/hiphop-default.jpg'}" alt="${event.title}">
+                    <div class="show-card-content">
+                        <h3>${event.title}</h3>
+                        <p><strong>${formattedDate} ${formattedTime}</strong></p>
+                        <p><strong>Plats: </strong>${event.location}</p>
+                        <p>${event.description}</p>
+                        <button class="book-show-btn" onclick="scrollToBooking(${event.id})">Boka Biljetter</button>
+                    </div>
+                `;
+                showContainer.appendChild(card);
+            });
+        }
+    } catch (error) {
+        console.error('Fel vid laddning av events:', error);
+        const showContainer = document.getElementById('show-container');
+        if (showContainer) {
+            showContainer.innerHTML = '<p>Kunde inte ladda evenemang. Försök igen senare.</p>';
+        }
     }
-  } catch (error) {
-    console.error("Fel vid laddning av events:", error);
-    const eventList = document.getElementById("event-list");
-    if (eventList) {
-      eventList.innerHTML =
-        "<p>Kunde inte ladda evenemang. Försök igen senare.</p>";
-    }
-  }
 }
 
-//för att scroola till bokningen
+// Scrolla till bokningssektionen
 function scrollToBooking(eventId) {
-  document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
 
-  setTimeout(() => {
-    const eventSelect = document.getElementById("booking-event");
-    eventSelect.value = eventId;
-  }, 500);
+    setTimeout(() => {
+        const eventSelect = document.getElementById('pick-show');
+        if (eventSelect) {
+            eventSelect.value = eventId;
+        }
+    }, 500);
 }
 
-async function createHipHopClubPage() {
-  document.body.className = "hiphop-klubben";
-
-  // för html-strukturen
-  document.body.innerHTML = ` 
-    <header> 
-      <h1>🎧 Hip-Hop Klubben</h1> 
-      <nav> 
-        <a href="home.html">Hem</a> 
-        <a href="#kalender">Evenemang</a> 
-        <a href="#booking">Boka biljetter</a>
-        <a href="#om">Om Oss</a> 
-      </nav> 
-    </header> 
-     
-    <main> 
-      <section id="intro"> 
-        <h2>Välkommen till Hip-Hop Klubben</h2> 
-        <p>Välkommen till Sveriges hetaste scen för hiphop-kultur. Här möts de bästa artisterna, DJ:arna och dansarna för att skapa oförglömliga kvällar fyllda med energi och passion.</p> 
-      </section> 
-       
-      <section id="kalender"> 
-        <h2>🎤 Kommande Evenemang</h2> 
-        <div id="event-list" class="event-grid"></div> 
-      </section> 
-
-      <!--För bokingen -->
-      <section id = "booking">
-        <h2>Boka biljetter</h2>
-        <div class = "booking-container">
-          <form id = "booking-form" class = "booking-form">
-            <div class = "form-group">
-              <label for="booking-event">Välj Event:</label>
-              <select id ="booking-event" required>
-                <option value = "">Välj ett event...</option>
-              </select>
-            </div>
-
-            <div class = "form-group">
-              <label for="booking-name">Ditt Namn:</label>
-              <input type = "text" id = "booking-name" required>
-            </div>
-
-            <div class = "form-group">
-              <label for = "booking-email">Ditt Email:</label>
-              <input type = "text" id = "booking-email" required>
-            </div>
-
-            <div class = "form-group">
-              <label for = "booking-tickets">Antal Biljetter:</label>
-              <input type = "number" id = "booking-tickets" min = "1" max = "10" value = "1" required>
-            </div>
-
-            <button type = "submit" class = "book-btn">Boka Biljetter</button>
-          </form>
-        </div>
-      </section>
-       
-      <section id="om"> 
-        <h2>Om Oss</h2> 
-        <p>Hip-Hop Klubben på Gala Emporium är mer än bara en klubb - det är en kulturell institution. Sedan vår öppning 2012 har vi varit den främsta mötesplatsen för hiphop-älskare i regionen.</p> 
-        <p>Vi tror på äkta hiphop-kultur i alla dess former - från rap och beatbox till breakdance och graffiti. Vår scen har sett både lokala talanger och internationella stjärnor, allt i en atmosfär av respekt och gemenskap.</p> 
-        <p>Varje kväll på Hip-Hop Klubben är en unik upplevelse där musik, dans och konst sammanstrålar för att skapa magi. Oavsett om du är här för att lyssna, dansa eller bara njuta av stämningen - välkommen in i vår familj!</p> 
-      </section> 
-
-    </main> 
-     
-    <footer>
-        <p>&copy; 2025 Hip-Hop Klubben | Gala Emporium</p>
-    </footer>
-  `;
-
-  //ladda events och initiera bokkningen
-  await createEvents();
-  await loadBookingEvents();
-
-  //lyssna på bokningsformuläret
-  const bookingForm = document.getElementById("booking-form");
-  bookingForm.addEventListener("submit", handleBooking);
-
-  console.log("Hip-Hop Klubben-sidan är laddad med bookings funktion!");
-}
-
-document.addEventListener("DOMContentLoaded", createHipHopClubPage);
+// Gör funktionen global
+window.scrollToBooking = scrollToBooking;
