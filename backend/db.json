@@ -80,8 +80,6 @@
       "date": "2024-07-10",
       "time": "19:00",
       "totalTickets": 2
-<<<<<<< HEAD
-=======
     },
     {
       "eventId": "4b",
@@ -100,7 +98,6 @@
       "bookingDate": "2025-11-10T11:29:17.480Z",
       "totalPrice": 15980,
       "id": 3
->>>>>>> 6f289ffb02c804958f15a1be14b6a3f4638d72fb
     }
   ]
 }
