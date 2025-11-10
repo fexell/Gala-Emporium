@@ -28,8 +28,8 @@ class ClubEvents extends HTMLElement {
     window.addEventListener( 'event-created', this._onEventCreated )
     window.addEventListener( 'event-deleted', this._onEventDeleted )
 
-    window.addEventListener( 'login', () => this.render( clubId ) )
-    window.addEventListener( 'logout', () => this.render( clubId ) )
+    window.addEventListener( 'login', async () => await this.render( clubId ) )
+    window.addEventListener( 'logout', async () => await this.render( clubId ) )
 
     await this.render( clubId )
   }

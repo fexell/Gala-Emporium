@@ -356,7 +356,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         loadEvents()
     })
 
-    clearFiltersBtn.addEventListener('click', () => {
+    clearFiltersBtn.addEventListener('click', async () => {
+        allEvents = await apiClient.get('/events');
+
         clubFilter.value = 'all';
         sortFilter.value = 'date-asc';
 
