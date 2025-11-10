@@ -1,5 +1,5 @@
-// hiphop-main.js
 // hiphop-main.js - Huvudfil för Hip-Hop Klubben
+// ===========================================
 
 // Ladda events när sidan laddas
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,7 +12,6 @@ async function loadShows() {
         const response = await fetch('http://localhost:5000/events');
         const allEvents = await response.json();
 
-        // Filtrera bara hiphop events
         const hiphopEvents = allEvents.filter(event => event.category === 'hiphop');
         hiphopEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
 
@@ -28,13 +27,9 @@ async function loadShows() {
 
             // Skapa HTML för varje event
             hiphopEvents.forEach(event => {
-                const eventDate = new Date(event.datetime);
-                const formattedDate = eventDate.toLocaleDateString('sv-SE');
-                const formattedTime = eventDate.toLocaleTimeString('sv-SE', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
-
+                // FIX: Använd formatDateTime-funktionen för korrekt tidvisning
+                const { formattedDate, formattedTime } = formatDateTime(event.datetime);
+                
                 const card = document.createElement('div');
                 card.className = 'show-card';
                 card.innerHTML = ` 
@@ -44,7 +39,7 @@ async function loadShows() {
                         <p><strong>${formattedDate} ${formattedTime}</strong></p>
                         <p><strong>Plats: </strong>${event.location}</p>
                         <p>${event.description}</p>
-                        <button class="book-show-btn" onclick="scrollToBooking(${event.id})">Boka Biljetter</button>
+                        <button class="book-show-btn" onclick="scrollToBooking('${event.id}')">Boka Biljetter</button>
                     </div>
                 `;
                 showContainer.appendChild(card);
@@ -59,16 +54,45 @@ async function loadShows() {
     }
 }
 
+// FUNKTION: Formatera datum och tid korrekt från datetime-sträng
+function formatDateTime(datetimeString) {
+    // Skapa Date-objekt från datetime-strängen
+    const eventDate = new Date(datetimeString);
+    
+    // Formatera datum i svenskt format
+    const formattedDate = eventDate.toLocaleDateString('sv-SE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    
+    // Formatera tid i svenskt format (24-timmarsformat)
+    const formattedTime = eventDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false // Använd 24-timmarsformat
+    });
+    
+    return { formattedDate, formattedTime };
+}
+
 // Scrolla till bokningssektionen
 function scrollToBooking(eventId) {
-    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    const bookingSection = document.getElementById('booking');
+    
+    if (bookingSection) {
+        bookingSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
 
-    setTimeout(() => {
-        const eventSelect = document.getElementById('pick-show');
-        if (eventSelect) {
-            eventSelect.value = eventId;
-        }
-    }, 500);
+        setTimeout(() => {
+            const eventSelect = document.getElementById('pick-show');
+            if (eventSelect) {
+                eventSelect.value = eventId;
+            }
+        }, 600);
+    }
 }
 
 // Gör funktionen global

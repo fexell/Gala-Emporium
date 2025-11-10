@@ -1,5 +1,5 @@
-// hiphop-booking.js
 // hiphop-booking.js - Bokningssystem för Hip-Hop Klubben
+// ===========================================
 
 // Ladda events till bokningsdropdown
 async function loadBookingEvents() {
@@ -17,12 +17,9 @@ async function loadBookingEvents() {
 
             hiphopEvents.forEach(event => {
                 const availableTickets = event.maxTickets ? event.maxTickets - (event.ticketCount || 0) : 50;
-                const eventDate = new Date(event.datetime);
-                const formattedDate = eventDate.toLocaleDateString('sv-SE');
-                const formattedTime = eventDate.toLocaleTimeString('sv-SE', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
+                
+                // FIX: Använd formatDateTime-funktionen för korrekt tidvisning
+                const { formattedDate, formattedTime } = formatDateTime(event.datetime);
 
                 const option = document.createElement('option');
                 option.value = event.id;
@@ -39,6 +36,25 @@ async function loadBookingEvents() {
     } catch (error) {
         console.error('Fel vid laddning av booking events:', error);
     }
+}
+
+// FUNKTION: Formatera datum och tid korrekt (samma som i hiphop-main.js)
+function formatDateTime(datetimeString) {
+    const eventDate = new Date(datetimeString);
+    
+    const formattedDate = eventDate.toLocaleDateString('sv-SE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    
+    const formattedTime = eventDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+    
+    return { formattedDate, formattedTime };
 }
 
 // Hantera bokningsformulär
@@ -67,11 +83,9 @@ async function handleBooking(event) {
     }
 
     try {
-        // Hämta event-information
         const eventResponse = await fetch(`http://localhost:5000/events/${eventId}`);
         const selectedEvent = await eventResponse.json();
 
-        // Beräkna tillgängliga biljetter
         const maxTickets = selectedEvent.maxTickets || 200;
         const currentTickets = selectedEvent.ticketCount || 0;
         const availableTickets = maxTickets - currentTickets;
@@ -83,7 +97,7 @@ async function handleBooking(event) {
         }
 
         const booking = {
-            eventId: parseInt(eventId),
+            eventId: eventId,
             customerName: customerName,
             customerEmail: customerEmail,
             ticketCount: requestedTickets,
@@ -91,7 +105,6 @@ async function handleBooking(event) {
             totalPrice: ticketPrice * requestedTickets,
         };
 
-        // Spara bokning till databasen
         const bookingResponse = await fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
@@ -104,7 +117,6 @@ async function handleBooking(event) {
             throw new Error('Kunde inte spara bokning');
         }
 
-        // Uppdatera biljetträknare
         const updatedEvent = {
             ...selectedEvent,
             ticketCount: currentTickets + requestedTickets,
@@ -122,13 +134,10 @@ async function handleBooking(event) {
             throw new Error('Kunde inte uppdatera biljetträknare');
         }
 
-        // Visa bekräftelse
         showMessage(`Tack ${customerName}! Du har bokat ${requestedTickets} biljetter till "${selectedEvent.title}". Totalt: ${booking.totalPrice} kr.`, 'success');
         
-        // Rensa formuläret
         document.getElementById('ticket-form').reset();
         
-        // Uppdatera events
         loadShows();
         loadBookingEvents();
         

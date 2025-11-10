@@ -1,11 +1,9 @@
-// hiphop-admin.js
 // hiphop-admin.js - Enkel admin för Hip-Hop Klubben
+// ===========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Ladda events när sidan laddas
     loadAdminEvents();
     
-    // Hantera formulär för att lägga till event
     const addForm = document.getElementById('add-event-form');
     if (addForm) {
         addForm.addEventListener('submit', function(event) {
@@ -48,9 +46,9 @@ async function addNewEvent() {
         if (response.ok) {
             alert('Event skapat!');
             document.getElementById('add-event-form').reset();
-            loadAdminEvents(); // Uppdatera listan
-            loadShows(); // Uppdatera kundsidan
-            loadBookingEvents(); // Uppdatera bokningsdropdown
+            loadAdminEvents();
+            loadShows();
+            loadBookingEvents();
         } else {
             alert('Kunde inte skapa event!');
         }
@@ -80,12 +78,8 @@ async function loadAdminEvents() {
             }
             
             hiphopEvents.forEach(event => {
-                const eventDate = new Date(event.datetime);
-                const formattedDate = eventDate.toLocaleDateString('sv-SE');
-                const formattedTime = eventDate.toLocaleTimeString('sv-SE', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
+                // FIX: Använd formatDateTime-funktionen för korrekt tidvisning
+                const { formattedDate, formattedTime } = formatDateTime(event.datetime);
                 
                 const eventDiv = document.createElement('div');
                 eventDiv.className = 'event-item';
@@ -95,7 +89,7 @@ async function loadAdminEvents() {
                     <p><strong>Plats:</strong> ${event.location}</p>
                     <p><strong>Pris:</strong> ${event.price} kr</p>
                     <p><strong>Biljetter sålda:</strong> ${event.ticketCount || 0}/${event.maxTickets}</p>
-                    <button class="delete-event-btn" onclick="deleteEvent(${event.id})">Ta bort event</button>
+                    <button class="delete-event-btn" onclick="deleteEvent('${event.id}')">Ta bort event</button>
                 `;
                 
                 eventsList.appendChild(eventDiv);
@@ -109,6 +103,25 @@ async function loadAdminEvents() {
             eventsList.innerHTML = '<p>Fel vid laddning av events.</p>';
         }
     }
+}
+
+// FUNKTION: Formatera datum och tid korrekt (samma som i de andra filerna)
+function formatDateTime(datetimeString) {
+    const eventDate = new Date(datetimeString);
+    
+    const formattedDate = eventDate.toLocaleDateString('sv-SE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    
+    const formattedTime = eventDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+    
+    return { formattedDate, formattedTime };
 }
 
 // Ta bort event
@@ -125,8 +138,8 @@ async function deleteEvent(eventId) {
         if (response.ok) {
             alert('Event borttaget!');
             loadAdminEvents();
-            loadShows(); // Uppdatera kundsidan
-            loadBookingEvents(); // Uppdatera bokningsdropdown
+            loadShows();
+            loadBookingEvents();
         } else {
             alert('Kunde inte ta bort eventet!');
         }

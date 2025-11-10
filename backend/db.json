@@ -17,7 +17,7 @@
       "id": "4a",
       "category": "hiphop",
       "title": "Yasin",
-      "datetime": "2025-11-27",
+      "datetime": "2024-11-29T19:00:00",
       "image": "../images/yasin.webp",
       "description": "Yasin - en av Sveriges mest hypade artister i en exklusiv spelning. Förvänta dig en kväll fylld av energi och ikoniska låtar.",
       "location": "Hip-Hop Klubben",
@@ -30,20 +30,20 @@
       "id": "4b",
       "category": "hiphop",
       "title": "Shiro",
-      "datetime": "2025-11-28",
+      "datetime": "2024-11-28T21:00:00",
       "image": "../images/shiro.png",
       "description": "Shiros unika blend av rap och melodi tar över klubban. Förvänta dig hit efter hit i en elektriserande liveuppvisning",
       "location": "Hip-Hop Klubben",
       "price": 599,
       "clubId": 4,
-      "ticketCount": 0,
+      "ticketCount": 11,
       "maxTickets": 300
     },
     {
       "id": "4c",
       "category": "hiphop",
       "title": "Snoop Dogg",
-      "datetime": "2025-12-10",
+      "datetime": "2024-11-30T20:00:00",
       "image": "../images/snoop.jpg",
       "description": "The Doggfather himself tar över klubben! Snoop Dogg levererar en timslång resa genom hiphop-historiens mest ikoniska låtar.",
       "location": "Hip-Hop Klubben",
@@ -80,6 +80,15 @@
       "date": "2024-07-10",
       "time": "19:00",
       "totalTickets": 2
+    },
+    {
+      "eventId": "4b",
+      "customerName": "Ali",
+      "customerEmail": "ali@gmail.com",
+      "ticketCount": 11,
+      "bookingDate": "2025-11-10T11:25:53.297Z",
+      "totalPrice": 6589,
+      "id": 2
     }
   ]
 }
