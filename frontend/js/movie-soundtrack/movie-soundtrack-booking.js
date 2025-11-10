@@ -1,0 +1,240 @@
+/* MOVIE SOUNDTRACK ORCHESTRA - BOOKING JS
+   Ansvar: Bokningssystem och biljethantering
+   - Ladda events till dropdown-meny
+   - Hantera bokningsformulär och validering
+   - Kontrollera biljetttillgänglighet
+   - Spara bokningar till databas
+   - Uppdatera biljetträknare i realtid */
+
+// Hjälpfunktion: Generera unikt referensnummer (8 tecken)
+function generateReferenceNumber() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // lätt att läsa, inga förvillande tecken
+  let reference = '';
+  for (let i = 0; i < 8; i++) {
+    reference += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return reference;
+}
+
+
+
+// Vi börjar med att ladda events när sidan laddas
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Bokningssystem laddat!');
+
+  // Ladda events till dropdown
+  loadBookingEvents();
+
+
+  // Lyssna på bokningsformuläret. anrop funktionen handleBooking när formuläret skickas
+  const bookingForm = document.getElementById('ticket-form');
+  bookingForm.addEventListener('submit', handleBooking); // när formuläret skickas anropas handleBooking
+
+});
+
+
+
+
+
+async function loadBookingEvents() {
+  try {
+    // Hämta alla events från servern
+    const response = await fetch('http://localhost:5000/events');
+    const allEvents = await response.json();
+
+    // Filtrera bara movie-soundtrack events
+    const movieEvents = allEvents.filter(event => event.category === 'movie-soundtrack');
+
+    // Sortera efter datum (samma som på huvudsidan)
+    movieEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+
+    // Hitta dropdown-menyn
+    const eventSelect = document.getElementById('pick-show');
+
+    // Rensa befintliga alternativ (förutom den första "Vilket event...")
+    eventSelect.innerHTML = '<option value="">Vilket event vill du gå på?</option>';
+
+    // Lägg till varje event som ett alternativ
+    movieEvents.forEach(event => {
+      const eventDate = new Date(event.datetime);
+      const formattedDate = eventDate.toLocaleDateString('sv-SE');
+      const formattedTime = eventDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const availableTickets = event.maxTickets - event.ticketCount;
+
+      // Skapa option element
+      const option = document.createElement('option');
+      option.value = event.id;
+      option.textContent = `${event.title} - ${formattedDate} kl ${formattedTime} (${availableTickets} biljetter kvar)`;
+
+      // Inaktivera om inga biljetter kvar
+      if (availableTickets === 0) {
+        option.disabled = true;
+        option.textContent += ' - SLUTSÅLT';
+      }
+
+      eventSelect.appendChild(option); // Lägg till i dropdown "pick-show"
+    });
+
+  } catch (error) {
+    console.error('Fel vid laddning av booking events:', error);
+  }
+}
+
+
+
+
+
+// Hantera bokningsformulär submission. event är formulärets submit-event d.v.s. när användaren klickar på "Boka Biljetter". Det är kopplat till just det elementet via addEventListener ovan.
+async function handleBooking(event) {
+  event.preventDefault(); // Stoppa formuläret från att ladda om sidan
+
+  // Hämta formulärdata på bokningen och tilldela till variabler
+  const eventId = document.getElementById('pick-show').value;
+  const customerName = document.getElementById('your-name').value;
+  const customerEmail = document.getElementById('your-email').value;
+  const requestedTickets = parseInt(document.getElementById('how-many').value);
+
+  // Validera att ett event är valt annars visa alert
+  if (!eventId) {
+    alert('Välj vilket event du vill gå på!');
+    return;
+  }
+
+  try {
+
+    // Hämta event-information från servern för att kolla biljetter och pris
+    const eventResponse = await fetch(`http://localhost:5000/events/${eventId}`);
+    const selectedEvent = await eventResponse.json();
+
+    // Beräkna tillgängliga biljetter. maxTickets är totala biljetter, ticketCount är redan sålda biljetter. 
+    const availableTickets = selectedEvent.maxTickets - selectedEvent.ticketCount;
+
+    // Kolla om det finns tillräckligt med biljetter. requestedTickets är antal biljetter användaren vill boka som jämförs med availableTickets.
+    if (requestedTickets > availableTickets) {
+      alert(`Tyvärr finns det bara ${availableTickets} biljetter kvar!`);
+      return;
+    }
+
+    // Generera unikt referensnummer för bokningen
+    const referenceNumber = generateReferenceNumber();
+
+    // Skapa bokningsobjekt som ska sparas i databasen
+    const booking = {
+      referenceNumber: referenceNumber, // nytt fält!
+      eventId: eventId,
+      customerName: customerName,
+      customerEmail: customerEmail,
+      ticketCount: requestedTickets,
+      bookingDate: new Date().toISOString(),
+      totalPrice: selectedEvent.price * requestedTickets
+    };
+
+    // Spara bokning till databasen
+    const bookingResponse = await fetch('http://localhost:5000/bookings', {
+      method: 'POST', // Skicka som POST request. posterar ny data
+      headers: {      // Sätt rätt headers för JSON
+        'Content-Type': 'application/json',  // specificera att vi skickar JSON
+      },
+      body: JSON.stringify(booking)  // konvertera objektet till JSON-sträng. här skickas bokningsobjektet.
+    });
+
+    // Kolla om bokningen lyckades annars kasta fel
+    if (!bookingResponse.ok) {
+      throw new Error('Kunde inte spara bokning');
+    }
+
+
+    // Uppdatera event med nya ticket count
+    const updatedEvent = { // skapa ett nytt objekt med uppdaterad ticketCount
+      ...selectedEvent,   // behåll all befintlig data och ändra bara ticketCount. selectedEvent är det ursprungliga event-objektet vi hämtade från servern.
+      ticketCount: selectedEvent.ticketCount + requestedTickets  // lägg till de bokade biljetterna
+    };
+
+    // Skicka uppdateringen till servern
+    const updateResponse = await fetch(`http://localhost:5000/events/${eventId}`, {
+      method: 'PUT',  // Använd PUT för att uppdatera hela event-objektet
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedEvent) // skicka det uppdaterade event-objektet skapad ovan
+    });
+
+    if (!updateResponse.ok) {  // kolla om uppdateringen lyckades
+      throw new Error('Kunde inte uppdatera biljetträknare');
+    }
+
+    // Visa bekräftelse i modal istället för alert. objekt med all bokningsinfo skickas till showBookingModal.
+    showBookingModal({
+      referenceNumber: referenceNumber,
+      customerName: customerName,
+      customerEmail: customerEmail,
+      eventTitle: selectedEvent.title,
+      ticketCount: requestedTickets,
+      totalPrice: booking.totalPrice,
+      bookingDate: booking.bookingDate
+    });
+
+    document.getElementById('ticket-form').reset();
+    loadCustomerEvents(); // Uppdatera kundsidan
+    loadBookingEvents(); // Uppdatera dropdown
+    loadAdminBookings(); // Uppdatera admin-bokningslistan
+    
+
+  } catch (error) {
+    console.error('Fel vid bokning:', error);
+    alert('Något gick fel vid bokningen. Försök igen!');
+  }
+}
+
+
+//Visa bokningsbekräftelse modal. BookingDetails är ett objekt med all bokningsinfo som ska visas i modalen. Skickas från handleBooking ovan.
+function showBookingModal(bookingDetails) {
+  // Hitta modal element och dess innehållscontainer
+  const modal = document.getElementById('booking-modal'); 
+  const modalBody = document.getElementById('modal-body-content');
+
+  // Formatera datum
+  const bookingDate = new Date(bookingDetails.bookingDate);
+  const formattedDate = bookingDate.toLocaleDateString('sv-SE');
+  const formattedTime = bookingDate.toLocaleTimeString('sv-SE', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  // Bygg modalinnehåll med bokningsdetaljer
+  modalBody.innerHTML = `
+    <div class="booking-detail">
+      <strong>Kund:</strong> ${bookingDetails.customerName}
+    </div>
+    <div class="booking-detail">
+      <strong>E-post:</strong> ${bookingDetails.customerEmail}
+    </div>
+    <div class="booking-detail">
+      <strong>Event:</strong> ${bookingDetails.eventTitle}
+    </div>
+    <div class="booking-detail">
+      <strong>Antal biljetter:</strong> ${bookingDetails.ticketCount} st
+    </div>
+    <div class="booking-detail">
+      <strong>Totalkostnad:</strong> ${bookingDetails.totalPrice} kr
+    </div>
+    <div class="reference-number">
+      Bokningsnummer: ${bookingDetails.referenceNumber}
+    </div>
+    <p style="text-align: center; margin-top: 20px; color: #ccc;">
+      Spara ditt bokningsnummer för framtida referens!
+    </p>
+  `;
+
+  modal.classList.add('show'); // Visa modalen
+}
+
+// Hjälpfunktion: Stäng modal
+function closeBookingModal() {
+  const modal = document.getElementById('booking-modal');
+  modal.classList.remove('show');
+}
