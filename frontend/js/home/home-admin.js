@@ -127,9 +127,14 @@ async function handleAddClub(event) {
 // ==========================================
 async function loadAdminClubs() {
   try {
-    // Hämta alla klubbar från servern
-    const response = await fetch('http://localhost:5000/clubs');
-    const clubs = await response.json();      // Konvertera svaret till JavaScript-array
+    // Hämta både klubbar och events från servern
+    const [clubsResponse, eventsResponse] = await Promise.all([
+      fetch('http://localhost:5000/clubs'),
+      fetch('http://localhost:5000/events')
+    ]);
+    
+    const clubs = await clubsResponse.json();      // Konvertera svaret till JavaScript-array
+    const events = await eventsResponse.json();    // Hämta alla events
 
     // Hitta containern där vi ska visa klubbarna
     const adminClubsList = document.getElementById('admin-clubs-list');
@@ -145,6 +150,9 @@ async function loadAdminClubs() {
 
     // Loopa igenom varje klubb och skapa ett kort
     clubs.forEach(club => {
+      // Räkna antal events för denna klubb
+      const eventCount = events.filter(event => Number(event.clubId) === Number(club.id)).length;
+      
       // Skapa ett nytt div-element
       const clubCard = document.createElement('div');
       clubCard.className = 'admin-club-card';  // Lägg till CSS-klass
@@ -158,6 +166,7 @@ async function loadAdminClubs() {
           <p><strong>E-post:</strong> ${club.email || 'Ingen e-post'}</p>
           <p><strong>Telefon:</strong> ${club.phone || 'Inget telefonnummer'}</p>
           <p><strong>ID:</strong> ${club.id}</p>
+          <p><strong>Antal events:</strong> ${eventCount}</p>
         </div>
         <div class="admin-club-actions">
           <button class="delete-btn" onclick="deleteClub('${club.id}', '${club.name}')">

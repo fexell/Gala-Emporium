@@ -78,6 +78,11 @@ function renderClubs() {
     // För varje klubb (club) i arrayen, kör koden inuti { }
     allClubs.forEach(club => {
 
+        // Räkna antal events för denna klubb
+        // OBS: club.id kan vara sträng eller nummer, event.clubId också
+        // Vi konverterar båda till nummer för säker jämförelse
+        const clubEventCount = allEvents.filter(event => Number(event.clubId) === Number(club.id)).length;
+
         // Skapa ett nytt div-element för klubbkortet
         const clubCard = document.createElement('div');
 
@@ -92,6 +97,7 @@ function renderClubs() {
             <h3>${club.name}</h3>
             <p class="club-location">📍 ${club.location}</p>
             <p class="club-description">${club.description}</p>
+            <p class="club-event-count">🎫 ${clubEventCount} evenemang</p>
             <button class="club-btn" data-club-id="${club.id}">Besök klubb</button>
         `;
 

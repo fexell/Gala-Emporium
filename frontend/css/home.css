@@ -630,6 +630,17 @@ body {
     /* Detta gör att kortare beskrivningar fortfarande skjuter knappen till botten */
 }
 
+/* Antal events för klubben */
+.club-event-count {
+    color: #d4af37;
+    /* Guldfärg för att sticka ut */
+    font-weight: 600;
+    /* Lite fetare text */
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    /* Mellanrum till knappen */
+}
+
 /* Statistik-området i klubbkortet */
 .club-stats {
     display: flex;
