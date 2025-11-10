@@ -21,6 +21,7 @@ export default function start() {
               <a href="#traviata">Traviata – Giuseppe Verdi</a>
             </h3>
             <p>En dramatisk kärlekshistoria med orkester, solister och kör.</p>
+            
           </div>
         </div>
       </div>
@@ -40,6 +41,7 @@ export default function start() {
               <a href="#requiem">Requiem i levande ljus</a>
             </h3>
             <p>En stämningsfull kväll där Mozarts Requiem framförs i ljuset av levande ljus.</p>
+            
           </div>
         </div>
       </div>
@@ -59,6 +61,7 @@ export default function start() {
               <a href="#operagala">Operagala – De största ariorna</a>
             </h3>
             <p>En kväll med de mest kända ariorna från operor som Carmen, Tosca och Figaros bröllop.</p>
+            
           </div>
         </div>
       </div>

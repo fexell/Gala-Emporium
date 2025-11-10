@@ -11,6 +11,8 @@ function resetBodyClass() {
   document.body.classList.remove('traviata-bg', 'requiem-bg', 'operagala-bg');
 }
 
+// (Tidigare tillagd helper borttagen enligt önskemål)
+
 // Helper to attach booking button listeners for whichever page is rendered
 function attachBookingListeners() {
   const bookingButtons = document.querySelectorAll('.btn-prebook');
@@ -101,14 +103,19 @@ function attachBookingListeners() {
           : eventDateTime;
 
         try {
-          await submitBooking({
+          const payload = {
             eventId,
             eventTitle,
             eventDateTime: combinedDateTime,
             name,
             email,
-            tickets
-          });
+            tickets: Number(tickets || 1),
+            status: 'pending',
+            customer: { name, email, phone: '' }
+          };
+
+          // Post directly with apiClient to keep it simple
+          await apiClient.post('/bookings', payload);
 
           modalRoot.innerHTML = `
             <div class="modal-overlay">
@@ -229,22 +236,15 @@ function setupBookingForm() {
         status: 'pending'
       };
 
-      const res = await fetch('http://localhost:5000/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...bookingData,
-          customer: {
-            name: bookingData.name,
-            email: bookingData.email,
-            phone: bookingData.phone
-          }
-        })
+      // Skicka via apiClient (centraliserad fetch med felhantering)
+      const saved = await apiClient.post('/bookings', {
+        ...bookingData,
+        customer: {
+          name: bookingData.name,
+          email: bookingData.email,
+          phone: bookingData.phone
+        }
       });
-
-      if (!res.ok) throw new Error('Kunde inte spara bokningen');
-
-      const saved = await res.json();
       console.log('Sparad bokning:', saved);
 
       form.innerHTML = `
@@ -259,7 +259,13 @@ function setupBookingForm() {
       `;
     } catch (error) {
       console.error('Bokningsfel:', error);
-      alert('Något gick fel vid bokningen. Försök igen eller kontakta oss.');
+      // Mer hjälpsamt felmeddelande vid nätverksfel eller server nere
+      const msg = (error && error.message) ? error.message : String(error);
+      if (msg.includes('failed') || msg.includes('NetworkError') || msg.includes('Failed to fetch')) {
+        alert('Kunde inte nå servern (http://localhost:5000). Starta backend och försök igen.');
+      } else {
+        alert('Något gick fel vid bokningen. Försök igen eller kontakta oss.');
+      }
     }
   });
 }

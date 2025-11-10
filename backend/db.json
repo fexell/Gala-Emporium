@@ -27,6 +27,40 @@
         "phone": ""
       },
       "id": 1
+    },
+    {
+      "eventId": "1",
+      "eventTitle": "La Traviata",
+      "eventDateTime": "2024-11-06T17:00:00",
+      "name": "daniel al",
+      "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
+      "phone": "0700413120",
+      "tickets": 2,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "daniel al",
+        "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
+        "phone": "0700413120"
+      },
+      "id": 2
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "Operagala",
+      "eventDateTime": "2024-12-28T18:00:00",
+      "name": "daniel al",
+      "email": "test@test.sr",
+      "phone": "0700413120",
+      "tickets": 4,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "daniel al",
+        "email": "test@test.sr",
+        "phone": "0700413120"
+      },
+      "id": 3
     }
   ]
 }
