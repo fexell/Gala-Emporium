@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/remote-nightclub.css">
     <title>Remote Nightclub</title>
     <script src="/js/remote-nightclub/remote-nightclub-main.js" defer></script>
-    <script type="module" src="/js/remote-nightclub/remote-nightclub-admin.js" defer></script>
+    <script src="/js/remote-nightclub/remote-nightclub-admin.js" defer></script>
 </head>
 
 <body class="remote-nightclub-body">
@@ -15,28 +15,29 @@
         <h1>REMOTE NIGHTCLUB</h1>
     </header>
     <main>
+        <section class="upper-half">
         <!-- EVENT DISPLAY -->
-        <section class="television">
-            <div class="video-container" id="video-container">
-                <video class="video" id="event-video" autoplay muted loop>
-                    <source src="/images/disco.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="event-info">
-                <div>
-                    <h1 id="event-title" class="event-title"></h1>
-                    <p id="event-details"></p>
-                    <p id="event-date" name="event-date"></p>
+            <section class="television">
+                <div class="video-container" id="video-container">
+                    <video class="video" id="event-video" autoplay muted loop>
+                        <source src="/images/disco.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <div class="event-meta">
-                    <label id="event-price"></label>
-                    <label id="event-capacity"></label>
+                <div class="event-info">
+                    <div>
+                        <h1 id="event-title" class="event-title"></h1>
+                        <p id="event-details"></p>
+                        <p id="event-date" name="event-date"></p>
+                    </div>
+                    <div class="event-meta">
+                        <label id="event-price"></label>
+                        <label id="event-capacity"></label>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
-
-        <!-- BOOKING -->
-        <section class="ticketwrapper">
+        
+            <section class="ticketwrapper">
             <form class="ticket-form">
                 <h1 class="booking-title">BOOKING</h1>
                 <div>
@@ -65,12 +66,16 @@
                 </div>
                 <button type="submit">Get Ticket</button>
             </form>
+
             <div class="tabelfoot"></div>
         </section>
 
-        <!-- SCENE AND INTERIOR -->
-        <section class="scene">
-            <img class="floor-img" src="/images/floor.png" alt="floor">
+        <!-- ADMIN -->
+        <p class="admin-btn"id="adminBtn">ADMIN</p>
+
+        <section class="new-event-form" id="newEventFormContainer">
+            <section id="adminPanel" class="admin-panel hidden">
+            </section>
         </section>
 
         <!-- REMOTE CONTROLL -->
@@ -86,7 +91,9 @@
         <!-- DARK MODE -->
         <section class="dark-mode hidden">
         </section>
-        <img class="crowd hidden" src="/images/crowd.png" alt="crowd">
+        <img class="floor-img" src="/images/floor.png" alt="floor">
+
+
     </main>
 </body>
 

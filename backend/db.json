@@ -70,7 +70,7 @@
       "category": "music",
       "title": "DISCO FEVER",
       "datetime": "2025-07-01T20:00:00",
-      "location": "REMOTE NIGHTCLUB",
+      "location": "Remote Nightclub",
       "description": "ALL THE BEST HITS FROM THE 80s",
       "price": 199,
       "clubId": 3,
@@ -83,7 +83,7 @@
       "category": "music",
       "title": "INDIE ROCK",
       "datetime": "2025-07-08T21:00:00",
-      "location": "REMOTE NIGHTCLUB",
+      "location": "Remote Nightclub",
       "description": "Sense the good vibes of indie rock.",
       "price": 149,
       "clubId": 3,
@@ -96,172 +96,13 @@
       "category": "music",
       "title": "TECHNO BASS BLAST",
       "datetime": "2025-07-15T22:30:00",
-      "location": "REMOTE NIGHTCLUB",
+      "location": "Remote Nightclub",
       "description": "Hard and fast techno from local legends.",
       "price": 249,
       "clubId": 3,
       "ticketCount": 0,
       "maxTickets": 150,
       "eventImage": "techno"
-    },
-    {
-      "id": "RLNcs9S"
-    },
-    {
-      "id": "esGS0YE"
-    },
-    {
-      "id": "pKvzSR1"
-    },
-    {
-      "id": "NX_2XZ9"
-    },
-    {
-      "id": "_CNmbsJ"
-    },
-    {
-      "id": "bZqVLtF"
-    },
-    {
-      "id": "cyYbuAL"
-    },
-    {
-      "id": "06oYTlj"
-    },
-    {
-      "id": "0xZMF70"
-    },
-    {
-      "id": "SFzNdI_"
-    },
-    {
-      "id": "s6jP0RM"
-    },
-    {
-      "id": "cJEgo_n"
-    },
-    {
-      "id": "dZ8bm22"
-    },
-    {
-      "id": "HOz0BYA"
-    },
-    {
-      "id": "548tZoI"
-    },
-    {
-      "id": "hgZMpBi"
-    },
-    {
-      "id": "aPSC6_y"
-    },
-    {
-      "id": "CkChDRP"
-    },
-    {
-      "id": "28jPqt8"
-    },
-    {
-      "id": "SXgk9gg"
-    },
-    {
-      "id": "dovCNMR"
-    },
-    {
-      "id": "Btv5F37"
-    },
-    {
-      "id": "kSmmJ3A"
-    },
-    {
-      "id": "VOU8RA3"
-    },
-    {
-      "id": "VXrcxzq"
-    },
-    {
-      "id": "09KU7LC"
-    },
-    {
-      "id": "93QQPGs"
-    },
-    {
-      "id": "iAjZ2kC"
-    },
-    {
-      "id": "Ut9U539"
-    },
-    {
-      "id": "iSdVkDR"
-    },
-    {
-      "id": "gErUIUV"
-    },
-    {
-      "id": "qcPzUhb"
-    },
-    {
-      "id": "sQQ_laz"
-    },
-    {
-      "id": "A_JLN6N"
-    },
-    {
-      "id": "RKHIwJ8"
-    },
-    {
-      "id": "JMYERpB"
-    },
-    {
-      "id": "P4kAze1"
-    },
-    {
-      "id": "JG44mW9"
-    },
-    {
-      "id": "kNHnBW4"
-    },
-    {
-      "id": "16eaLKR"
-    },
-    {
-      "id": "Qv-E_6J"
-    },
-    {
-      "id": "eWO6L-b"
-    },
-    {
-      "id": "HvLtR98"
-    },
-    {
-      "id": "bkGnL4_"
-    },
-    {
-      "id": "Wh3kgCT"
-    },
-    {
-      "id": "w3OC1Rc"
-    },
-    {
-      "id": "UVwNj3e"
-    },
-    {
-      "id": "G8l_CM_"
-    },
-    {
-      "id": "W8PAjzR"
-    },
-    {
-      "id": "zQ7B5DF"
-    },
-    {
-      "id": "CrvB8XY"
-    },
-    {
-      "id": "AwI4LNI"
-    },
-    {
-      "id": "0--GcDo"
     }
   ],
   "clubs": [
@@ -420,6 +261,33 @@
     },
     {
       "id": "300d",
+      "eventId": "6",
+      "customerName": "",
+      "customerEmail": "",
+      "ticketCount": 1,
+      "bookingDate": "2025-07-01T20:00:00",
+      "totalPrice": 199
+    },
+    {
+      "id": "1cdd",
+      "eventId": "8",
+      "customerName": "Josef",
+      "customerEmail": "",
+      "ticketCount": 2,
+      "bookingDate": "2025-07-15T22:30:00",
+      "totalPrice": 498
+    },
+    {
+      "id": "f433",
+      "eventId": "6",
+      "customerName": "",
+      "customerEmail": "",
+      "ticketCount": 1,
+      "bookingDate": "2025-07-01T20:00:00",
+      "totalPrice": 199
+    },
+    {
+      "id": "8591",
       "eventId": "6",
       "customerName": "",
       "customerEmail": "",
