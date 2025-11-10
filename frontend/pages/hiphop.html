@@ -1,15 +1,117 @@
+<!-- hiphop.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/hiphop.css">
-    <title>Hip hop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hip-Hop Klubben</title>
+  <link rel="stylesheet" href="../css/hiphop.css">
+  <script src="../js/hiphop/hiphop-main.js" defer></script>
+  <script src="../js/hiphop/hiphop-booking.js" defer></script>
+  <script src="../js/hiphop/hiphop-admin.js" defer></script>
 </head>
+
 <body>
-    
 
+  <!-- Tillbaka till hem-knapp -->
+  <a href="home.html" class="back-to-home-btn">
+    <span class="back-arrow">←</span>
+    <span class="back-text">Tillbaka</span>
+  </a>
 
-    <script src="../js/hiphop.js"></script>
+  <!-- Header med navigation -->
+  <header class="top-bar">
+    <div class="wrapper">
+      <h1 class="site-name">Hip-Hop Klubben</h1>
+      <nav class="menu">
+        <a href="#about">Om Oss</a>
+        <a href="#events">Evenemang</a>
+        <a href="#booking">Boka</a>
+        <a href="#admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Huvudsektion -->
+    <section class="banner">
+      <div class="wrapper">
+        <h2>Upplev hiphop-kulturens puls</h2>
+        <p>Live musik, freestyle battles och breakdance i Sveriges hetaste hiphop-scen</p>
+      </div>
+    </section>
+
+    <!-- Om oss delen -->
+    <section id="about" class="info-box">
+      <div class="wrapper">
+        <h2>Om Hip-Hop Klubben</h2>
+        <p>Vi är Gala Emporiums äkta hiphop-scen där musik, dans och konst sammanstrålar. Sedan vår öppning 2012 har vi varit den främsta mötesplatsen för hiphop-älskare i regionen.</p>
+        <p>Varje kväll är en unik upplevelse där både etablerade artister och nya talanger får chansen att lysa. Från rap och beatbox till breakdance och graffiti - vi firar hela kulturen.</p>
+      </div>
+    </section>
+
+    <!-- Events kommer att laddas in här -->
+    <section id="events" class="show-list">
+      <div class="wrapper">
+        <h2>Kommande Evenemang</h2>
+        <div class="shows" id="show-container">
+          <!-- JS laddar events här -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Bokning av biljetter -->
+    <section id="booking" class="tickets">
+      <div class="wrapper">
+        <h2>Boka Biljetter</h2>
+
+        <form id="ticket-form" class="buy-tickets">
+          <select id="pick-show" required>
+            <option value="">Vilket event vill du gå på?</option>
+            <!-- fylls med JS -->
+          </select>
+
+          <input type="text" id="your-name" placeholder="Vad heter du?" required>
+          <input type="email" id="your-email" placeholder="Din mejl" required>
+          <input type="number" id="how-many" placeholder="Hur många biljetter?" min="1" required>
+
+          <button type="submit">Boka nu!</button>
+        </form>
+
+        <div id="booking-message" class="confirmation hide"></div>
+      </div>
+    </section>
+
+    <!-- Enkel Admin Section -->
+    <section id="admin" class="simple-admin">
+      <div class="wrapper">
+        <h2>Admin - Hantera Events</h2>
+        
+        <!-- Formulär för att lägga till event -->
+        <div class="admin-form">
+          <h3>Lägg till nytt event</h3>
+          <form id="add-event-form">
+            <input type="text" id="event-title" placeholder="Event namn" required>
+            <input type="datetime-local" id="event-datetime" required>
+            <input type="text" id="event-location" placeholder="Plats" required>
+            <textarea id="event-description" placeholder="Beskrivning" required></textarea>
+            <input type="number" id="event-price" placeholder="Pris" min="0" required>
+            <input type="number" id="event-max-tickets" placeholder="Max biljetter" min="1" required>
+            <button type="submit">Lägg till event</button>
+          </form>
+        </div>
+
+        <!-- Lista med befintliga events -->
+        <div class="admin-events">
+          <h3>Befintliga events</h3>
+          <div id="events-list">
+            <!-- Events laddas här via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
 </body>
 </html>
