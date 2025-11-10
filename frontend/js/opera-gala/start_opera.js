@@ -1,5 +1,4 @@
-
-
+import { apiClient } from '../../helpers/Api.helper.js'
 export default function start() {
   return `
   <h1>Gala Emporium: Opera Hall</h1>
@@ -56,10 +55,25 @@ export default function start() {
 }
 
 // Ladda events från backend och lägg till dem EFTER de hårdkodade
+// Small retry helper for transient network errors
+async function fetchEventsWithRetry(maxAttempts = 3, delayMs = 300) {
+  let lastErr;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await apiClient.get('/events');
+    } catch (err) {
+      lastErr = err;
+      if (attempt < maxAttempts) {
+        await new Promise(res => setTimeout(res, delayMs * attempt));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 export async function loadStartEvents() {
   try {
-    const response = await fetch('http://localhost:5000/events');
-    const allEvents = await response.json();
+    const allEvents = await fetchEventsWithRetry();
 
     // Filtrera bara opera events
     const operaEvents = allEvents.filter(event => event.category === 'opera');
@@ -120,7 +134,11 @@ export async function loadStartEvents() {
     console.error('Fel vid laddning av events:', error);
     const eventsContainer = document.getElementById('events-container');
     if (eventsContainer) {
-      eventsContainer.innerHTML = '<p class="error-message">Kunde inte ladda föreställningar.</p>';
+      const msg = (error && error.message) ? error.message : String(error);
+      const hint = (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('API request failed'))
+        ? ` Kontrollera att backend är startad på http://${window.location.hostname}:5000.`
+        : '';
+      eventsContainer.innerHTML = `<p class="error-message">Kunde inte ladda föreställningar.${hint}</p>`;
     }
   }
 }

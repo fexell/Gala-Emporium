@@ -1,7 +1,10 @@
-
-
 // Wrapper for API requests
-const createApiClient                       = ({ baseUrl, defaultHeaders = {} } = {}) => {
+// Compute a sensible default base URL that matches the current host (avoids localhost vs 127.0.0.1 mismatches)
+const DEFAULT_BASE_URL = (typeof window !== 'undefined' && window.location && window.location.hostname)
+  ? `http://${window.location.hostname}:5000`
+  : 'http://localhost:5000'
+
+const createApiClient                       = ({ baseUrl = DEFAULT_BASE_URL, defaultHeaders = {} } = {}) => {
 
   // Core request function
   const request                             = async ( endpoint, { sort, order, params = {}, ...options } = {} ) => {
@@ -76,9 +79,7 @@ const createApiClient                       = ({ baseUrl, defaultHeaders = {} } 
 }
 
 // Create a default API client instance
-const apiClient                             = createApiClient({
-  baseUrl: 'http://localhost:5000',
-})
+const apiClient                             = createApiClient()
 
 export {
   createApiClient,
