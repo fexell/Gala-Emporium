@@ -1,16 +1,6 @@
 {
   "events": [
     {
-      "id": "1",
-      "title": "AVICII",
-      "datetime": "2025-11-15T21:00",
-      "location": "Linköping",
-      "description": "AVICII",
-      "price": 1000,
-      "maxTickets": 990,
-      "clubId": "4"
-    },
-    {
       "title": "Swedish House Mafia",
       "description": "A magical event with Swedish House Mafia",
       "datetime": "2025-12-24T20:00",
@@ -197,15 +187,6 @@
       "ticketCount": 1,
       "bookingDate": "2025-07-01T20:00:00",
       "totalPrice": 199
-    },
-    {
-      "id": "d565",
-      "eventId": "1",
-      "customerName": "Felix",
-      "numberOfTickets": 10,
-      "totalPrice": 10000,
-      "bookingDate": "2025-11-09",
-      "bookingTime": "3:34:46 PM"
     }
   ]
 }

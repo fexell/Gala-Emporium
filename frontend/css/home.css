@@ -812,106 +812,328 @@ body {
 
 /* Individuella evenemangskort */
 .event-card {
-    background: rgba(255, 255, 255, 0.1);  /* Glasaktig bakgrund */
-    backdrop-filter: blur(15px);            /* Glaseffekt */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtil kant */
-    border-radius: 15px;    /* Rundade hörn */
-    padding: 1.5rem;        /* Luftig padding */
-    margin-bottom: 1.5rem;  /* Avstånd mellan korten */
-    display: flex;          /* Flex layout för datum + info + actions */
-    gap: 1.5rem;            /* Avstånd mellan sektionerna */
-    transition: all 0.3s ease; /* Smooth animationer */
-    cursor: pointer;        /* Visar att kortet är klickbart */
+    background: rgba(255, 255, 255, 0.1);
+    /* Glasaktig bakgrund */
+    backdrop-filter: blur(15px);
+    /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtil kant */
+    border-radius: 15px;
+    /* Rundade hörn */
+    padding: 1.5rem;
+    /* Luftig padding */
+    margin-bottom: 1.5rem;
+    /* Avstånd mellan korten */
+    display: flex;
+    /* Flex layout för datum + info + actions */
+    gap: 1.5rem;
+    /* Avstånd mellan sektionerna */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    cursor: pointer;
+    /* Visar att kortet är klickbart */
 }
 
 .event-card:hover {
-    transform: translateY(-3px); /* Lyfter kortet */
-    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2); /* Guldaktig skugga */
-    border-color: rgba(212, 175, 55, 0.4); /* Starkare guldkant */
+    transform: translateY(-3px);
+    /* Lyfter kortet */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+    /* Guldaktig skugga */
+    border-color: rgba(212, 175, 55, 0.4);
+    /* Starkare guldkant */
 }
 
 /* Datum-sektion (vänster sida) */
 .event-date {
-    background: linear-gradient(135deg, #d4af37, #f4d03f); /* Guldgradient */
-    color: #1a1a2e;        /* Mörk text för kontrast */
-    border-radius: 12px;   /* Rundad låda */
-    padding: 1rem;         /* Luftig padding */
-    text-align: center;    /* Centrerad text */
-    min-width: 80px;       /* Fast bredd för enhetlighet */
-    display: flex;         /* Flex för centrering */
-    flex-direction: column; /* Vertikal staplning */
-    justify-content: center; /* Centrerad vertikalt */
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    border-radius: 12px;
+    /* Rundad låda */
+    padding: 1rem;
+    /* Luftig padding */
+    text-align: center;
+    /* Centrerad text */
+    min-width: 80px;
+    /* Fast bredd för enhetlighet */
+    display: flex;
+    /* Flex för centrering */
+    flex-direction: column;
+    /* Vertikal staplning */
+    justify-content: center;
+    /* Centrerad vertikalt */
 }
 
 .event-day {
-    font-size: 2rem;       /* Stor siffra för dagen */
-    font-weight: 700;      /* Fet stil */
-    line-height: 1;        /* Tight line-height */
+    font-size: 2rem;
+    /* Stor siffra för dagen */
+    font-weight: 700;
+    /* Fet stil */
+    line-height: 1;
+    /* Tight line-height */
 }
 
 .event-month {
-    font-size: 0.9rem;     /* Mindre text för månaden */
-    font-weight: 600;      /* Medel-fet */
-    text-transform: uppercase; /* Versaler */
-    margin-top: 0.2rem;    /* Lite mellanrum */
+    font-size: 0.9rem;
+    /* Mindre text för månaden */
+    font-weight: 600;
+    /* Medel-fet */
+    text-transform: uppercase;
+    /* Versaler */
+    margin-top: 0.2rem;
+    /* Lite mellanrum */
 }
 
 /* Info-sektion (mitten) */
 .event-info {
-    flex: 1;               /* Tar upp resterande utrymme */
+    flex: 1;
+    /* Tar upp resterande utrymme */
 }
 
 .event-title {
-    color: #d4af37;        /* Guldtema */
-    font-size: 1.4rem;     /* Stor rubrik */
-    margin: 0 0 0.5rem 0;  /* Bara margin nedåt */
-    font-weight: 600;      /* Lite fetare */
+    color: #d4af37;
+    /* Guldtema */
+    font-size: 1.4rem;
+    /* Stor rubrik */
+    margin: 0 0 0.5rem 0;
+    /* Bara margin nedåt */
+    font-weight: 600;
+    /* Lite fetare */
 }
 
 .event-club {
-    color: rgba(255, 255, 255, 0.8); /* Ljusgrå text */
-    margin: 0 0 0.8rem 0;  /* Margin nedåt */
-    font-weight: 500;      /* Medel-fet */
+    color: rgba(255, 255, 255, 0.8);
+    /* Ljusgrå text */
+    margin: 0 0 0.8rem 0;
+    /* Margin nedåt */
+    font-weight: 500;
+    /* Medel-fet */
 }
 
 .event-description {
-    color: rgba(255, 255, 255, 0.7); /* Dämpad vit text */
-    line-height: 1.5;      /* Luftig radavstånd */
-    margin-bottom: 1rem;   /* Mellanrum till detaljer */
+    color: rgba(255, 255, 255, 0.7);
+    /* Dämpad vit text */
+    line-height: 1.5;
+    /* Luftig radavstånd */
+    margin-bottom: 1rem;
+    /* Mellanrum till detaljer */
 }
 
 .event-details {
-    display: flex;         /* Flex för tid och pris */
-    gap: 2rem;             /* Avstånd mellan tid och pris */
-    margin-bottom: 1rem;   /* Mellanrum till actions */
+    display: flex;
+    /* Flex för tid och pris */
+    gap: 2rem;
+    /* Avstånd mellan tid och pris */
+    margin-bottom: 1rem;
+    /* Mellanrum till actions */
 }
 
 .event-time,
 .event-price {
-    color: rgba(255, 255, 255, 0.9); /* Ljus text */
-    font-weight: 500;      /* Medel-fet */
-    font-size: 0.95rem;    /* Lagom storlek */
+    color: rgba(255, 255, 255, 0.9);
+    /* Ljus text */
+    font-weight: 500;
+    /* Medel-fet */
+    font-size: 0.95rem;
+    /* Lagom storlek */
 }
 
 /* Actions-sektion (höger sida) */
 .event-actions {
-    display: flex;         /* Flex för knapp-alignment */
-    align-items: center;   /* Centrerad vertikalt */
+    display: flex;
+    /* Flex för knapp-alignment */
+    align-items: center;
+    /* Centrerad vertikalt */
 }
 
 .book-ticket-btn {
-    background: linear-gradient(135deg, #d4af37, #f4d03f); /* Guldgradient */
-    border: none;          /* Ingen kant */
-    border-radius: 10px;   /* Rundade hörn */
-    padding: 0.8rem 1.5rem; /* Luftig padding */
-    color: #1a1a2e;        /* Mörk text för kontrast */
-    font-weight: 600;      /* Fet text */
-    cursor: pointer;       /* Visar att den är klickbar */
-    transition: all 0.3s ease; /* Smooth animationer */
-    white-space: nowrap;   /* Förhindrar radbrytning */
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    border: none;
+    /* Ingen kant */
+    border-radius: 10px;
+    /* Rundade hörn */
+    padding: 0.8rem 1.5rem;
+    /* Luftig padding */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    font-weight: 600;
+    /* Fet text */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    white-space: nowrap;
+    /* Förhindrar radbrytning */
 }
 
 .book-ticket-btn:hover {
-    transform: translateY(-2px); /* Lyfter knappen */
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); /* Guldaktig skugga */
+    transform: translateY(-2px);
+    /* Lyfter knappen */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    /* Guldaktig skugga */
+}
+
+/* === ADMIN KLUBBHANTERING === */
+/* Styling för admin-klubbkort i hanteringslistan */
+.admin-club-card {
+    background: linear-gradient(145deg, #2a2a3e, #1e1e2e);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.admin-club-card:hover {
+    border-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+}
+
+.admin-club-info h4 {
+    color: #d4af37;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.admin-club-info p {
+    color: #e0e0e0;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.admin-club-info p strong {
+    color: #d4af37;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.admin-club-actions {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.delete-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.delete-btn:hover {
+    background-color: #991b1b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.delete-btn:active {
+    transform: translateY(0);
+}
+
+/* === ADMIN FORMULÄR STYLING === */
+/* Styling för admin-sektioner */
+.admin-section {
+    background: linear-gradient(145deg, #1e1e2e, #2a2a3e);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.admin-section h3 {
+    color: #d4af37;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Formulär styling */
+.admin-form {
+    display: grid;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #d4af37;
+    font-weight: 600;
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.admin-btn-primary {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    color: #1a1a2e;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.admin-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+}
+
+.admin-btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Admin list styling */
+.admin-list {
+    margin-top: 20px;
 }
