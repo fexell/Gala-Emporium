@@ -1,9 +1,10 @@
 import { apiClient } from '../../helpers/Api.helper.js'
 
-import start from './start_opera.js';
+import start, { loadStartEvents } from './start_opera.js';
 import traviata from './traviata.js';
 import requiem from './requiem.js';
 import operagala from './operagala.js';
+import admin, { initAdmin } from './admin_opera.js';
 
 const main = document.querySelector('main');
 
@@ -162,6 +163,7 @@ function render() {
     resetBodyClass();
     main.innerHTML = start();
     document.title = "Opera Emporium";
+    loadStartEvents(); // Ladda events dynamiskt
     attachBookingListeners();
     setupBookingForm();
     return;
@@ -187,10 +189,16 @@ function render() {
     main.innerHTML = operagala();
     attachBookingListeners();
   }
+  else if (page === "admin") {
+    resetBodyClass();
+    main.innerHTML = admin();
+    initAdmin();
+  }
   else {
     resetBodyClass();
     main.innerHTML = start();
     document.title = "Opera Emporium";
+    loadStartEvents(); // Ladda events dynamiskt
     attachBookingListeners();
     setupBookingForm();
     return;
@@ -225,7 +233,7 @@ function setupBookingForm() {
 
     try {
       const bookingData = {
-        eventId: eventSelect.value,
+        eventId: parseInt(eventSelect.value),
         eventTitle: selectedOption.text.split(' (')[0],
         eventDateTime: selectedOption.dataset.datetime,
         name: form.querySelector('#name').value,

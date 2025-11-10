@@ -227,7 +227,8 @@ h2:after {
     padding-right: 0;
   }
 }
-/* Bokningsformulär styling */
+
+/* Bokningsformulï¿½r styling */
 .booking-section {
   max-width: 700px;
   margin: 4rem auto;
@@ -313,7 +314,7 @@ h2:after {
   transform: translateY(0);
 }
 
-/* Responsiv design för formuläret */
+/* Responsiv design fï¿½r formulï¿½ret */
 @media (max-width: 768px) {
   .booking-section {
     margin: 2rem 1rem;
@@ -333,4 +334,28 @@ h2:after {
   .submit-booking {
     font-size: 1rem;
   }
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+footer a:hover {
+  opacity: 0.8;
+}
+
+/* Error message */
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: red;
 }

@@ -5,66 +5,8 @@ export default function start() {
   <h1>Gala Emporium: Opera Hall</h1>
     <h2> Föreställningar </h2>
   
-    <div class="container">
-      <div class="event-box">
-        <div class="event-content">
-          <div class="date">
-            <span class="month">NOV</span>
-            <span class="day">06</span>
-            <span class="weekday">Onsdag</span>
-          </div>
-          <div class="time"> 17:00</div>
-          <img src="images/opera.jpg" alt="La Traviata">
-          <div class="event-text">
-            <span class="event-type">Opera | Urpremiär</span>
-            <h3>
-              <a href="#traviata">Traviata – Giuseppe Verdi</a>
-            </h3>
-            <p>En dramatisk kärlekshistoria med orkester, solister och kör.</p>
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="event-box">
-        <div class="event-content">
-          <div class="date">
-            <span class="month">DEC</span>
-            <span class="day">15</span>
-            <span class="weekday">Fredag</span>
-          </div>
-          <div class="time"> 17:00</div>
-          <img src="images/mozart.jpg" alt="Mozarts Requiem">
-          <div class="event-text">
-            <span class="event-type">Opera | Nypremiär</span>
-            <h3>
-              <a href="#requiem">Requiem i levande ljus</a>
-            </h3>
-            <p>En stämningsfull kväll där Mozarts Requiem framförs i ljuset av levande ljus.</p>
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="event-box">
-        <div class="event-content">
-          <div class="date">
-            <span class="month">DEC</span>
-            <span class="day">28</span>
-            <span class="weekday">Måndag</span>
-          </div>
-          <div class="time"> 18:00</div>
-          <img src="images/operagala.jpg" alt="Operagala">
-          <div class="event-text">
-            <span class="event-type">Opera | Premiär</span>
-            <h3>
-              <a href="#operagala">Operagala – De största ariorna</a>
-            </h3>
-            <p>En kväll med de mest kända ariorna från operor som Carmen, Tosca och Figaros bröllop.</p>
-            
-          </div>
-        </div>
-      </div>
+    <div class="container" id="events-container">
+      <!-- Events laddas dynamiskt från backend -->
     </div>
 
     <div class="booking-section">
@@ -74,9 +16,7 @@ export default function start() {
           <label for="event">Välj föreställning:</label>
           <select id="event" name="event" required>
             <option value="">Välj en föreställning</option>
-            <option value="1" data-datetime="2024-11-06T17:00:00">La Traviata (6 Nov, 17:00)</option>
-            <option value="2" data-datetime="2024-12-15T17:00:00">Requiem i levande ljus (15 Dec, 17:00)</option>
-            <option value="3" data-datetime="2024-12-28T18:00:00">Operagala (28 Dec, 18:00)</option>
+            <!-- Options laddas dynamiskt -->
           </select>
         </div>
 
@@ -108,6 +48,79 @@ export default function start() {
         <button type="submit" class="submit-booking">Boka biljetter</button>
       </form>
     </div>
+
+    <footer>
+      <a href="#admin">admin</a>
+    </footer>
   `;
 }
 
+// Ladda events från backend och lägg till dem EFTER de hårdkodade
+export async function loadStartEvents() {
+  try {
+    const response = await fetch('http://localhost:5000/events');
+    const allEvents = await response.json();
+
+    // Filtrera bara opera events
+    const operaEvents = allEvents.filter(event => event.category === 'opera');
+    operaEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+
+    const eventsContainer = document.getElementById('events-container');
+    const eventSelect = document.querySelector('#event');
+
+    if (!eventsContainer || !eventSelect) return;
+
+    // BEHÅLL de hårdkodade events, lägg bara till nya dynamiska events
+    // Skapa event-boxar för dynamiska events
+    operaEvents.forEach(event => {
+      const eventDate = new Date(event.datetime);
+
+      // Formatera datum för visning
+      const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAJ', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEC'];
+      const weekdays = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+
+      const month = months[eventDate.getMonth()];
+      const day = eventDate.getDate();
+      const weekday = weekdays[eventDate.getDay()];
+      const time = eventDate.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' });
+
+      // Skapa event box
+      const eventBox = document.createElement('div');
+      eventBox.className = 'event-box';
+      eventBox.innerHTML = `
+        <div class="event-content">
+          <div class="date">
+            <span class="month">${month}</span>
+            <span class="day">${day}</span>
+            <span class="weekday">${weekday}</span>
+          </div>
+          <div class="time">${time}</div>
+          <img src="images/${event.eventImage}" alt="${event.title}">
+          <div class="event-text">
+            <span class="event-type">Opera</span>
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            <p class="event-price"><strong>Pris:</strong> ${event.price} kr</p>
+          </div>
+        </div>
+      `;
+
+      eventsContainer.appendChild(eventBox);
+
+      // Lägg till i dropdown
+      const formattedDate = eventDate.toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' });
+      const option = document.createElement('option');
+      option.value = event.id;
+      option.textContent = `${event.title} (${formattedDate}, ${time})`;
+      option.dataset.datetime = event.datetime;
+      eventSelect.appendChild(option);
+    });
+
+  } catch (error) {
+    console.error('Fel vid laddning av events:', error);
+    const eventsContainer = document.getElementById('events-container');
+    if (eventsContainer) {
+      eventsContainer.innerHTML = '<p class="error-message">Kunde inte ladda föreställningar.</p>';
+    }
+  }
+}
