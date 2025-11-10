@@ -8,59 +8,62 @@
       "location": "The Blue Note",
       "description": "An evening of smooth jazz with local artists.",
       "price": 25
+    },
+    {
+      "title": "Traviata – Giuseppe Verdi",
+      "datetime": "2025-11-16T17:00",
+      "location": "Opera Hall",
+      "description": "En dramatisk kärlekshistoria med orkester, solister och kör.",
+      "price": 230,
+      "maxTickets": 100,
+      "ticketCount": null,
+      "category": "opera",
+      "eventImage": "Events.jpg",
+      "id": 3
+    },
+    {
+      "title": " Requiem i levande ljus",
+      "datetime": "2025-12-13T17:30",
+      "location": "Opera Hall",
+      "description": "En stämningsfull kväll där Mozarts Requiem framförs i ljuset av levande ljus.",
+      "price": 256,
+      "maxTickets": 100,
+      "ticketCount": 0,
+      "category": "opera",
+      "eventImage": "Events.jpg",
+      "id": 4
+    },
+    {
+      "title": "Operagala – De största",
+      "datetime": "2026-06-15T20:00",
+      "location": "Opera Hall",
+      "description": "En kväll med de mest kända ariorna från operor som Carmen, Tosca och Figaros bröllop.",
+      "price": 260,
+      "maxTickets": 100,
+      "ticketCount": 0,
+      "category": "opera",
+      "eventImage": "Events.jpg",
+      "id": 5
     }
   ],
   "bookings": [
     {
-      "eventId": "1",
-      "eventTitle": "La Traviata",
-      "eventDateTime": "2024-11-06T17:00:00",
+      "eventId": 3,
+      "eventTitle": "Traviata – Giuseppe Verdi",
+      "eventDateTime": "2025-11-16T17:00",
       "name": "daniel al",
       "email": "test@test.sr",
-      "phone": "",
-      "tickets": 1,
+      "phone": "0700413120",
+      "tickets": 3,
       "message": "",
       "status": "pending",
       "customer": {
         "name": "daniel al",
         "email": "test@test.sr",
-        "phone": ""
+        "phone": "0700413120"
       },
       "id": 1
-    },
-    {
-      "eventId": "1",
-      "eventTitle": "La Traviata",
-      "eventDateTime": "2024-11-06T17:00:00",
-      "name": "daniel al",
-      "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
-      "phone": "0700413120",
-      "tickets": 2,
-      "message": "",
-      "status": "pending",
-      "customer": {
-        "name": "daniel al",
-        "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
-        "phone": "0700413120"
-      },
-      "id": 2
-    },
-    {
-      "eventId": "3",
-      "eventTitle": "Operagala",
-      "eventDateTime": "2024-12-28T18:00:00",
-      "name": "daniel al",
-      "email": "test@test.sr",
-      "phone": "0700413120",
-      "tickets": 4,
-      "message": "",
-      "status": "pending",
-      "customer": {
-        "name": "daniel al",
-        "email": "test@test.sr",
-        "phone": "0700413120"
-      },
-      "id": 3
     }
-  ]
+  ],
+  "users": []
 }
