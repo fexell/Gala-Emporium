@@ -19,9 +19,7 @@
 
 
 # 1. Öppna projektet
-# Backend startar automatiskt när du öppnar projektet i VS Code.
-
-
+ Backend startar automatiskt när du öppnar projektet i VS Code.
 
 # Användning
 
@@ -51,7 +49,7 @@
 
 - **`main`** - Produktionsbranch (stabil kod)
 - **`dev`** - Utvecklingsbranch
-- **`opera-hall`** - Feature branch för Opera Hall funktionalitet
+- **`feature/opera-hall`** - Feature branch för Opera Hall funktionalitet
 
 
 
