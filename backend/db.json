@@ -2,16 +2,22 @@
   "events": [
     {
       "id": "1",
-      "category": "music",
-      "title": "Jazz Night",
-      "datetime": "2024-07-15T20:00:00",
-      "location": "The Blue Note",
-      "description": "An evening of smooth jazz with local artists.",
-      "price": 25,
-      "clubId": 1,
-      "ticketCount": 100,
-      "maxTickets": 200,
-      "eventImage": "jazz-night.jpg"
+      "title": "AVICII",
+      "datetime": "2025-11-15T21:00",
+      "location": "Linköping",
+      "description": "AVICII",
+      "price": 1000,
+      "maxTickets": 990,
+      "clubId": "4"
+    },
+    {
+      "title": "Swedish House Mafia",
+      "description": "A magical event with Swedish House Mafia",
+      "datetime": "2025-12-24T20:00",
+      "price": 500,
+      "maxTickets": 1000,
+      "clubId": "4",
+      "id": "2"
     },
     {
       "id": "09ec",
@@ -107,13 +113,11 @@
   ],
   "clubs": [
     {
-      "id": "1",
-      "name": "The Blue Note",
-      "location": "123 Main St, Cityville",
-      "description": "A premier jazz club featuring live performances every night.",
-      "email": "test@test.com",
-      "phone": "555-1234",
-      "clubImage": "blue-note.jpg"
+      "id": "4",
+      "name": "EDM Club",
+      "location": "Linköping",
+      "description": "Här möts bas, beats och blinkande ljus i en explosion av energi. Oavsett om du är DJ, producent eller bara älskar att dansa, är detta platsen för dig. Upptäck ny musik, träffa likasinnade och känn pulsen från elektronisk dansmusik i varje takt. Hos oss handlar allt om gemenskap, kreativitet och kärleken till EDM!",
+      "capacity": 16000
     },
     {
       "id": "2",
@@ -135,13 +139,6 @@
     }
   ],
   "bookings": [
-    {
-      "id": "1",
-      "eventId": 1,
-      "date": "2024-07-10",
-      "time": "19:00",
-      "totalTickets": 2
-    },
     {
       "referenceNumber": "SCF4AU9M",
       "eventId": "09ec",
@@ -190,10 +187,7 @@
       "customerEmail": "aldemir@test.test",
       "ticketCount": 20,
       "bookingDate": "2025-11-08T10:31:33.859Z",
-      "totalPrice": 9000,
-      "ticketCount": 10,
-      "bookingDate": "2025-11-06T17:55:24.985Z",
-      "totalPrice": 2900
+      "totalPrice": 9000
     },
     {
       "id": "150c",
@@ -203,6 +197,15 @@
       "ticketCount": 1,
       "bookingDate": "2025-07-01T20:00:00",
       "totalPrice": 199
+    },
+    {
+      "id": "d565",
+      "eventId": "1",
+      "customerName": "Felix",
+      "numberOfTickets": 10,
+      "totalPrice": 10000,
+      "bookingDate": "2025-11-09",
+      "bookingTime": "3:34:46 PM"
     }
   ]
 }

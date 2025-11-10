@@ -12,6 +12,7 @@
 
  */
 
+import { apiClient } from '../../helpers/Api.helper.js';
 
 // ================================
 // DOM ELEMENT REFERENSER
@@ -97,6 +98,8 @@ function renderClubs() {
         // appendChild lägger till det nya klubbkortet i clubs-grid
         // Nu syns kortet på sidan!
         clubsGrid.appendChild(clubCard);
+
+        clubFilter.appendChild( new Option( club.name, club.id) );
     });
 
     // Lägg till event listeners för "Besök klubb"-knapparna
@@ -136,6 +139,8 @@ function addClubEventListeners() {
                     targetPage = 'movie-soundtrack.html';
                 } else if (clubId == 3) { // Remote Nightclub
                     targetPage = 'remote-nightclub.html';
+                } else if (clubId == 4) { // EDM Club
+                    targetPage = 'edm.html';
                 } else {
                     // Fallback - om okänd klubb, stanna på startsidan
                     console.warn('Okänd klubb-id:', clubId);
@@ -152,6 +157,35 @@ function addClubEventListeners() {
 
 }
 
+// Sortering
+function sortEvents() {
+
+    // Hitta den valda sorteringen
+    const selectElement = document.getElementById('sort-filter');
+    const selectedValue = selectElement.value;
+
+    // Sortera evenemang efter vald sortering
+    if( selectedValue === 'date-asc' ) {
+        allEvents.sort( (a, b) => new Date(a.datetime) - new Date(b.datetime) )
+    } else if( selectedValue === 'date-desc' ) {
+        allEvents.sort( (a, b) => new Date(b.datetime) - new Date(a.datetime) )
+    } else if( selectedValue === 'price-asc' ) {
+        allEvents.sort( (a, b) => a.price - b.price )
+    } else if( selectedValue === 'price-desc' ) {
+        allEvents.sort( (a, b) => b.price - a.price )
+    }
+}
+
+async function sortByClub() {
+
+    // Hitta den valda klubben
+    const selectElement = document.getElementById('club-filter');
+    const selectedValue = selectElement.value;
+
+    allEvents = selectedValue !== 'all'
+        ? await apiClient.get( `/events?clubId=${selectedValue}` )
+        : await apiClient.get( '/events' );
+}
 
 // ================================
 // RENDERA EVENEMANG
@@ -166,6 +200,7 @@ function loadEvents() {
     try {
         // STEG 1: Filtrera bara kommande evenemang (inte gamla)
         const today = new Date(); // Dagens datum
+        today.setHours(0, 0, 0, 0); // Nollställ tid
 
         // Filtrera evenemang som är idag eller senare
         const upcomingEvents = allEvents.filter(event => {
@@ -175,9 +210,9 @@ function loadEvents() {
 
 
         // STEG 2: Sortera evenemang efter datum (tidigast först)
-        upcomingEvents.sort((a, b) => {
+        /* upcomingEvents.sort((a, b) => {
             return new Date(a.datetime) - new Date(b.datetime); // sortering där a är tidigare än b
-        });
+        }); */
 
         // STEG 3: Rensa tidigare innehåll
         eventsTimeline.innerHTML = '';
@@ -258,7 +293,9 @@ function EventListeners() {
 
     // Lägg till click-event för varje knapp
     bookingButtons.forEach(button => {
-        button.addEventListener('click', function () {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+
             // Hämta event-id från data-attributet
             const eventId = this.getAttribute('data-event-id');
 
@@ -270,10 +307,12 @@ function EventListeners() {
                 let targetPage;
 
                 // Bestäm målsida baserat på eventets clubId
-                if (event.clubId === 2) {
+                if (event.clubId == 2) {
                     targetPage = 'movie-soundtrack.html';
-                } else if (event.clubId === 3) {
+                } else if (event.clubId == 3) {
                     targetPage = 'remote-nightclub.html';
+                } else if (event.clubId == 4) {
+                    targetPage = 'edm.html';
                 } else {
                     // Fallback - om okänd clubId, gå tillbaka till startsidan
                     targetPage = 'home.html';
@@ -290,8 +329,6 @@ function EventListeners() {
 
 }
 
-
-
 // ================================
 // KÖRS NÄR SIDAN LADDAS
 // ================================
@@ -304,7 +341,28 @@ document.addEventListener('DOMContentLoaded', async function () {
     updateStatistics(); // Anropa funktionen för att uppdatera statistik.
 
     renderClubs();      // Anropa funktionen för att visa klubbar.
-
+    
     loadEvents();         //  Visa evenemang
 
+    // Sortering, när användaren ändrar vad att sortera på
+    document.getElementById('sort-filter').addEventListener('change', () => {
+        sortEvents()
+        loadEvents()
+    })
+
+    document.getElementById('club-filter').addEventListener('change', async () => {
+        await sortByClub()
+        sortEvents()
+        loadEvents()
+    })
+
+    clearFiltersBtn.addEventListener('click', () => {
+        clubFilter.value = 'all';
+        sortFilter.value = 'date-asc';
+
+        sortEvents();
+        loadEvents();
+    })
+    
+    // Sortering, efter att sidan laddats
 });
