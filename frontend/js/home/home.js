@@ -78,6 +78,11 @@ function renderClubs() {
     // För varje klubb (club) i arrayen, kör koden inuti { }
     allClubs.forEach(club => {
 
+        // Räkna antal events för denna klubb
+        // OBS: club.id kan vara sträng eller nummer, event.clubId också
+        // Vi konverterar båda till nummer för säker jämförelse
+        const clubEventCount = allEvents.filter(event => Number(event.clubId) === Number(club.id)).length;
+
         // Skapa ett nytt div-element för klubbkortet
         const clubCard = document.createElement('div');
 
@@ -92,6 +97,7 @@ function renderClubs() {
             <h3>${club.name}</h3>
             <p class="club-location">📍 ${club.location}</p>
             <p class="club-description">${club.description}</p>
+            <p class="club-event-count">🎫 ${clubEventCount} evenemang</p>
             <button class="club-btn" data-club-id="${club.id}">Besök klubb</button>
         `;
 
@@ -99,7 +105,7 @@ function renderClubs() {
         // Nu syns kortet på sidan!
         clubsGrid.appendChild(clubCard);
 
-        clubFilter.appendChild( new Option( club.name, club.id) );
+        clubFilter.appendChild(new Option(club.name, club.id));
     });
 
     // Lägg till event listeners för "Besök klubb"-knapparna
@@ -165,14 +171,14 @@ function sortEvents() {
     const selectedValue = selectElement.value;
 
     // Sortera evenemang efter vald sortering
-    if( selectedValue === 'date-asc' ) {
-        allEvents.sort( (a, b) => new Date(a.datetime) - new Date(b.datetime) )
-    } else if( selectedValue === 'date-desc' ) {
-        allEvents.sort( (a, b) => new Date(b.datetime) - new Date(a.datetime) )
-    } else if( selectedValue === 'price-asc' ) {
-        allEvents.sort( (a, b) => a.price - b.price )
-    } else if( selectedValue === 'price-desc' ) {
-        allEvents.sort( (a, b) => b.price - a.price )
+    if (selectedValue === 'date-asc') {
+        allEvents.sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
+    } else if (selectedValue === 'date-desc') {
+        allEvents.sort((a, b) => new Date(b.datetime) - new Date(a.datetime))
+    } else if (selectedValue === 'price-asc') {
+        allEvents.sort((a, b) => a.price - b.price)
+    } else if (selectedValue === 'price-desc') {
+        allEvents.sort((a, b) => b.price - a.price)
     }
 }
 
@@ -183,8 +189,8 @@ async function sortByClub() {
     const selectedValue = selectElement.value;
 
     allEvents = selectedValue !== 'all'
-        ? await apiClient.get( `/events?clubId=${selectedValue}` )
-        : await apiClient.get( '/events' );
+        ? await apiClient.get(`/events?clubId=${selectedValue}`)
+        : await apiClient.get('/events');
 }
 
 // ================================
@@ -341,7 +347,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     updateStatistics(); // Anropa funktionen för att uppdatera statistik.
 
     renderClubs();      // Anropa funktionen för att visa klubbar.
-    
+
     loadEvents();         //  Visa evenemang
 
     // Sortering, när användaren ändrar vad att sortera på
@@ -365,6 +371,16 @@ document.addEventListener('DOMContentLoaded', async function () {
         sortEvents();
         loadEvents();
     })
-    
+
     // Sortering, efter att sidan laddats
 });
+
+// ================================
+// EXPONERA FUNKTIONER TILL GLOBALT SCOPE
+// ================================
+// Eftersom detta är en modul (type="module"), är alla funktioner privata
+// Vi exponerar dessa funktioner till window så att home-admin.js kan använda dem
+window.loadAllData = loadAllData;
+window.updateStatistics = updateStatistics;
+window.renderClubs = renderClubs;
+window.loadEvents = loadEvents;
