@@ -125,7 +125,7 @@ video {
     width: 100%; 
     bottom: 0;
     left: 0;
-    overflow: hidden; 
+    overflow-y: hidden; 
 }
 
 .floor-img {
