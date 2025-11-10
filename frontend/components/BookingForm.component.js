@@ -217,7 +217,7 @@ class BookingForm extends HTMLElement {
 
       availableElement.textContent          = updatedTickets
 
-      this.showMessage( `Successfully booked ${ numberOfTickets } tickets for ${ this.event.name }! Total: ${ totalPrice } SEK`, 'green' )
+      this.showMessage( `Successfully booked ${ numberOfTickets } tickets for ${ this.event.title }! Total: ${ totalPrice } SEK`, 'green' )
 
       this.dispatchEvent(new CustomEvent('booking-changed', {
         bubbles: true,   // allows event to bubble up to parent
@@ -248,7 +248,7 @@ class BookingForm extends HTMLElement {
         maxTickets: updatedTickets,
       } )
 
-      this.showMessage( `Successfully canceled booking for ${ this.event.name }!`, 'green' )
+      this.showMessage( `Successfully canceled booking for ${ this.event.title }!`, 'green' )
 
       this.dispatchEvent(new CustomEvent('booking-changed', {
         bubbles: true,   // allows event to bubble up to parent

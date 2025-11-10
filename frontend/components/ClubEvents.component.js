@@ -119,7 +119,7 @@ class ClubEvents extends HTMLElement {
 
   async handleDeleteEvent( event ) {
     try {
-      const result                          = await window.confirm( `Are you sure you want to delete ${ event.name }?` )
+      const result                          = await window.confirm( `Are you sure you want to delete the event ${ event.title }?` )
 
       if( result ) {
         const response                      = await apiClient.delete( `/events/${ event.id }` )
