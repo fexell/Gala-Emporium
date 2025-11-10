@@ -96,7 +96,7 @@ class ClubEvents extends HTMLElement {
               ) : '' }
               <h2>${ event.title }</h2>
               <p>${ event.description }</p>
-              <p><strong>Date:</strong> ${ event.datetime }</p>
+              <p><strong>Date:</strong> ${ new Intl.DateTimeFormat( 'sv-SE', { dateStyle: 'long', timeStyle: 'short' } ).format( new Date( event.datetime ) ) }</p>
               <p><strong>Tickets left:</strong> ${ event.maxTickets }</p>
               <p><strong>Price:</strong> ${ event.price } SEK</p>
             </div>
