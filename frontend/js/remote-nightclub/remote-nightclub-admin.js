@@ -1,21 +1,60 @@
-
-
 const adminBtnElement = document.getElementById('adminBtn');
 const adminPanelElement = document.getElementById('adminPanel');
-const newEventFormContainer = document.getElementById('newEventFormContainer');
 
 adminBtnElement.addEventListener('click', toggleAdminPanel);
 
-const adminMenuHTML = ` 
-    <header class="admin-menu-header">
-        <button id="menuNewEventBtn">Nytt Event</button>
-        <button id="menuManageEventsBtn">Hantera Event</button>
-        <button id="menuBookingsBtn">Hantera Bokningar</button>
-    </header>
-    <section id="adminContentArea"></section>
-    `
+function toggleAdminPanel() {
+    if (adminPanelElement.innerHTML === '') {
+        adminPanelElement.innerHTML = adminMenuHTML;
+        loadView('newEvent');
+        attachMenuListeners();
+    } else {
+        adminPanelElement.innerHTML = '';
+    }
+}
 
-const newEventFormHTML = `
+const adminMenuHTML = ` 
+    <section class="admin-panel">
+        <header class="admin-menu-header">
+            <button id="menuNewEventBtn">Nytt Event</button>
+            <button id="menuManageEventsBtn">Hantera Event</button>
+        </header>
+        <section id="adminContentArea"></section>
+    </section>
+`
+
+
+
+function attachMenuListeners() {
+    const newEventBtn = document.getElementById('menuNewEventBtn');
+    const manageEventsBtn = document.getElementById('menuManageEventsBtn');
+
+    newEventBtn.addEventListener('click', () => {
+        loadView('newEvent')
+    });
+
+    manageEventsBtn.addEventListener('click', () => {
+        loadView('manageEvents')
+    });
+
+
+};
+
+function loadView(viewName) {
+    switch (viewName) {
+        case 'newEvent':
+            showNewEvent()
+            break
+        case 'manageEvents':
+            showEvents()
+            break
+        default:
+            console.log('Ingen giltig vy valdes.')
+    }
+}
+
+function showNewEvent() {
+    const newEventFormHTML = `
     <form id="createEventForm">
             <h3>Skapa ett nytt Event</h3>
             <div>
@@ -44,7 +83,7 @@ const newEventFormHTML = `
             </div>
 
             <div>
-                <label for="enterTicketCount">Antal tillgängliga biljetter:</label>
+                <label for="enterTicketCount">Antal reserverade biljetter:</label>
                 <input type="number" id="enterTicketCount" min="1" required>
             </div>
 
@@ -57,135 +96,41 @@ const newEventFormHTML = `
         </form>
     `;
 
-const manageEventsHTML = `
-    <h3>Hantera Event</h3>
-    <section id="adminShowEvents"></section>
-`;
+    adminContentArea.innerHTML = newEventFormHTML
 
-const bookingsHTML = `
-    <h3>Återbetalning</h3>
-    <section id="adminShowBookings"></section>
-`;
-
-
-
-attachFormListener();
-
-function toggleAdminPanel() {
-    // Kontrollera om panelen är tom (ska öppnas)
-    if (adminPanelElement.innerHTML === '') {
-        // 1. Ladda in menyn i adminPanelElement
-        adminPanelElement.innerHTML = adminMenuHTML;
-
-        loadView('newEvent'); 
-
-        attachMenuListeners(); 
-
-        // Visa panelen
-        newEventFormContainer.classList.add('visible');
-        adminPanelElement.classList.remove('hidden');
-
-    } else {
-        // Stäng panelen (din befintliga logik)
-        newEventFormContainer.classList.remove('visible');
-        adminPanelElement.classList.add('hidden');
-        adminPanelElement.innerHTML = '';
-    }
-}
-
-function attachMenuListeners() {
-
-    const newEventBtn = document.getElementById('menuNewEventBtn');
-    const manageEventsBtn = document.getElementById('menuManageEventsBtn');
-    const refundsBtn = document.getElementById('menuBookingsBtn');
-
-    newEventBtn.addEventListener('click', () => {
-        loadView('newEvent')
-    });
-
-    manageEventsBtn.addEventListener('click', () => {
-        loadView('manageEvents')
-    });
-
-    refundsBtn.addEventListener('click', () => {
-        loadView('showBookings')
-    });
-}
-
-function loadView(viewName) {
-
-    switch (viewName) {
-        case 'newEvent':
-            adminContentArea.innerHTML = newEventFormHTML
-            break
-        case 'manageEvents':
-            showEvents()
-            break
-        case 'showBookings':
-            adminContentArea.innerHTML = bookingsHTML
-            break
-        default:
-            console.log('Ingen giltig vy valdes.')
-    }
-}
-
-
-
-function attachFormListener() {
     const form = document.getElementById('createEventForm');
 
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-
+            console.log(form)
             createEvent();
         });
     }
 }
 
-async function showEvents() {
-    const adminShowEventsElement = document.getElementById('adminContentArea');
-
-    const response = await fetch('http://localhost:5000/events');
-    const events = await response.json()
-
-    const ourEvents = events.filter(event => event.clubId === 3)
-    let eventsHTML = ''
-    for (var event of ourEvents){
-        var eventHTML = `
-        <div class="admin-show-event">
-            <h1>${event.title}</h1>
-            <p>${event.date}</p>
-            <p>${event.price}</p>
-            <p>${event.ticketCount} + / + ${event.maxTickets}</p>
-            <button id="deleteEvent" class="delete-event">delete</button>
-        </div>
-        `
-        eventsHTML += eventHTML
-    }
-    adminShowEventsElement.innerHTML = eventsHTML
-}
-
 function createEvent() {
     const eventTitleElement = document.getElementById('enterTitle');
     const eventDescriptionElement = document.getElementById('enterDescription');
+    const enterDatetimeElement = document.getElementById('enterDatetime')
     const eventPriceElement = document.getElementById('enterPrice');
+    const enterLocationElement = document.getElementById('enterLocation');
     const eventTicketCountElement = document.getElementById('enterTicketCount');
     const eventMaxTicketsElement = document.getElementById('enterMaxTickets');
 
-    const eventID = Math.random();
+    const eventID = Math.random().toString(36).substring(2, 7);
 
     const newEvent = {
         id: eventID,
-        category: 'Remote Nightclub',
         title: eventTitleElement.value,
-        datetime: new Date(eventObject['datetime']),
-        location: 'TUC Växjö',
+        datetime: enterDatetimeElement.value,
+        location: enterLocationElement.value,
         description: eventDescriptionElement.value,
-        price: eventPriceElement.value,
-        ticketCount: eventTicketCountElement.value,
-        maxTickets: eventMaxTicketsElement.value,
-        clubId: 1,
+        price: parseInt(eventPriceElement.value),
+        maxTickets: parseInt(eventMaxTicketsElement.value),
+        ticketCount: parseInt(eventTicketCountElement.value),
+        category: 'Remote Nightclub',
+        clubId: 3,
         eventImage: 'default.img'
     };
 
@@ -199,7 +144,6 @@ function createEvent() {
         })
         .then(response => response.json())
         .then(data => {
-            displayEvent(data);
             alert(`Eventet "${data.title}" skapades framgångsrikt!`);
             adminPanelElement.innerHTML = '';
         })
@@ -207,5 +151,46 @@ function createEvent() {
             console.error('Kunde inte skapa event:', error);
             alert('Ett fel uppstod vid skapandet av eventet.');
         })
+    showEvents();
 }
 
+async function showEvents() {
+
+    const response = await fetch('http://localhost:5000/events');
+    const events = await response.json()
+
+    const ourEvents = events.filter(event => event.clubId === 3)
+    let eventsHTML = ''
+    for (var event of ourEvents) {
+        var eventHTML = `
+        <div class="admin-show-event">
+            <h1>${event.title}</h1>
+            <p>Date: ${event.datetime}</p>
+            <p>Price: ${event.price}</p>
+            <p>Tickets: ${event.ticketCount}/${event.maxTickets}</p>
+            <button  data-id="${event.id}" class="delete-event">delete</button>
+        </div>
+        `
+        eventsHTML += eventHTML
+    }
+    adminContentArea.innerHTML = eventsHTML;
+
+    const deleteButtons = document.querySelectorAll('.delete-event');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const eventId = e.target.dataset.id;
+            deleteEvent(eventId)
+        })
+    })
+}
+
+async function deleteEvent(eventId) {
+    const response = await fetch(`http://localhost:5000/events/${eventId}`, {
+        method: 'DELETE'
+    })
+    if (!response.ok) {
+        throw new Error(`Kunde inte ta bort event. Status: ${response.status}`);
+    }
+    alert('Eventet togs bort framgångsrikt!');
+    showEvents();
+}

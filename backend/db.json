@@ -103,6 +103,19 @@
       "ticketCount": 0,
       "maxTickets": 150,
       "eventImage": "techno"
+    },
+    {
+      "id": 0.8934374531908948,
+      "title": "IAUGSD",
+      "datetime": "2025-11-07T20:00",
+      "location": "asdasd",
+      "description": "asdasdadsd",
+      "price": 213,
+      "maxTickets": 1,
+      "ticketCount": 123,
+      "category": "Remote Nightclub",
+      "clubId": 3,
+      "eventImage": "default.img"
     }
   ],
   "clubs": [

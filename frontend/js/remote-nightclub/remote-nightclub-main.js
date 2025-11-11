@@ -41,13 +41,13 @@ ticketForm.addEventListener('submit', async (e) => {
 
 
     const newBooking = {
-    id: newId,
-    eventId: customerData.eventId,
-    customerName: customerData.name,
-    customerEmail: customerData.email,
-    ticketCount: parseInt(customerData.tickets),
-    bookingDate: customerData['event-date'],
-    totalPrice: totalPrice
+        id: newId,
+        eventId: customerData.eventId,
+        customerName: customerData.name,
+        customerEmail: customerData.email,
+        ticketCount: parseInt(customerData.tickets),
+        bookingDate: customerData['event-date'],
+        totalPrice: totalPrice
     }
 
     try {
@@ -93,11 +93,11 @@ let eventData = [];
 
 // SHOW EVENTS ON TELEVISONEN
 async function initRemoteNightclub() {
-    const CLUB_ID = 3; 
+    const CLUB_ID = 3;
 
     // Hämta data
     const response = await fetch('http://localhost:5000/events');
-    eventData = await response.json(); 
+    eventData = await response.json();
 
     //Filtrera 
     eventData = eventData.filter(event => event.clubId == CLUB_ID);
@@ -105,13 +105,13 @@ async function initRemoteNightclub() {
     // Lägga till options i bookningsmeny
     for (const eventObject of eventData) {
         const optionElement = document.createElement('option');
-        
+
         optionElement.value = eventObject.id;
-        
-        optionElement.textContent = eventObject.title; 
-        
+
+        optionElement.textContent = eventObject.title;
+
         // 3. Lägg till det skapade elementet i select-menyn
-        eventSelect.appendChild(optionElement); 
+        eventSelect.appendChild(optionElement);
     }
 
     //Updatera televisonen
@@ -127,16 +127,16 @@ async function initRemoteNightclub() {
         const eventDateTime = new Date(eventObject['datetime']);
 
         const formattedDate = eventDateTime.toLocaleDateString('sv-SE', {
-            day: 'numeric', 
+            day: 'numeric',
             month: 'numeric',
         });
-        
+
         const formattedTime = eventDateTime.toLocaleTimeString('sv-SE', {
-            hour: '2-digit',  
-            minute: '2-digit', 
+            hour: '2-digit',
+            minute: '2-digit',
             hour12: false
         });
-        
+
         eventDate.textContent = `Time: ${formattedDate} ${formattedTime}`;
 
         eventPrice.textContent = `Price: ${eventObject.price}kr`;
@@ -145,17 +145,17 @@ async function initRemoteNightclub() {
         eventVideo.src = `/images/${eventObject.eventImage}.mp4`;
         eventVideo.load();
         eventVideo.play();
-        
 
-        eventSelect.value = eventObject.id; 
-        
 
-        timeSelect.innerHTML = ''; 
-        
+        eventSelect.value = eventObject.id;
+
+
+        timeSelect.innerHTML = '';
+
         const timeOption = document.createElement('option');
-        timeOption.value = eventObject.datetime; 
-        
-        timeOption.textContent = `${formattedDate} ${formattedTime}`; 
+        timeOption.value = eventObject.datetime;
+
+        timeOption.textContent = `${formattedDate} ${formattedTime}`;
 
         timeSelect.appendChild(timeOption);
 
@@ -184,11 +184,11 @@ async function initRemoteNightclub() {
 
     // Lyssna på ändringar i Event-selecten (dropdown)
     eventSelect.addEventListener('change', (e) => {
-        const selectedId = e.target.value; 
-        const newIndex = eventData.findIndex(event => event.id == selectedId); 
-        currentEventIndex = newIndex; 
-        
-        updateTelevisonen(currentEventIndex); 
+        const selectedId = e.target.value;
+        const newIndex = eventData.findIndex(event => event.id == selectedId);
+        currentEventIndex = newIndex;
+
+        updateTelevisonen(currentEventIndex);
     });
 };
 
