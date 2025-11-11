@@ -373,9 +373,9 @@ async function loadAdminBookings() {
     const allEvents = await eventsResponse.json();
 
     const operaEvents = allEvents.filter(event => event.category === 'opera');
-    const operaEventIds = operaEvents.map(event => event.id);
+    const operaEventIds = operaEvents.map(event => String(event.id));
 
-    const operaBookings = allBookings.filter(booking => operaEventIds.includes(booking.eventId));
+    const operaBookings = allBookings.filter(booking => operaEventIds.includes(String(booking.eventId)));
 
     const bookingsList = document.getElementById('admin-bookings-list');
     bookingsList.innerHTML = '';
@@ -386,7 +386,7 @@ async function loadAdminBookings() {
     }
 
     operaBookings.forEach(booking => {
-      const event = operaEvents.find(e => e.id === booking.eventId);
+      const event = operaEvents.find(e => String(e.id) === String(booking.eventId));
       const eventTitle = event ? event.title : 'Okänt event';
 
       const bookingDate = new Date(booking.bookingDate);
