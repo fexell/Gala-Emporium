@@ -1,0 +1,64 @@
+/* Traviata page styles */
+body.traviata-bg {
+  /* Mörk, elegant bakgrund */
+  background-color: #111318;
+  color: #efe8df;
+}
+
+.opera-page {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.opera-page h1 {
+  font-size: 2.4rem;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  line-height: 1.05;
+}
+
+.opera-page .opera-image {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  margin: 18px 0;
+}
+
+.opera-page p {
+  color: #e9e2db;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.opera-page strong {
+  color: #fff;
+}
+
+.opera-page a {
+  color: #f0c987;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240, 200, 135, 0.12);
+}
+
+.opera-page a:hover {
+  color: #ffd88a;
+  border-bottom-color: rgba(255, 216, 138, 0.3);
+}
+
+/* Responsiv justering */
+@media (min-width: 900px) {
+  .opera-page {
+    padding: 40px;
+  }
+
+  .opera-page h1 {
+    font-size: 3rem;
+  }
+}
