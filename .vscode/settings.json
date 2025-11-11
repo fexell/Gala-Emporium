@@ -1,4 +1,4 @@
 {
   "liveServer.settings.root": "/frontend",
-  "task.allowAutomaticTasks": "on"
+  "liveServer.settings.port": 3000
 }
