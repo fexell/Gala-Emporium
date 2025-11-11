@@ -398,14 +398,17 @@ async function loadAdminBookings() {
 
       const bookingDiv = document.createElement('div');
       bookingDiv.className = 'admin-booking-item';
-      bookingDiv.innerHTML = `       
+      // Beräkna totalpris om det saknas
+      let tickets = booking.ticketCount || booking.tickets || 0;
+      let totalPrice = booking.totalPrice !== undefined ? booking.totalPrice : (event && event.price ? tickets * event.price : 'N/A');
+      bookingDiv.innerHTML = `
         <h4>${eventTitle}</h4>
-        <p><strong>Bokningsnummer:</strong> ${booking.referenceNumber || 'N/A'}</p>
-        <p><strong>Kund:</strong> ${booking.customerName}</p>
-        <p><strong>Email:</strong> ${booking.customerEmail}</p>
-        <p><strong>Antal biljetter:</strong> ${booking.ticketCount}</p>
-        <p><strong>Totalpris:</strong> ${booking.totalPrice} kr</p>
-        <p><strong>Bokad:</strong> ${formattedDate} ${formattedTime}</p>
+        <p><strong>Bokningsnummer:</strong> ${booking.referenceNumber || booking.id || 'N/A'}</p>
+        <p><strong>Kund:</strong> ${booking.customerName || booking.name || (booking.customer && booking.customer.name) || 'N/A'}</p>
+        <p><strong>Email:</strong> ${booking.customerEmail || booking.email || (booking.customer && booking.customer.email) || 'N/A'}</p>
+        <p><strong>Antal biljetter:</strong> ${tickets}</p>
+        <p><strong>Totalpris:</strong> ${totalPrice} kr</p>
+        <p><strong>Bokad:</strong> ${formattedDate !== 'Invalid Date' ? formattedDate : ''} ${formattedTime !== 'Invalid Date' ? formattedTime : ''}</p>
         <button class="admin-delete-btn" data-booking-id="${booking.id}">Återbetala</button>
       `;
 

@@ -101,6 +101,7 @@ export async function loadStartEvents() {
       // Skapa event box
       const eventBox = document.createElement('div');
       eventBox.className = 'event-box';
+      const ticketCount = event.ticketCount != null ? event.ticketCount : 0;
       eventBox.innerHTML = `
         <div class="event-content">
           <div class="date">
@@ -115,6 +116,7 @@ export async function loadStartEvents() {
             <h3>${event.title}</h3>
             <p>${event.description}</p>
             <p class="event-price"><strong>Pris:</strong> ${event.price} kr</p>
+            <p><strong>Biljetter:</strong> ${ticketCount}/${event.maxTickets}</p>
           </div>
         </div>
       `;
