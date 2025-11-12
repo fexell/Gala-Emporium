@@ -1,0 +1,192 @@
+{
+  "events": [
+    {
+      "title": "Swedish House Mafia",
+      "description": "A magical event with Swedish House Mafia",
+      "datetime": "2025-12-24T20:00",
+      "price": 500,
+      "maxTickets": 1000,
+      "clubId": "4",
+      "id": "2"
+    },
+    {
+      "id": "09ec",
+      "title": "Best of Hans Zimmer Live",
+      "datetime": "2025-12-20T19:30",
+      "location": "TUC Matsalen",
+      "description": "Upplev Hans Zimmers mest episka filmmusik live! Vi spelar soundtracks från Inception, Interstellar, The Dark Knight, Gladiator och Pirates of the Caribbean. En audio-visuell upplevelse med filmklipp på storskärm. VARNING: Ljudnivån kan överrösta hela köttkön!",
+      "price": 450,
+      "maxTickets": 200,
+      "ticketCount": 40,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "hans-zimmer.jpg"
+    },
+    {
+      "id": "8a6a",
+      "title": "Titanic - Love Theme Orchestra",
+      "datetime": "2025-12-30T19:00",
+      "location": "TUC Matsal",
+      "description": "James Horners hjärtvärmande Titanic soundtrack med \"My Heart Will Go On\". En romantisk avslutning på året! Perfect för par som vill dela en pasta innan konserten. Tårhandukar finns vid ingången.",
+      "price": 290,
+      "maxTickets": 150,
+      "ticketCount": 37,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "f324",
+      "title": "Matrix - Digital Symphony",
+      "datetime": "2025-12-06T19:00",
+      "location": "TUC Matsal",
+      "description": "Upplev The Matrix soundtrack som aldrig förr! Don Davis episka musik möter elektroniska beats i en audio-visuell resa genom Matrix. Röda och blå lampor inkluderade. Kan du känna skillnaden mellan pizza och kött-pasta efter konserten?",
+      "price": 380,
+      "maxTickets": 150,
+      "ticketCount": 0,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    },
+    {
+      "id": "6",
+      "category": "music",
+      "title": "DISCO FEVER",
+      "datetime": "2025-12-01T20:00:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "ALL THE BEST HITS FROM THE 80s",
+      "price": 199,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 100,
+      "eventImage": "disco"
+    },
+    {
+      "id": "7",
+      "category": "music",
+      "title": "INDIE ROCK",
+      "datetime": "2025-12-08T21:00:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "Sense the good vibes of indie rock.",
+      "price": 149,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 75,
+      "eventImage": "rock"
+    },
+    {
+      "id": "8",
+      "category": "music",
+      "title": "TECHNO BASS BLAST",
+      "datetime": "2025-12-15T22:30:00",
+      "location": "REMOTE NIGHTCLUB",
+      "description": "Hard and fast techno from local legends.",
+      "price": 249,
+      "clubId": 3,
+      "ticketCount": 0,
+      "maxTickets": 150,
+      "eventImage": "techno"
+    },
+    {
+      "id": "b49e",
+      "title": "Disney Music",
+      "datetime": "2025-12-26T18:30",
+      "location": "TUC Matsal",
+      "description": "\"Magisk Disney-kväll med alla klassiker från Snövit till Encanto! Alan Menken, Randy Newman och Kristen Anderson-Lopez mästerverk live. Varning: Ohämmad mitsång och gråt under 'Remember Me' från Coco. Familjevänligt och hjärtvärmande!\"",
+      "price": 290,
+      "maxTickets": 300,
+      "ticketCount": 50,
+      "category": "movie-soundtrack",
+      "clubId": 2,
+      "eventImage": "default.jpg"
+    }
+  ],
+  "clubs": [
+    {
+      "id": "4",
+      "name": "EDM Club",
+      "location": "Linköping",
+      "description": "Här möts bas, beats och blinkande ljus i en explosion av energi. Oavsett om du är DJ, producent eller bara älskar att dansa, är detta platsen för dig. Upptäck ny musik, träffa likasinnade och känn pulsen från elektronisk dansmusik i varje takt. Hos oss handlar allt om gemenskap, kreativitet och kärleken till EDM!",
+      "capacity": 16000
+    },
+    {
+      "id": "2",
+      "name": "Movie Soundtrack Orchestra",
+      "location": "TUC Matsalen, Linköping",
+      "description": "Mäktig orkester som framför filmmusik. Vi förvandlar TUC matsal till en magisk konsertsal mellan lunch och middag. Kom och upplev filmmusik som aldrig förr!",
+      "email": "info@tucorkester.se",
+      "phone": "013-TUC-MUSIK",
+      "clubImage": "orchestra.jpg"
+    },
+    {
+      "id": "3",
+      "name": "REMOTE NIGHTCLUB",
+      "location": "TUC Event Hall",
+      "description": "Nattklubb på distans för alla de bästa evenemangen. Här hittar du allt från 80-tals disko till techno.",
+      "email": "info@remotenightclub.se",
+      "phone": "123-321-1",
+      "clubImage": "remote-nightclub.jpg"
+    }
+  ],
+  "bookings": [
+    {
+      "referenceNumber": "SCF4AU9M",
+      "eventId": "09ec",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-07T14:39:29.169Z",
+      "totalPrice": 4500,
+      "id": "l82C-Vj"
+    },
+    {
+      "referenceNumber": "FBC8R972",
+      "eventId": "8a6a",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 37,
+      "bookingDate": "2025-11-07T14:41:30.414Z",
+      "totalPrice": 10730,
+      "id": "BJrcsf8"
+    },
+    {
+      "id": "10cf",
+      "referenceNumber": "88SCD2CG",
+      "eventId": "09ec",
+      "customerName": "Olof Svensson",
+      "customerEmail": "Olof@ola.se",
+      "ticketCount": 10,
+      "bookingDate": "2025-11-08T10:22:38.057Z",
+      "totalPrice": 4500
+    },
+    {
+      "id": "7822",
+      "referenceNumber": "684NMATH",
+      "eventId": "b49e",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 50,
+      "bookingDate": "2025-11-08T10:27:07.113Z",
+      "totalPrice": 14500
+    },
+    {
+      "id": "277f",
+      "referenceNumber": "EHPVP7Z4",
+      "eventId": "09ec",
+      "customerName": "Daniel Aldemir",
+      "customerEmail": "aldemir@test.test",
+      "ticketCount": 20,
+      "bookingDate": "2025-11-08T10:31:33.859Z",
+      "totalPrice": 9000
+    },
+    {
+      "id": "150c",
+      "eventId": "6",
+      "customerName": "",
+      "customerEmail": "",
+      "ticketCount": 1,
+      "bookingDate": "2025-07-01T20:00:00",
+      "totalPrice": 199
+    }
+  ]
+}

@@ -1,0 +1,1150 @@
+/* === ALLMÄN GRUND-STYLING === */
+/* Reset av alla element för konsistent styling */
+* {
+    margin: 0;
+    /* Ta bort alla automatiska marginaler */
+    padding: 0;
+    /* Ta bort alla automatiska paddings */
+    box-sizing: border-box;
+    /* Inkludera border och padding i width/height */
+}
+
+/* Huvudstyling för hela sidan */
+body {
+    font-family: 'Arial', sans-serif;
+    /* Snygg, läsbar font */
+    /* Skapar en blå gradient-bakgrund som går från mörkare till ljusare */
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    /* Minst hela skärmhöjden */
+    color: #ffffff;
+    /* Vit text som syns mot mörk bakgrund */
+    line-height: 1.6;
+    /* Bra avstånd mellan textrader för läsbarhet */
+}
+
+/* Hjälpklass för att dölja element (används av JavaScript) */
+.hide {
+    display: none !important;
+    /* !important gör att den alltid gäller */
+}
+
+
+
+
+
+
+/* === HERO-SEKTION === */
+/* Huvudområdet överst på sidan med titel och statistik */
+.hero-section {
+    /* Lägger operabilden som bakgrund med mörk overlay för läsbarhet */
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+        /* Mörk overlay så texten syns */
+        url('../images/Home.webp') center/cover,
+        /* Vår vackra operabild */
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    /* Fallback om bilden inte laddas */
+
+    padding: 80px 20px;
+    /* Stor padding för luftig känsla */
+    text-align: center;
+    /* Centrerar allt innehåll */
+    position: relative;
+    /* För att kunna placera admin-knappen absolut */
+    overflow: hidden;
+    /* Döljer eventuella element som går utanför */
+}
+
+/* Container för hero-innehållet */
+.hero-content {
+    max-width: 1200px;
+    /* Max bredd så det inte blir för brett */
+    margin: 0 auto;
+    /* Centrerar containern */
+}
+
+/* Huvudtiteln "Gala Emporium 2025" */
+.hero-title {
+    font-size: 4rem;
+    /* Stor, imponerande storlek */
+    font-weight: bold;
+    /* Fet text */
+    /* Skapar en guldgradient på texten */
+    background: linear-gradient(45deg, #d4af37, #f4e7aa);
+    -webkit-background-clip: text;
+    /* Klipper bakgrunden till texten */
+    -webkit-text-fill-color: transparent;
+    /* Gör texten transparent så gradienten syns */
+    background-clip: text;
+    /* Standard version för andra webbläsare */
+    margin-bottom: 1rem;
+    /* Avstånd nedåt */
+    /* Lägg till en subtil glöd-effekt */
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Undertexten under titeln */
+.hero-subtitle {
+    font-size: 1.5rem;
+    /* Lagom stor */
+    color: #cccccc;
+    /* Ljusgrå för att inte konkurrera med titeln */
+    margin-bottom: 3rem;
+    /* Stort avstånd till statistik-korten */
+    max-width: 600px;
+    /* Begränsa bredden för bättre läsbarhet */
+    margin-left: auto;
+    /* Centrerar tillsammans med margin-right */
+    margin-right: auto;
+}
+
+
+
+/* Statistik-området med tre kort */
+.hero-stats {
+    display: flex;
+    /* Placerar korten bredvid varandra */
+    justify-content: center;
+    /* Centrerar korten */
+    gap: 2rem;
+    /* Avstånd mellan korten */
+    flex-wrap: wrap;
+    /* Tillåter radbrytning på små skärmar */
+}
+
+/* Individuella statistik-kort */
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    /* Lätt transparent vit bakgrund */
+    backdrop-filter: blur(10px);
+    /* Suddig glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtil kant */
+    border-radius: 15px;
+    /* Rundade hörn */
+    padding: 2rem;
+    /* Luftig padding */
+    min-width: 150px;
+    /* Minsta bredd */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth animationer */
+}
+
+/* Hover-effekt på statistik-kort */
+.stat-card:hover {
+    transform: translateY(-5px);
+    /* Lyfter kortet lite */
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    /* Guldglöd */
+}
+
+/* Siffran i statistik-kortet */
+.stat-number {
+    display: block;
+    /* Tar upp hela bredden */
+    font-size: 2.5rem;
+    /* Stor, iögonfallande storlek */
+    font-weight: bold;
+    /* Fet text */
+    color: #d4af37;
+    /* Guldguld för att matcha titeln */
+    margin-bottom: 0.5rem;
+    /* Avstånd till etiketten */
+}
+
+/* Etiketten under siffran */
+.stat-label {
+    font-size: 1rem;
+    /* Normal storlek */
+    color: #cccccc;
+    /* Ljusgrå */
+    text-transform: uppercase;
+    /* STORA BOKSTÄVER */
+    letter-spacing: 1px;
+    /* Lite mer luftigt mellan bokstäverna */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   FILTER-SEKTION
+   ================================ */
+
+/* Huvudcontainer för filter-sektionen */
+.filter-section {
+    background: rgba(255, 255, 255, 0.08);
+    /* Lite starkare bakgrund än klubbar */
+    backdrop-filter: blur(15px);
+    /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Subtil kant */
+    border-radius: 20px;
+    /* Rundade hörn */
+    padding: 2rem;
+    /* Luftig padding */
+    margin: 2rem auto;
+    /* Centrerad med marginaler */
+    max-width: 1200px;
+    /* Samma maxbredd som andra sektioner */
+}
+
+/* Rubrik för filter-sektionen */
+.filter-section h2 {
+    color: #d4af37;
+    /* Guldtema */
+    text-align: center;
+    /* Centrerad text */
+    margin-bottom: 2rem;
+    /* Mellanrum under rubriken */
+    font-size: 2rem;
+    /* Stor och tydlig */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Subtil skugga */
+}
+
+/* Container för filter-kontrollerna */
+.filter-controls {
+    display: grid;
+    /* CSS Grid för bättre layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Responsiva kolumner */
+    gap: 1.5rem;
+    /* Avstånd mellan elementen */
+    align-items: end;
+    /* Justerar till botten för knappen */
+}
+
+/* Individuell filter-grupp (label + select) */
+.filter-group {
+    display: flex;
+    /* Flex för vertikal layout */
+    flex-direction: column;
+    /* Label ovanför select */
+}
+
+/* Labels för filter-kontrollerna */
+.filter-group label {
+    color: #d4af37;
+    /* Guldtema för labels */
+    margin-bottom: 0.5rem;
+    /* Mellanrum till dropdown */
+    font-weight: 600;
+    /* Fetare text */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* Subtil skugga */
+}
+
+/* Dropdown-menyer för filtrering */
+.filter-select {
+    background: rgba(255, 255, 255, 0.1);
+    /* Glasaktig bakgrund */
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    /* Guldkant */
+    border-radius: 10px;
+    /* Rundade hörn */
+    padding: 0.8rem;
+    /* Luftig padding */
+    color: white;
+    /* Vit text */
+    font-size: 1rem;
+    /* Läsbar storlek */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    backdrop-filter: blur(10px);
+    /* Glaseffekt */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+}
+
+/* Focus-effekt på dropdown-menyer */
+.filter-select:focus {
+    outline: none;
+    /* Ta bort standard outline */
+    border-color: #d4af37;
+    /* Starkare guldkant */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    /* Guldglöd */
+    background: rgba(255, 255, 255, 0.15);
+    /* Lite starkare bakgrund */
+}
+
+/* Alternativ i dropdown-menyer */
+.filter-select option {
+    background: #1a1a2e;
+    /* Mörk bakgrund för alternativ */
+    color: white;
+    /* Vit text */
+}
+
+/* "Rensa filter" knapp */
+.clear-btn {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    border: none;
+    /* Ingen kant behövs */
+    border-radius: 10px;
+    /* Rundade hörn */
+    padding: 0.8rem 2rem;
+    /* Luftig padding */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    font-weight: 600;
+    /* Fetare text */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    align-self: flex-end;
+    /* Justerar till botten */
+    text-transform: uppercase;
+    /* Versaler för stil */
+}
+
+/* Hover-effekt på "Rensa filter" knappen */
+.clear-btn:hover {
+    transform: translateY(-2px);
+    /* Lyfter knappen */
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    /* Guldaktig skugga */
+}
+
+/* ================================
+   EVENEMANG-SEKTION
+   ================================ */
+
+/* Huvudcontainer för evenemang-sektionen */
+.events-section {
+    background: rgba(255, 255, 255, 0.05);
+    /* Ännu mer transparent för variation */
+    backdrop-filter: blur(10px);
+    /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtil kant */
+    border-radius: 20px;
+    /* Rundade hörn */
+    padding: 2rem;
+    /* Luftig padding */
+    margin: 2rem auto;
+    /* Centrerad med marginaler */
+    max-width: 1200px;
+    /* Samma maxbredd som andra sektioner */
+}
+
+/* Container för evenemang-innehållet */
+.events-container {
+    width: 100%;
+    /* Full bredd inom sektionen */
+}
+
+/* Rubrik för evenemang-sektionen */
+.events-section h2 {
+    color: #d4af37;
+    /* Guldtema */
+    text-align: center;
+    /* Centrerad text */
+    margin-bottom: 2rem;
+    /* Mellanrum under rubriken */
+    font-size: 2rem;
+    /* Stor och tydlig */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Subtil skugga */
+}
+
+/* Timeline-container för evenemangen */
+.events-timeline {
+    display: flex;
+    /* Flex för responsiv layout */
+    flex-direction: column;
+    /* Vertikal staplning av evenemang */
+    gap: 1.5rem;
+    /* Avstånd mellan evenemangskorten */
+}
+
+/* Meddelande när inga evenemang matchar filter */
+.no-events {
+    text-align: center;
+    /* Centrerad text */
+    color: rgba(255, 255, 255, 0.7);
+    /* Dämpad vit färg */
+    font-style: italic;
+    /* Kursiv för elegans */
+    padding: 2rem;
+    /* Luftig padding */
+    font-size: 1.1rem;
+    /* Lite större text */
+}
+
+/* Hide-klass för att dölja element */
+.hide {
+    display: none !important;
+    /* Gömmer element helt */
+}
+
+/* ================================
+   ADMIN-KNAPP
+   ================================ */
+
+/* Admin-toggle knapp (längst ned på sidan) */
+.admin-toggle-btn {
+    position: fixed;
+    /* Fast position som följer med när man scrollar */
+    bottom: 20px;
+    /* 20px från botten */
+    right: 20px;
+    /* 20px från högra kanten */
+    background: rgba(212, 175, 55, 0.2);
+    /* Lätt guldig bakgrund */
+    border: 1px solid #d4af37;
+    /* Guldkant */
+    color: #d4af37;
+    /* Guldtext */
+    padding: 12px 24px;
+    /* Lite större padding */
+    border-radius: 25px;
+    /* Rundad som en pille */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    backdrop-filter: blur(10px);
+    /* Glaseffekt */
+    z-index: 1000;
+    /* Ser till att den alltid syns ovanpå annat innehåll */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Subtil skugga */
+}
+
+/* Hover-effekt på admin-knappen */
+.admin-toggle-btn:hover {
+    background: #d4af37;
+    /* Solid guld vid hover */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    transform: scale(1.05);
+    /* Växer lite vid hover */
+}
+
+/* ================================
+   KLUBBAR-SEKTION
+   ================================ */
+
+/* Huvudcontainer för klubbar-sektionen */
+.clubs-section {
+    background: rgba(255, 255, 255, 0.05);
+    /* Ännu mer transparent för variation */
+    backdrop-filter: blur(10px);
+    /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtil kant */
+    border-radius: 20px;
+    /* Rundade hörn */
+    padding: 2rem;
+    /* Luftig padding */
+    margin: 2rem auto;
+    /* Centrerad med marginaler */
+    max-width: 1200px;
+    /* Samma maxbredd som andra sektioner */
+}
+
+/* Rubrik för klubbar-sektionen */
+.clubs-section h2 {
+    color: #d4af37;
+    /* Guldtema */
+    text-align: center;
+    /* Centrerad text */
+    margin-bottom: 1rem;
+    /* Mindre mellanrum för att ge plats åt intro-text */
+    font-size: 2rem;
+    /* Stor och tydlig */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Subtil skugga */
+}
+
+/* Introduktionstext för klubbar */
+.clubs-intro {
+    color: rgba(255, 255, 255, 0.8);
+    /* Läsbar vit text */
+    text-align: center;
+    /* Centrerad text */
+    margin-bottom: 2rem;
+    /* Mellanrum under texten */
+    font-size: 1.1rem;
+    /* Lite större än vanlig text */
+    font-style: italic;
+    /* Kursiv för elegant stil */
+}
+
+/* Grid-layout för klubbkorten */
+.clubs-grid {
+    display: grid;
+    /* CSS Grid för responsiv layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsiva kolumner som automatiskt anpassar sig */
+    gap: 2rem;
+    /* Avstånd mellan korten (mellanrum) */
+    margin-top: 2rem;
+    /* Mellanrum från rubriken */
+    align-items: stretch;
+    /* VIKTIGT: Gör att alla kort får exakt samma höjd */
+}
+
+/* Individuella klubbkort */
+.club-card {
+    background: rgba(255, 255, 255, 0.1);
+    /* Glasaktig bakgrund (transparent vit) */
+    backdrop-filter: blur(15px);
+    /* Starkare glaseffekt (suddar bakgrunden) */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtil vit kant */
+    border-radius: 15px;
+    /* Rundade hörn (mjukare design) */
+    padding: 1.5rem;
+    /* Luftig padding (inre avstånd) */
+    transition: all 0.3s ease;
+    /* Smooth animationer för alla förändringar */
+    cursor: pointer;
+    /* Visar att kortet är klickbart (hand-ikon) */
+    position: relative;
+    /* För shimmer-effekt (behövs för pseudo-element) */
+    overflow: hidden;
+    /* Döljer shimmer-effekten utanför kortet */
+
+    /* VIKTIGT FÖR SAMMA HÖJD: Grid-layouten inuti kortet */
+    display: grid;
+    /* Använd grid för intern layout */
+    grid-template-rows: auto auto 1fr auto;
+    /* 4 rader: titel, location, description (växer), knapp */
+    /* auto = tar plats efter innehåll, 1fr = växer och tar allt ledigt utrymme */
+}
+
+/* Shimmer-effekt på klubbkorten */
+.club-card::before {
+    content: '';
+    /* Tomt innehåll för pseudo-element */
+    position: absolute;
+    /* Absolut positionering */
+    top: 0;
+    left: -100%;
+    /* Startar utanför vänster kant */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.5s ease;
+    /* Animering av shimmer */
+}
+
+/* Aktiverar shimmer-effekt vid hover */
+.club-card:hover::before {
+    left: 100%;
+    /* Glider över kortet */
+}
+
+/* Hover-effekt på klubbkorten */
+.club-card:hover {
+    transform: translateY(-5px);
+    /* Lyfter kortet */
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    /* Guldaktig skugga */
+    border-color: rgba(212, 175, 55, 0.4);
+    /* Starkare guldkant */
+}
+
+/* Header-område i klubbkortet */
+.club-header {
+    display: flex;
+    /* Flex för ikon och info */
+    align-items: center;
+    /* Vertikalt centrerad */
+    margin-bottom: 1rem;
+    /* Mellanrum under headern */
+}
+
+/* Ikon för klubben */
+.club-icon {
+    width: 50px;
+    /* Fast bredd */
+    height: 50px;
+    /* Fast höjd för cirkel */
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    border-radius: 50%;
+    /* Gör den helt rund */
+    display: flex;
+    /* Flex för centrering av ikon */
+    align-items: center;
+    /* Vertikalt centrerad */
+    justify-content: center;
+    /* Horisontellt centrerad */
+    margin-right: 1rem;
+    /* Mellanrum till texten */
+    font-size: 1.5rem;
+    /* Storlek på ikonen */
+    color: #1a1a2e;
+    /* Mörk färg för kontrast mot guld */
+}
+
+/* Info-område (klubbnamn och kategori) */
+/* Klubbnamn (h3) - direkt barn till club-card */
+.club-card h3 {
+    color: #d4af37;
+    /* Guldtema för klubbnamnet */
+    margin: 0 0 0.5rem 0;
+    /* Tar bort default marginaler och lägger till lite under */
+    font-size: 1.3rem;
+    /* Lagom storlek */
+    /* RAD 1: Titeln hamnar alltid på samma höjd i alla kort */
+}
+
+/* Location-text (platsen för klubben) */
+.club-location {
+    color: rgba(255, 255, 255, 0.9);
+    /* Nästan helt vit för bättre läsbarhet */
+    font-size: 1rem;
+    /* Normal textstorlek */
+    margin-bottom: 0.5rem;
+    /* Litet mellanrum till beskrivningen */
+    /* RAD 2: Platsen hamnar alltid på samma höjd i alla kort */
+}
+
+/* Beskrivning av klubben */
+.club-description {
+    color: rgba(255, 255, 255, 0.8);
+    /* Läsbar vit text */
+    line-height: 1.6;
+    /* Luftig radavstånd för bättre läsbarhet */
+    margin-bottom: 1rem;
+    /* Mellanrum under beskrivningen */
+    /* RAD 3: Denna tar upp allt ledigt utrymme (1fr i grid-template-rows) */
+    /* Detta gör att kortare beskrivningar fortfarande skjuter knappen till botten */
+}
+
+/* Antal events för klubben */
+.club-event-count {
+    color: #d4af37;
+    /* Guldfärg för att sticka ut */
+    font-weight: 600;
+    /* Lite fetare text */
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    /* Mellanrum till knappen */
+}
+
+/* Statistik-området i klubbkortet */
+.club-stats {
+    display: flex;
+    /* Flex för att sprida ut statistiken */
+    justify-content: space-between;
+    /* Jämn fördelning */
+    margin-bottom: 1rem;
+    /* Mellanrum under statistiken */
+}
+
+/* Individuell statistik */
+.club-stat {
+    text-align: center;
+    /* Centrerad text */
+}
+
+/* Siffror i statistiken */
+.club-stat .stat-number {
+    display: block;
+    /* Block för att skapa radbrytning */
+    color: #d4af37;
+    /* Guldtema för siffrorna */
+    font-size: 1.2rem;
+    /* Större siffror */
+    font-weight: 700;
+    /* Fet stil */
+    margin-bottom: 0.2rem;
+    /* Lite mellanrum till etiketten */
+}
+
+/* Etiketter i statistiken */
+.club-stat .stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    /* Dämpad vit färg */
+    font-size: 0.8rem;
+    /* Mindre text */
+    text-transform: uppercase;
+    /* Versaler för enhetlighet */
+}
+
+/* Action-knappar området */
+.club-actions {
+    display: flex;
+    /* Flex för knapparna */
+    gap: 1rem;
+    /* Mellanrum mellan knapparna */
+    margin-top: 1rem;
+    /* Mellanrum från statistiken */
+}
+
+/* "Visa evenemang" knapp */
+.view-events-btn {
+    flex: 1;
+    /* Tar lika mycket plats som join-knappen */
+    background: rgba(212, 175, 55, 0.2);
+    /* Lätt guldaktig bakgrund */
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    /* Guldkant */
+    border-radius: 8px;
+    /* Rundade hörn */
+    padding: 0.6rem;
+    /* Luftig padding */
+    color: #d4af37;
+    /* Guldtext */
+    font-weight: 600;
+    /* Lite fetare text */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+}
+
+/* Hover-effekt på "Visa evenemang" knappen */
+.view-events-btn:hover {
+    background: rgba(212, 175, 55, 0.3);
+    /* Starkare bakgrund */
+    transform: translateY(-1px);
+    /* Lyfter knappen lite */
+}
+
+/* "Gå med i klubb" knapp */
+.join-club-btn {
+    flex: 1;
+    /* Tar lika mycket plats som view-knappen */
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    border: none;
+    /* Ingen kant */
+    border-radius: 8px;
+    /* Rundade hörn */
+    padding: 0.6rem;
+    /* Luftig padding */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    font-weight: 600;
+    /* Lite fetare text */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+}
+
+/* Hover-effekt på "Gå med i klubb" knappen */
+.join-club-btn:hover {
+    transform: translateY(-1px);
+    /* Lyfter knappen lite */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    /* Guldaktig skugga */
+}
+
+
+/* ================================
+   FÖRKLARING AV GRID-LAYOUTEN FÖR KLUBBKORT
+   ================================
+   
+   Så här fungerar grid-template-rows: auto auto 1fr auto
+   
+   Rad 1 (auto): Klubbnamn (h3)
+   - Tar exakt den plats som behövs för texten
+   - Kort namn = mindre plats, långt namn = mer plats
+   
+   Rad 2 (auto): Location
+   - Tar exakt den plats som behövs
+   - Hamnar alltid direkt under klubbnamnet
+   
+   Rad 3 (1fr): Beskrivning
+   - "fr" betyder "fraction" - denna tar ALLT ledigt utrymme
+   - Om kortet är högt: beskrivningen får mycket plats
+   - Om kortet är kort: beskrivningen får mindre plats
+   - Detta är hemligheten till att alla kort får samma höjd!
+   
+   Rad 4 (auto): Knapp
+   - Tar exakt den plats som behövs för knappen
+   - Hamnar alltid längst ner eftersom rad 3 tog allt ledigt utrymme
+   
+   align-items: stretch på .clubs-grid:
+   - Gör att alla kort sträcks till samma höjd som det högsta kortet
+   - Detta sker automatiskt!
+*/
+
+/* "Besök klubb" knapp - ligger längst ner i klubbkortet */
+.club-btn {
+    /* RAD 4: Knappen hamnar alltid längst ner på samma höjd i alla kort */
+    padding: 0.75rem 1.5rem;
+    /* Luftig padding för klickbar yta */
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient som matchar temat */
+    color: #1a1a2e;
+    /* Mörk text för kontrast mot guld */
+    border: none;
+    /* Ingen kant behövs */
+    border-radius: 8px;
+    /* Rundade hörn */
+    cursor: pointer;
+    /* Visar att den är klickbar (hand-ikon) */
+    font-weight: 600;
+    /* Lite fetare text */
+    transition: all 0.3s ease;
+    /* Smooth animationer vid hover */
+    text-transform: uppercase;
+    /* VERSALER för tydlighet */
+    letter-spacing: 0.5px;
+    /* Lite luftigare mellan bokstäver */
+}
+
+/* Hover-effekt på "Besök klubb" knappen */
+.club-btn:hover {
+    transform: translateY(-2px);
+    /* Lyfter knappen lite vid hover */
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    /* Guldaktig skugga */
+    filter: brightness(1.1);
+    /* Gör knappen lite ljusare */
+}
+
+
+/* ================================
+   EVENEMANG-SEKTION (Event Cards)
+   ================================ */
+
+/* Individuella evenemangskort */
+.event-card {
+    background: rgba(255, 255, 255, 0.1);
+    /* Glasaktig bakgrund */
+    backdrop-filter: blur(15px);
+    /* Glaseffekt */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtil kant */
+    border-radius: 15px;
+    /* Rundade hörn */
+    padding: 1.5rem;
+    /* Luftig padding */
+    margin-bottom: 1.5rem;
+    /* Avstånd mellan korten */
+    display: flex;
+    /* Flex layout för datum + info + actions */
+    gap: 1.5rem;
+    /* Avstånd mellan sektionerna */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    cursor: pointer;
+    /* Visar att kortet är klickbart */
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    /* Lyfter kortet */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+    /* Guldaktig skugga */
+    border-color: rgba(212, 175, 55, 0.4);
+    /* Starkare guldkant */
+}
+
+/* Datum-sektion (vänster sida) */
+.event-date {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    border-radius: 12px;
+    /* Rundad låda */
+    padding: 1rem;
+    /* Luftig padding */
+    text-align: center;
+    /* Centrerad text */
+    min-width: 80px;
+    /* Fast bredd för enhetlighet */
+    display: flex;
+    /* Flex för centrering */
+    flex-direction: column;
+    /* Vertikal staplning */
+    justify-content: center;
+    /* Centrerad vertikalt */
+}
+
+.event-day {
+    font-size: 2rem;
+    /* Stor siffra för dagen */
+    font-weight: 700;
+    /* Fet stil */
+    line-height: 1;
+    /* Tight line-height */
+}
+
+.event-month {
+    font-size: 0.9rem;
+    /* Mindre text för månaden */
+    font-weight: 600;
+    /* Medel-fet */
+    text-transform: uppercase;
+    /* Versaler */
+    margin-top: 0.2rem;
+    /* Lite mellanrum */
+}
+
+/* Info-sektion (mitten) */
+.event-info {
+    flex: 1;
+    /* Tar upp resterande utrymme */
+}
+
+.event-title {
+    color: #d4af37;
+    /* Guldtema */
+    font-size: 1.4rem;
+    /* Stor rubrik */
+    margin: 0 0 0.5rem 0;
+    /* Bara margin nedåt */
+    font-weight: 600;
+    /* Lite fetare */
+}
+
+.event-club {
+    color: rgba(255, 255, 255, 0.8);
+    /* Ljusgrå text */
+    margin: 0 0 0.8rem 0;
+    /* Margin nedåt */
+    font-weight: 500;
+    /* Medel-fet */
+}
+
+.event-description {
+    color: rgba(255, 255, 255, 0.7);
+    /* Dämpad vit text */
+    line-height: 1.5;
+    /* Luftig radavstånd */
+    margin-bottom: 1rem;
+    /* Mellanrum till detaljer */
+}
+
+.event-details {
+    display: flex;
+    /* Flex för tid och pris */
+    gap: 2rem;
+    /* Avstånd mellan tid och pris */
+    margin-bottom: 1rem;
+    /* Mellanrum till actions */
+}
+
+.event-time,
+.event-price {
+    color: rgba(255, 255, 255, 0.9);
+    /* Ljus text */
+    font-weight: 500;
+    /* Medel-fet */
+    font-size: 0.95rem;
+    /* Lagom storlek */
+}
+
+/* Actions-sektion (höger sida) */
+.event-actions {
+    display: flex;
+    /* Flex för knapp-alignment */
+    align-items: center;
+    /* Centrerad vertikalt */
+}
+
+.book-ticket-btn {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    /* Guldgradient */
+    border: none;
+    /* Ingen kant */
+    border-radius: 10px;
+    /* Rundade hörn */
+    padding: 0.8rem 1.5rem;
+    /* Luftig padding */
+    color: #1a1a2e;
+    /* Mörk text för kontrast */
+    font-weight: 600;
+    /* Fet text */
+    cursor: pointer;
+    /* Visar att den är klickbar */
+    transition: all 0.3s ease;
+    /* Smooth animationer */
+    white-space: nowrap;
+    /* Förhindrar radbrytning */
+}
+
+.book-ticket-btn:hover {
+    transform: translateY(-2px);
+    /* Lyfter knappen */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    /* Guldaktig skugga */
+}
+
+/* === ADMIN KLUBBHANTERING === */
+/* Styling för admin-klubbkort i hanteringslistan */
+.admin-club-card {
+    background: linear-gradient(145deg, #2a2a3e, #1e1e2e);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.admin-club-card:hover {
+    border-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+}
+
+.admin-club-info h4 {
+    color: #d4af37;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.admin-club-info p {
+    color: #e0e0e0;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.admin-club-info p strong {
+    color: #d4af37;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.admin-club-actions {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.delete-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.delete-btn:hover {
+    background-color: #991b1b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.delete-btn:active {
+    transform: translateY(0);
+}
+
+/* === ADMIN FORMULÄR STYLING === */
+/* Styling för admin-sektioner */
+.admin-section {
+    background: linear-gradient(145deg, #1e1e2e, #2a2a3e);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.admin-section h3 {
+    color: #d4af37;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Formulär styling */
+.admin-form {
+    display: grid;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #d4af37;
+    font-weight: 600;
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.admin-btn-primary {
+    background: linear-gradient(135deg, #d4af37, #f4d03f);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 30px;
+    color: #1a1a2e;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.admin-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #f4d03f, #d4af37);
+}
+
+.admin-btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Admin list styling */
+.admin-list {
+    margin-top: 20px;
+}
