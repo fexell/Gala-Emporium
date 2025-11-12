@@ -141,7 +141,9 @@ function addClubEventListeners() {
                 // Navigera till rätt klubbs sida baserat på klubb-id
                 let targetPage;
 
-                if (clubId == 2) { // Movie Soundtrack Orchestra
+                if (clubId == 1) { // Opera Hall
+                    targetPage = '../index.html';
+                } else if (clubId == 2) { // Movie Soundtrack Orchestra
                     targetPage = 'movie-soundtrack.html';
                 } else if (clubId == 3) { // Remote Nightclub
                     targetPage = 'remote-nightclub.html';
@@ -153,7 +155,7 @@ function addClubEventListeners() {
                     return; // Gör ingenting, stanna på samma sida
                 }
 
-                window.location.href = `../pages/${targetPage}`;
+                window.location.href = targetPage.startsWith('../') ? targetPage : `../pages/${targetPage}`;
             } else {
                 console.error('Klubb inte hittad för ID:', clubId);
             }
@@ -313,7 +315,9 @@ function EventListeners() {
                 let targetPage;
 
                 // Bestäm målsida baserat på eventets clubId
-                if (event.clubId == 2) {
+                if (event.clubId == 1) {
+                    targetPage = '../index.html';
+                } else if (event.clubId == 2) {
                     targetPage = 'movie-soundtrack.html';
                 } else if (event.clubId == 3) {
                     targetPage = 'remote-nightclub.html';
@@ -325,7 +329,7 @@ function EventListeners() {
                 }
 
                 // Redirecta användaren till målsidan
-                window.location.href = `../pages/${targetPage}`;
+                window.location.href = targetPage.startsWith('../') ? targetPage : `../pages/${targetPage}`;
 
             } else {
                 console.error('Event inte hittat för ID:', eventId);
