@@ -97,7 +97,7 @@ async function loadCustomerEvents() {
                 minute: '2-digit' 
             });
             
-            // Beräkna tillgängliga biljetter
+            // Beräkna tillgängliga biljetter. maxTickets är totalt antal biljetter för eventet, ticketCount är antal sålda biljetter.
             const availableTickets = event.maxTickets - event.ticketCount;
             
             // Skapa event-kort
