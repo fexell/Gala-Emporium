@@ -10,6 +10,45 @@
       "id": "2"
     },
     {
+      "id": "5a",
+      "category": "hiphop",
+      "title": "Yasin",
+      "datetime": "2024-11-29T19:00:00",
+      "image": "../images/yasin.webp",
+      "description": "Yasin - en av Sveriges mest hypade artister i en exklusiv spelning. Förvänta dig en kväll fylld av energi och ikoniska låtar.",
+      "location": "Hip-Hop Klubben",
+      "price": 799,
+      "clubId": 5,
+      "ticketCount": 20,
+      "maxTickets": 300
+    },
+    {
+      "id": "5b",
+      "category": "hiphop",
+      "title": "Shiro",
+      "datetime": "2024-11-28T21:00:00",
+      "image": "../images/shiro.png",
+      "description": "Shiros unika blend av rap och melodi tar över klubban. Förvänta dig hit efter hit i en elektriserande liveuppvisning",
+      "location": "Hip-Hop Klubben",
+      "price": 599,
+      "clubId": 5,
+      "ticketCount": 11,
+      "maxTickets": 300
+    },
+    {
+      "id": "5c",
+      "category": "hiphop",
+      "title": "Snoop Dogg",
+      "datetime": "2024-11-30T20:00:00",
+      "image": "../images/snoop.jpg",
+      "description": "The Doggfather himself tar över klubben! Snoop Dogg levererar en timslång resa genom hiphop-historiens mest ikoniska låtar.",
+      "location": "Hip-Hop Klubben",
+      "price": 999,
+      "clubId": 5,
+      "ticketCount": 0,
+      "maxTickets": 300
+    },
+    {
       "id": "09ec",
       "title": "Best of Hans Zimmer Live",
       "datetime": "2025-12-20T19:30",
@@ -138,6 +177,13 @@
       "maxTickets": 200,
       "ticketCount": 0,
       "eventImage": "Events.jpg"
+      "title": "AVICII",
+      "description": "Come and see AVICII live!",
+      "datetime": "2026-02-20T20:00",
+      "price": 500,
+      "maxTickets": 2000,
+      "clubId": 4,
+      "id": "B1ax9zI"
     }
   ],
   "clubs": [
@@ -154,6 +200,15 @@
       "location": "Linköping",
       "description": "Här möts bas, beats och blinkande ljus i en explosion av energi. Oavsett om du är DJ, producent eller bara älskar att dansa, är detta platsen för dig. Upptäck ny musik, träffa likasinnade och känn pulsen från elektronisk dansmusik i varje takt. Hos oss handlar allt om gemenskap, kreativitet och kärleken till EDM!",
       "capacity": 16000
+    },
+    {
+      "id": "5",
+      "name": "Hip-Hop Klubben",
+      "location": "Gala Emporium, Stockholm",
+      "description": "Sveriges hetaste scen för hiphop-kultur sedan 2012.",
+      "email": "hiphop@klubben.se",
+      "phone": "555-5678",
+      "clubImage": "hiphop-klubben.jpg"
     },
     {
       "id": "2",
