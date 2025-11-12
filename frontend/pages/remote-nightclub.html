@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/remote-nightclub.css">
     <title>Remote Nightclub</title>
     <script src="/js/remote-nightclub/remote-nightclub-main.js" defer></script>
+    <script src="/js/remote-nightclub/remote-nightclub-admin.js" defer></script>
 </head>
 
 <body class="remote-nightclub-body">
@@ -14,62 +15,41 @@
         <h1>REMOTE NIGHTCLUB</h1>
     </header>
     <main>
+        <section class="upper-half">
         <!-- EVENT DISPLAY -->
-        <section class="television">
-            <div class="video-container" id="video-container">
-                <video class="video" id="event-video" autoplay muted loop>
-                    <source src="/images/disco.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="event-info">
-                <div>
-                    <h1 id="event-title"></h1>
-                    <p id="event-details"></p>
-                    <p id="event-date" name="event-date"></p>
+            <section class="television">
+                <div class="video-container" id="video-container">
+                    <video class="video" id="event-video" autoplay muted loop>
+                        <source src="/images/disco.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <div class="event-meta">
-                    <label id="event-price"></label>
-                    <label id="event-capacity"></label>
+                <div class="event-info">
+                    <div>
+                        <h1 id="event-title" class="event-title"></h1>
+                        <p id="event-details"></p>
+                        <p id="event-location"></p>
+                        <p id="event-date" name="event-date"></p>
+                    </div>
+                    <div class="event-meta">
+                        <label id="event-price"></label>
+                        <label id="event-capacity"></label>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
 
-        <!-- BOOKING -->
+        <!-- TICKET PURCHASE -->
         <section class="ticketwrapper">
             <form class="ticket-form">
-                <h1 class="booking-title">BOOKING</h1>
-                <div>
-                    <label for="event-select">Event:</label>
-                    <select name="eventId" id="event-select">
-                    </select>
-                </div>
-                <div>
-                    <label for="event-date">Tid:</label>
-                    <select name="event-date" id="booking-time-select">
-                    </select>
-                </div>
-
-                <div>
-                    <label for="customerEmail">Your Email:</label>
-                    <input type="email" name="email" placeholder="email@example.com">
-                </div>
-
-                <div>
-                    <label class="customerName" for="customerName">Your Name:</label>
-                    <input type="text" name="name" placeholder="Your name">
-                </div>
-                <div>
-                    <label for="ticket-quantity">Number of tickets:</label>
-                    <input type="number" id="ticket-quantity" name="tickets" min="1" max="10" value="1">
-                </div>
-                <button type="submit">Get Ticket</button>
             </form>
             <div class="tabelfoot"></div>
         </section>
 
-        <!-- SCENE AND INTERIOR -->
-        <section class="scene">
-            <img class="floor-img" src="/images/floor.png" alt="floor">
+        <!-- ADMIN -->
+        <p class="admin-btn"id="adminBtn">ADMIN</p>
+        <section class="admin-wrapper">
+            <section id="adminPanel">
+            </section>
         </section>
 
         <!-- REMOTE CONTROLL -->
@@ -79,13 +59,19 @@
                 <button id="previous-event">▶</button>
                 <button id="next-event">▶</button>
             </div>
-            <img class="ticket-img" id="ticket-button" src="/images/ticket.png" alt="ticket">
+            <button class="ticket-button">
+                <img class="ticket-img" id="ticket-button" src="/images/ticket.png" alt="ticket">
+            </button>
         </section>
 
         <!-- DARK MODE -->
         <section class="dark-mode hidden">
         </section>
-        <img class="crowd hidden" src="/images/crowd.png" alt="crowd">
+
+        <!-- FLOOR -->
+        <img class="floor-img" src="/images/floor.png" alt="floor">
+
+
     </main>
 </body>
 

@@ -6,6 +6,7 @@
     font-family: 'Arial', sans-serif;
     background-color: rgb(225, 225, 225);
     color: white;
+    overflow-x: hidden;
 }
 
 header {
@@ -16,14 +17,12 @@ header {
     width: 100%;
     transform: translateX(-50%);
     color: black;
-    font-size: 0.9em;
     h1 {
         margin-top: 40px; 
         font-family: "Bungee", sans-serif;
         transition: 0.5s ease-out;
     }
 }
-
 
 header h1.header-shrunk {
     font-size: 1.2em;
@@ -38,12 +37,12 @@ header h1.header-shrunk {
     transform: translateX(-50%);
     height: 50%;
     min-height: 250px;
-    
     width: 80%;
     max-width: 700px;
     z-index: 10;
     position: absolute;
     border: 10px solid rgb(0, 0, 0);
+    cursor: pointer;
 
     transition: 0.5s ease-out;
 }
@@ -53,6 +52,16 @@ header h1.header-shrunk {
     max-width: 400px;
     height: 30%;
     top: 20%;
+
+    .event-info {
+        p {
+        font-size: 10px;
+        
+        }
+        label {
+            font-size: 10px;
+        }
+    }
 }
 
 .event-info {
@@ -67,14 +76,37 @@ header h1.header-shrunk {
     z-index: 5;
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
 
-    h1 {
-        margin: 0;
-        font-family: "Bungee", sans-serif;
-
+    #event-details {
+        margin-bottom: 20px;
     }
     p {
-        margin-bottom: 0;
+        font-size: 17px;
+        margin-block: 5px;
+        font-style: oblique;
+        width: 70%;
+        transition: 0.5s ease-in-out;
     }
+    label {
+        font-size: 20px;
+        transition: 0.5s ease-in-out;
+
+    }
+    
+}
+
+.event-title {
+    margin: 0;
+    line-height: 1.1;
+    font-size: 4rem;
+    color: rgb(255, 23, 93);
+    font-family: "Bungee", sans-serif;
+    transition: 0.5s ease-in-out;
+}
+
+.event-title-shrunk {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    text-shadow: none;
 }
 
 .event-meta {
@@ -84,6 +116,7 @@ header h1.header-shrunk {
     bottom: 5%;
     left: 5%;
 }
+
 .video-container {
     position: absolute;
 
@@ -103,23 +136,7 @@ video {
 
 
 
-.floor-img {
-    position: absolute;
-    height: 30%;
-    width: 300%;
 
-    left: 50%;
-    bottom: 0%;
-    z-index: 1;
-    transform: translateX( -50%);
-    transition: 0.5s ease-out;
-}
-
-.floor-img.floor-raised {
-    height: 45%; 
-    width: 100%;
-    bottom: 0%;
-}
 
 .ticketwrapper {
     position: fixed;
@@ -137,7 +154,11 @@ video {
 .ticketwrapper.visible {
     bottom: 8%;
     width: 280px;
+    min-height: 280px;
     height: 33%;
+    .ticket-form > h1 {
+        font-size: 1.7em;
+    }
 }
 
 .tabelfoot {
@@ -153,42 +174,41 @@ video {
     border-left: 3px solid rgb(223, 223, 223);
 }
 
-
-
-
 .ticket-form {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
-    border: 2.5px solid rgb(181, 181, 181);
+    border: 7.5px solid rgb(181, 181, 181);
     color: black;
     position: absolute;
     display: flex;
     z-index: 5;
-
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 55px);
-    width: calc(100% - 55px);
+    height: calc(100% - 65px);
+    width: calc(100% - 65px);
     margin: 5px;
     padding: 20px;
 
     div {
         display: flex;
         justify-content:space-between;
-        align-items: stretch;
+        align-items: center;
+        max-width: 100%;
     }
-
     label {
         margin-right: 0px;
         flex-shrink: 0;
+        color: rgb(99, 99, 99);
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: oblique;
     }
-
     h1 {
         margin: 0;
         margin-top: -10px;
         font-family: "Bungee", sans-serif;
         text-align: center;
-        font-weight: 100;
+        font-size: 7em;
+        transition: 0.5s ease-out;
     }
     button {
         margin: 0;
@@ -197,19 +217,39 @@ video {
         margin-left: 5px;
         width: 100%;
         flex-grow: 1; 
+        height: 15px;
+        padding-inline: 5px;
+        border: 2px solid rgba(190, 190, 190, 0.883);
     }
     select {
         margin-left: 5px;
-
         flex-grow: 1; 
+        border: 2px solid rgba(190, 190, 190, 0.883);
     }
     .customerName {
         white-space: nowrap;
     }
-
 }
 
-
+.receipt {
+    padding: 5px;
+    border: 2px dashed rgb(150, 150, 150);
+    font-family: 'Courier New', Courier, monospace;
+    height: 100%;
+    h2 {
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+        white-space: nowrap;
+    }
+    p {
+        margin: 5px 0;
+    }
+    #closeReceipt {
+        margin-top: 10px;
+        margin-left: 75%;
+    }
+}
 
 .remote {
     position: absolute;
@@ -220,8 +260,9 @@ video {
     height: 150px;
     width: 30px;
     bottom: 10%;
-    right: 10%;
-    z-index: 15; /* Lägg till detta för att säkerställa att fjärrkontrollen ligger högst upp */
+    right: 25%;
+    transform: translateX(75%);
+    z-index: 99; 
     background-color: rgb(46, 46, 46);
     border-radius: 10px;
     padding: 10px;
@@ -238,6 +279,7 @@ video {
         height: 30px;
         width: 30px;
         margin: 5px;
+        cursor: pointer;
     }
     button:nth-child(1) {
         transform: rotate(-90deg);
@@ -248,15 +290,24 @@ video {
     }
 }
 
+.ticket-button {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+}
+
 .ticket-img {
-    width: 40px;
-    transform: rotate(90deg);
+    width: 20px;
+    cursor: pointer;
+
 }
 
 .light-toggle {
     z-index: 20;
-}
+    cursor: pointer;
 
+}
 
 .dark-mode {
     position: absolute;
@@ -289,30 +340,127 @@ video {
     }
 }
 
-.crowd {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0%;
-    width: 100%;
-    z-index: 10;
-    pointer-events: none;
-    animation: dance 1s infinite;
-}
-
-@keyframes dance {
-    0% {
-        height: 85%;
-    }
-    50% {
-        height: 88%;
-        bottom: 0%;
-    }
-    100% {
-        height: 85%;
-    }
-}
-
 .hidden {
     display: none;
+}
+
+.floor-img {
+    position: absolute;
+    height: 30%;
+    width: 200%;
+    left: 50%;
+    bottom: 0%;
+    z-index: 1;
+    transform: translateX( -50%);
+    transition: 0.5s ease-out;
+}
+
+.floor-img.floor-raised {
+    height: 45%; 
+    width: 100%;
+    bottom: 0%;
+}
+
+.admin-wrapper {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    z-index: 100;
+
+}
+
+.admin-menu-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(28, 54, 54);
+    button {
+        padding: 10px;
+        margin: 5px 10px;
+        border-radius: 20px;
+    }
+}
+
+.admin-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    background-color: rgb(44, 81, 81);
+    width: 100%;
+    height: 100vh;
+}
+
+#adminContentArea {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    div {
+        width: 80%;
+    }
+}
+
+.admin-show-event {
+    border: 2px solid rgb(137, 137, 137);
+    border-radius: 20px;
+    background-color: rgb(40, 104, 104);
+    padding: 15px;
+    margin: 10px;
+    h1 {
+        margin: 0;
+    }
+}
+
+.admin-btn {
+    position: absolute;
+    left: 10px;
+    z-index: 101;
+    pointer-events: fill;
+    cursor: pointer;
+
+}
+
+#createEventForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100vw;
+}
+
+#createEventForm div {
+    width: 80%;
+    margin-bottom: 15px;
+    padding: 0 15px; 
+}
+
+#createEventForm label {
+    display: block; 
+    text-align: left; 
+    margin-bottom: 5px;
+    font-weight: bold; 
+}
+
+#createEventForm input,
+#createEventForm textarea {
+    width: 100%; 
+    padding: 10px;
+
+    box-sizing: border-box; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#createEventForm button {
+    margin-top: auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px 0;
 }

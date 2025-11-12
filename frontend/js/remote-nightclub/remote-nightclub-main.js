@@ -1,52 +1,89 @@
+// ADD BOOKING FORM HTML
+const ticketForm = document.querySelector('.ticket-form');
+
+const ticketFormHTML = `
+<h1 class="booking-title">BOOKING</h1>
+    <div>
+        <label for="event-select">Event:</label>
+        <select name="eventId" id="event-select">
+        </select>
+    </div>
+    <div>
+        <label for="event-date">Tid:</label>
+        <select name="event-date" id="booking-time-select">
+        </select>
+    </div>
+
+    <div>
+        <label for="customerEmail">Your Email:</label>
+        <input type="email" name="email" placeholder="email@example.com">
+    </div>
+
+    <div>
+        <label class="customerName" for="customerName">Your Name:</label>
+        <input type="text" name="name" placeholder="Your name">
+    </div>
+    <div>
+        <label for="ticket-quantity">Number of tickets:</label>
+        <input type="number" id="ticket-quantity" name="tickets" min="1" max="10" value="1">
+    </div>
+    <button type="submit">Get Ticket</button>
+`;
+
+ticketForm.innerHTML = ticketFormHTML;
+
+
 // SHOW BOOKING FORM AND ANIMATE FLOOR AND TELEVISION
 const ticketWrapper = document.querySelector('.ticketwrapper');
 const ticketButton = document.getElementById('ticket-button');
 const floorImage = document.querySelector('.floor-img');
 const television = document.querySelector('.television');
 const headerTitle = document.querySelector('header h1');
+const eventTitle = document.getElementById('event-title');
 
-ticketButton.addEventListener('click', () => {
+const toggleBookingDisplay = () => {
     ticketWrapper.classList.toggle('visible');
     floorImage.classList.toggle('floor-raised');
     television.classList.toggle('television-change-size');
     headerTitle.classList.toggle('header-shrunk');
-});
+    eventTitle.classList.toggle('event-title-shrunk');
+};
+
+ticketButton.addEventListener('click', toggleBookingDisplay);
+television.addEventListener('click', toggleBookingDisplay);
 
 // BOOKING FORM FUNCTIONALITY
-const eventTitle = document.getElementById('event-title');
-const eventDetails = document.getElementById('event-details');
-const eventDate = document.getElementById('event-date');
-const timeSelect = document.getElementById('booking-time-select');
-
-const eventPrice = document.getElementById('event-price');
-const eventCapacity = document.getElementById('event-capacity');
-const eventVideo = document.getElementById('event-video');
-const eventSelect = document.getElementById('event-select');
-
-
-const ticketForm = document.querySelector('.ticket-form');
-
 ticketForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(ticketForm);
     const customerData = Object.fromEntries(formData.entries());
 
     const selectedEvent = eventData.find(event => event.id == customerData.eventId);
+    const requestedTickets = parseInt(customerData.tickets); 
+
+    const availableTickets = selectedEvent.maxTickets - selectedEvent.ticketCount; 
+
+    if (requestedTickets > availableTickets) {
+        alert(`Tyvärr! Endast ${availableTickets} biljetter kvar till ${selectedEvent.title}.`);
+        // Stoppa exekveringen och skicka inte bokningen.
+        return; 
+    }
+
     const totalPrice = selectedEvent.price * parseInt(customerData.tickets);
     const newId = Math.random().toString(16).slice(2, 6);
 
-
     const newBooking = {
-    id: newId,
-    eventId: customerData.eventId,
-    customerName: customerData.name,
-    customerEmail: customerData.email,
-    ticketCount: parseInt(customerData.tickets),
-    bookingDate: customerData['event-date'],
-    totalPrice: totalPrice
+        id: newId,
+        eventId: customerData.eventId,
+        customerName: customerData.name,
+        customerEmail: customerData.email,
+        ticketCount: parseInt(customerData.tickets),
+        bookingDate: customerData['event-date'],
+        totalPrice: totalPrice
     }
 
     try {
+        // STEG 1: Skicka POST för bokningen
         const response = await fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
@@ -54,9 +91,13 @@ ticketForm.addEventListener('submit', async (e) => {
             },
             body: JSON.stringify(newBooking)
         });
+
         if (response.ok) {
             const responseData = await response.json();
             console.log('Booking created successfully:', responseData);
+            
+            await handleSuccessfulBooking(newBooking, selectedEvent); 
+            
         } else {
             console.error('Failed to create booking:', response.statusText);
         }
@@ -67,50 +108,103 @@ ticketForm.addEventListener('submit', async (e) => {
     console.log(customerData);
 });
 
+async function handleSuccessfulBooking(newBooking, selectedEvent) {
+    // 1. Visa kvittot
+    showReceipt(newBooking);
+
+    // 2. Beräkna nytt biljettantal lokalt
+    selectedEvent.ticketCount += newBooking.ticketCount;
+
+    // 3. Uppdatera eventresursen på servern
+    try {
+        const updateResponse = await fetch('http://localhost:5000/events/' + selectedEvent.id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ticketCount: selectedEvent.ticketCount
+            })
+        });
+
+        if (updateResponse.ok) {
+            console.log('Event ticket count successfully updated.');
+        } else {
+            console.error('Failed to update event ticket count.');
+        }
+    } catch (error) {
+        console.error('Error updating event:', error);
+    }
+}
+
+function showReceipt(newBooking) {
+    const receipt = `
+    <section class="receipt">
+    <h2>Booking Receipt</h2>
+    <p><strong>Name:</strong> ${newBooking.customerName}</p>
+    <p><strong>Email:</strong> ${newBooking.customerEmail}</p>
+    <p><strong>Number of Tickets:</strong> ${newBooking.ticketCount}</p>
+    <p><strong>Total Price:</strong> ${newBooking.totalPrice}kr</p>
+    <p><strong>Show this booking ID when you arrive:</strong> ${newBooking.id}</p>
+    <button id="closeReceipt">Close</button>
+    </section>
+    `
+    ticketForm.innerHTML = receipt
+
+    const closeButton = document.getElementById('closeReceipt');
+    closeButton.addEventListener('click', () => {
+        ticketForm.innerHTML = ticketFormHTML;
+    })
+;}
+
+
+
 
 
 // LIGHT TOGGLE FUNCTIONALITY
-
 const lightToggle = document.getElementById('light-toggle')
 const darkMode = document.querySelector('.dark-mode')
-const crowdVisible = document.querySelector('.crowd')
 const eventInfoVisible = document.querySelector('.event-info')
 
 lightToggle.addEventListener('click', () => {
     darkMode.classList.toggle('hidden')
-    crowdVisible.classList.toggle('hidden')
     eventInfoVisible?.classList.toggle('hidden')
     ticketWrapper.classList.toggle('hidden')
 })
 
+// PRESENT EVENTS ON TELEVISONEN
+const eventDetails = document.getElementById('event-details');
+const eventDate = document.getElementById('event-date');
+const timeSelect = document.getElementById('booking-time-select');
+const eventPrice = document.getElementById('event-price');
+const eventLocation = document.getElementById('event-location');
+const eventCapacity = document.getElementById('event-capacity');
+const eventVideo = document.getElementById('event-video');
+const eventSelect = document.getElementById('event-select');
 
 let currentEventIndex = 0;
 let eventData = [];
 
-// SHOW EVENTS ON TELEVISONEN
 async function initRemoteNightclub() {
-    const CLUB_ID = 3; 
+    const CLUB_ID = 3;
 
-    // Hämta data
+    //FETCH EVENTS
     const response = await fetch('http://localhost:5000/events');
-    eventData = await response.json(); 
+    eventData = await response.json();
 
-    //Filtrera 
+    //FILTER 
     eventData = eventData.filter(event => event.clubId == CLUB_ID);
 
-    // Lägga till options i bookningsmeny
-    for (const eventObject of eventData) {
+    //Add the right event 
+    for (const eventOption of eventData) {
+
         const optionElement = document.createElement('option');
-        
-        optionElement.value = eventObject.id;
-        
-        optionElement.textContent = eventObject.title; 
-        
-        // 3. Lägg till det skapade elementet i select-menyn
-        eventSelect.appendChild(optionElement); 
+        optionElement.value = eventOption.id;
+        optionElement.textContent = eventOption.title;
+        eventSelect.appendChild(optionElement);
     }
 
-    //Updatera televisonen
+    //Update televisionen with first event
     updateTelevisonen(currentEventIndex);
 
     function updateTelevisonen(eventIndex) {
@@ -123,41 +217,38 @@ async function initRemoteNightclub() {
         const eventDateTime = new Date(eventObject['datetime']);
 
         const formattedDate = eventDateTime.toLocaleDateString('sv-SE', {
-            day: 'numeric', 
+            day: 'numeric',
             month: 'numeric',
         });
-        
+
         const formattedTime = eventDateTime.toLocaleTimeString('sv-SE', {
-            hour: '2-digit',  
-            minute: '2-digit', 
+            hour: '2-digit',
+            minute: '2-digit',
             hour12: false
         });
-        
-        eventDate.textContent = `Time: ${formattedDate} ${formattedTime}`;
 
+        eventDate.textContent = `Time: ${formattedDate} ${formattedTime}`;
+        eventLocation.textContent = `Location: ${eventObject.location}`;
         eventPrice.textContent = `Price: ${eventObject.price}kr`;
         eventCapacity.textContent = `Capacity: ${eventObject.maxTickets} people`;
 
         eventVideo.src = `/images/${eventObject.eventImage}.mp4`;
         eventVideo.load();
         eventVideo.play();
-        
 
-        eventSelect.value = eventObject.id; 
-        
+        eventSelect.value = eventObject.id;
 
-        timeSelect.innerHTML = ''; 
-        
+        timeSelect.innerHTML = '';
+
         const timeOption = document.createElement('option');
-        timeOption.value = eventObject.datetime; 
-        
-        timeOption.textContent = `${formattedDate} ${formattedTime}`; 
+        timeOption.value = eventObject.datetime;
+
+        timeOption.textContent = `${formattedDate} ${formattedTime}`;
 
         timeSelect.appendChild(timeOption);
-
-
     }
 
+    // GET NAVIGATION BUTTONS
     const nextEventButton = document.getElementById('next-event');
     const previousEventButton = document.getElementById('previous-event');
 
@@ -178,13 +269,13 @@ async function initRemoteNightclub() {
         updateTelevisonen(currentEventIndex)
     })
 
-    // Lyssna på ändringar i Event-selecten (dropdown)
+    // Listener for event select change in booking form and update televisionen
     eventSelect.addEventListener('change', (e) => {
-        const selectedId = e.target.value; 
-        const newIndex = eventData.findIndex(event => event.id == selectedId); 
-        currentEventIndex = newIndex; 
-        
-        updateTelevisonen(currentEventIndex); 
+        const selectedId = e.target.value;
+        const newIndex = eventData.findIndex(event => event.id == selectedId);
+        currentEventIndex = newIndex;
+
+        updateTelevisonen(currentEventIndex);
     });
 };
 
