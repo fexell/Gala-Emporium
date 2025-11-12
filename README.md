@@ -1,5 +1,5 @@
 # Välkommen till Gala Emporium 2025! 🎉#  ( Grupp #6 )
-Tack för att du besöker vårt projekt! Gala Emporium är en webbplats där besökare kan utforska evenemang från fem unika klubbar, boka biljetter och uppleva olika typer av underhållning.
+Tack för att du besöker vårt projekt! Gala Emporium är en webbplats där besökare kan utforska evenemang flera unika klubbar, boka biljetter och uppleva olika typer av underhållning.
 Vi är fem studenter från TUC Yrkeshögskola som tillsammans har skapat denna plattform:
 
 
