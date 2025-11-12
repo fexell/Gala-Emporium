@@ -155,7 +155,7 @@
       "clubImage": "blue-note.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Hip-Hop Klubben",
       "location": "Gala Emporium, Stockholm",
       "description": "Sveriges hetaste scen för hiphop-kultur sedan 2012.",
@@ -183,31 +183,6 @@
     }
   ],
   "bookings": [
-    {
-      "id": "1",
-      "eventId": 1,
-      "date": "2024-07-10",
-      "time": "19:00",
-      "totalTickets": 2
-    },
-    {
-      "eventId": "4b",
-      "customerName": "Ali",
-      "customerEmail": "ali@gmail.com",
-      "ticketCount": 11,
-      "bookingDate": "2025-11-10T11:25:53.297Z",
-      "totalPrice": 6589,
-      "id": 2
-    },
-    {
-      "eventId": "4a",
-      "customerName": "Ali",
-      "customerEmail": "ali@gmail.com",
-      "ticketCount": 20,
-      "bookingDate": "2025-11-10T11:29:17.480Z",
-      "totalPrice": 15980,
-      "id": 3
-    },
     {
       "referenceNumber": "SCF4AU9M",
       "eventId": "09ec",
