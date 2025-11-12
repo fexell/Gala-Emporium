@@ -99,6 +99,15 @@
       "category": "movie-soundtrack",
       "clubId": 2,
       "eventImage": "default.jpg"
+    },
+    {
+      "title": "AVICII",
+      "description": "Come and see AVICII live!",
+      "datetime": "2026-02-20T20:00",
+      "price": 500,
+      "maxTickets": 2000,
+      "clubId": 4,
+      "id": "B1ax9zI"
     }
   ],
   "clubs": [
