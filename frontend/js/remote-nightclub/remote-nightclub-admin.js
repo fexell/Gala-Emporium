@@ -15,10 +15,10 @@ function toggleAdminPanel() {
 
 const adminMenuHTML = ` 
     <section class="admin-panel">
-        <header class="admin-menu-header">
+        <section class="admin-menu-header">
             <button id="menuNewEventBtn">Nytt Event</button>
             <button id="menuManageEventsBtn">Hantera Event</button>
-        </header>
+        </section>
         <section id="adminContentArea"></section>
     </section>
 `
@@ -159,8 +159,13 @@ async function showEvents() {
     const response = await fetch('http://localhost:5000/events');
     const events = await response.json()
 
+    
+
     const ourEvents = events.filter(event => event.clubId === 3)
-    let eventsHTML = ''
+    let eventsHTML = `
+            <h3>Hantera Event</h3>
+
+    `
     for (var event of ourEvents) {
         var eventHTML = `
         <div class="admin-show-event">

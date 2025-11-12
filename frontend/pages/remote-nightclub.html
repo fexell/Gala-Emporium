@@ -36,35 +36,11 @@
                 </div>
             </section>
         </section>
-        
-            <section class="ticketwrapper">
+
+        <!-- TICKET PURCHASE -->
+        <section class="ticketwrapper">
             <form class="ticket-form">
-                <h1 class="booking-title">BOOKING</h1>
-                <div>
-                    <label for="event-select">Event:</label>
-                    <select name="eventId" id="event-select">
-                    </select>
-                </div>
-                <div>
-                    <label for="event-date">Tid:</label>
-                    <select name="event-date" id="booking-time-select">
-                    </select>
-                </div>
-
-                <div>
-                    <label for="customerEmail">Your Email:</label>
-                    <input type="email" name="email" placeholder="email@example.com">
-                </div>
-
-                <div>
-                    <label class="customerName" for="customerName">Your Name:</label>
-                    <input type="text" name="name" placeholder="Your name">
-                </div>
-                <div>
-                    <label for="ticket-quantity">Number of tickets:</label>
-                    <input type="number" id="ticket-quantity" name="tickets" min="1" max="10" value="1">
-                </div>
-                <button type="submit">Get Ticket</button>
+                
             </form>
 
             <div class="tabelfoot"></div>
@@ -72,9 +48,10 @@
 
         <!-- ADMIN -->
         <p class="admin-btn"id="adminBtn">ADMIN</p>
-        <section id="adminPanel">
+        <section class="admin-wrapper">
+            <section id="adminPanel">
+            </section>
         </section>
-
         <!-- REMOTE CONTROLL -->
         <section class="remote">
             <button id="light-toggle" class="light-toggle">⏻ </button>
@@ -90,6 +67,8 @@
         <!-- DARK MODE -->
         <section class="dark-mode hidden">
         </section>
+
+        
         <img class="floor-img" src="/images/floor.png" alt="floor">
 
 
