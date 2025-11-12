@@ -136,7 +136,10 @@ function addClubEventListeners() {
                     targetPage = 'movie-soundtrack.html';
                 } else if (clubId == 3) { // Remote Nightclub
                     targetPage = 'remote-nightclub.html';
-                } else {
+                } else if (clubId == 5){ // hiphop Sidan
+                    targetPage = 'hiphop.html';
+                }
+                else {
                     // Fallback - om okänd klubb, stanna på startsidan
                     console.warn('Okänd klubb-id:', clubId);
                     return; // Gör ingenting, stanna på samma sida
