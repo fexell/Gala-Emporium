@@ -233,7 +233,7 @@ function setupBookingForm() {
 
     try {
       const bookingData = {
-        eventId: parseInt(eventSelect.value),
+        eventId: eventSelect.value,  // Keep as string to support both number and string IDs
         eventTitle: selectedOption.text.split(' (')[0],
         eventDateTime: selectedOption.dataset.datetime,
         name: form.querySelector('#name').value,
