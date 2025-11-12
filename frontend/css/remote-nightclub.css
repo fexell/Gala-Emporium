@@ -24,9 +24,6 @@ header {
     }
 }
 
-
-
-
 header h1.header-shrunk {
     font-size: 1.2em;
     margin-top: 114px;
@@ -40,7 +37,6 @@ header h1.header-shrunk {
     transform: translateX(-50%);
     height: 50%;
     min-height: 250px;
-    
     width: 80%;
     max-width: 700px;
     z-index: 10;
@@ -56,6 +52,16 @@ header h1.header-shrunk {
     max-width: 400px;
     height: 30%;
     top: 20%;
+
+    .event-info {
+        p {
+        font-size: 10px;
+        
+        }
+        label {
+            font-size: 10px;
+        }
+    }
 }
 
 .event-info {
@@ -70,11 +76,20 @@ header h1.header-shrunk {
     z-index: 5;
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
 
-
+    #event-details {
+        margin-bottom: 20px;
+    }
     p {
-        margin-top: 5px;
+        font-size: 17px;
+        margin-block: 5px;
         font-style: oblique;
         width: 70%;
+        transition: 0.5s ease-in-out;
+    }
+    label {
+        font-size: 20px;
+        transition: 0.5s ease-in-out;
+
     }
     
 }
@@ -92,8 +107,6 @@ header h1.header-shrunk {
     font-size: 2em;
     color: rgb(255, 255, 255);
     text-shadow: none;
-
-
 }
 
 .event-meta {
@@ -103,6 +116,7 @@ header h1.header-shrunk {
     bottom: 5%;
     left: 5%;
 }
+
 .video-container {
     position: absolute;
 
@@ -120,14 +134,7 @@ video {
 }
 
 
-.scene {
-    position: absolute;
-    height: 100%;
-    width: 100%; 
-    bottom: 0;
-    left: 0;
-    overflow-x: hidden; 
-}
+
 
 
 
@@ -435,9 +442,9 @@ video {
 
 #createEventForm label {
     display: block; 
-    text-align: left; /* Tvingar texten i label att stå till vänster */
+    text-align: left; 
     margin-bottom: 5px;
-    font-weight: bold; /* Valfritt: Gör label-texten fet för bättre läsbarhet */
+    font-weight: bold; 
 }
 
 #createEventForm input,

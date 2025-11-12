@@ -1,6 +1,4 @@
-// Add the ticket booking form HTML
-// If a purchase is made, show a receipt with booking details instead
-
+// ADD BOOKING FORM HTML
 const ticketForm = document.querySelector('.ticket-form');
 
 const ticketFormHTML = `
@@ -55,13 +53,22 @@ ticketButton.addEventListener('click', toggleBookingDisplay);
 television.addEventListener('click', toggleBookingDisplay);
 
 // BOOKING FORM FUNCTIONALITY
-
 ticketForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(ticketForm);
     const customerData = Object.fromEntries(formData.entries());
 
     const selectedEvent = eventData.find(event => event.id == customerData.eventId);
+    const requestedTickets = parseInt(customerData.tickets); 
+
+    const availableTickets = selectedEvent.maxTickets - selectedEvent.ticketCount; 
+
+    if (requestedTickets > availableTickets) {
+        alert(`Tyvärr! Endast ${availableTickets} biljetter kvar till ${selectedEvent.title}.`);
+        // Stoppa exekveringen och skicka inte bokningen.
+        return; 
+    }
+
     const totalPrice = selectedEvent.price * parseInt(customerData.tickets);
     const newId = Math.random().toString(16).slice(2, 6);
 
@@ -76,6 +83,7 @@ ticketForm.addEventListener('submit', async (e) => {
     }
 
     try {
+        // STEG 1: Skicka POST för bokningen
         const response = await fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
@@ -83,10 +91,12 @@ ticketForm.addEventListener('submit', async (e) => {
             },
             body: JSON.stringify(newBooking)
         });
+
         if (response.ok) {
             const responseData = await response.json();
             console.log('Booking created successfully:', responseData);
-            showReceipt(newBooking);
+            
+            await handleSuccessfulBooking(newBooking, selectedEvent); 
             
         } else {
             console.error('Failed to create booking:', response.statusText);
@@ -96,8 +106,36 @@ ticketForm.addEventListener('submit', async (e) => {
         console.error('Error creating booking:', error);
     }
     console.log(customerData);
-    
 });
+
+async function handleSuccessfulBooking(newBooking, selectedEvent) {
+    // 1. Visa kvittot
+    showReceipt(newBooking);
+
+    // 2. Beräkna nytt biljettantal lokalt
+    selectedEvent.ticketCount += newBooking.ticketCount;
+
+    // 3. Uppdatera eventresursen på servern
+    try {
+        const updateResponse = await fetch('http://localhost:5000/events/' + selectedEvent.id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ticketCount: selectedEvent.ticketCount
+            })
+        });
+
+        if (updateResponse.ok) {
+            console.log('Event ticket count successfully updated.');
+        } else {
+            console.error('Failed to update event ticket count.');
+        }
+    } catch (error) {
+        console.error('Error updating event:', error);
+    }
+}
 
 function showReceipt(newBooking) {
     const receipt = `
@@ -135,11 +173,11 @@ lightToggle.addEventListener('click', () => {
 })
 
 // PRESENT EVENTS ON TELEVISONEN
-
 const eventDetails = document.getElementById('event-details');
 const eventDate = document.getElementById('event-date');
 const timeSelect = document.getElementById('booking-time-select');
 const eventPrice = document.getElementById('event-price');
+const eventLocation = document.getElementById('event-location');
 const eventCapacity = document.getElementById('event-capacity');
 const eventVideo = document.getElementById('event-video');
 const eventSelect = document.getElementById('event-select');
@@ -157,14 +195,12 @@ async function initRemoteNightclub() {
     //FILTER 
     eventData = eventData.filter(event => event.clubId == CLUB_ID);
 
-    //Add the events in booking form title select dropdown  
-    for (const eventObject of eventData) {
+    //Add the right event 
+    for (const eventOption of eventData) {
+
         const optionElement = document.createElement('option');
-
-        optionElement.value = eventObject.id;
-
-        optionElement.textContent = eventObject.title;
-
+        optionElement.value = eventOption.id;
+        optionElement.textContent = eventOption.title;
         eventSelect.appendChild(optionElement);
     }
 
@@ -192,7 +228,7 @@ async function initRemoteNightclub() {
         });
 
         eventDate.textContent = `Time: ${formattedDate} ${formattedTime}`;
-
+        eventLocation.textContent = `Location: ${eventObject.location}`;
         eventPrice.textContent = `Price: ${eventObject.price}kr`;
         eventCapacity.textContent = `Capacity: ${eventObject.maxTickets} people`;
 
