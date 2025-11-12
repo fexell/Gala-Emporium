@@ -221,7 +221,17 @@ async function loadAdminBookings() {
     const operaEvents = allEvents.filter(event => event.category === 'opera');
     const operaEventIds = operaEvents.map(event => String(event.id));
 
-    const operaBookings = allBookings.filter(booking => operaEventIds.includes(String(booking.eventId)));
+    console.log('Opera event IDs:', operaEventIds);
+    console.log('All bookings:', allBookings);
+
+    const operaBookings = allBookings.filter(booking => {
+      const bookingEventId = String(booking.eventId);
+      const match = operaEventIds.includes(bookingEventId);
+      console.log(`Booking ${booking.id} - eventId: ${bookingEventId}, match: ${match}`);
+      return match;
+    });
+
+    console.log('Opera bookings found:', operaBookings);
 
     const bookingsList = document.getElementById('admin-bookings-list');
     bookingsList.innerHTML = '';
