@@ -140,6 +140,43 @@
       "eventImage": "default.jpg"
     },
     {
+      "id": "4",
+      "category": "opera",
+      "clubId": 1,
+      "title": "Requiem",
+      "datetime": "2025-12-28T20:00",
+      "location": "Operahallen, Stockholm",
+      "description": "Mozarts monumentala Requiem i en storslagen uppsättning. En djupt rörande musikalisk upplevelse.",
+      "price": 500,
+      "maxTickets": 250,
+      "ticketCount": 0,
+      "eventImage": "Events.jpg"
+    },
+    {
+      "id": "5",
+      "category": "opera",
+      "clubId": 1,
+      "title": "Operagala",
+      "datetime": "2025-12-31T19:00",
+      "location": "Operahallen, Stockholm",
+      "description": "Nyårsaftons spektakulära gala med de största ariornas från operavärldens guldålder. En festlig avslutning på året!",
+      "price": 650,
+      "maxTickets": 400,
+      "ticketCount": 0,
+      "eventImage": "Events.jpg"
+    },
+    {
+      "id": "3",
+      "category": "opera",
+      "clubId": 1,
+      "title": "La Traviata",
+      "datetime": "2025-12-18T19:00",
+      "location": "Royal Opera",
+      "description": "Verdis klassiker live.",
+      "price": 350,
+      "maxTickets": 200,
+      "ticketCount": 0,
+      "eventImage": "Events.jpg"
       "title": "AVICII",
       "description": "Come and see AVICII live!",
       "datetime": "2026-02-20T20:00",
@@ -150,6 +187,13 @@
     }
   ],
   "clubs": [
+    {
+      "id": "1",
+      "name": "Royal Opera",
+      "location": "Stockholm",
+      "category": "opera",
+      "description": "Upplev den klassiska operans magi i en storslagen miljö där tidlös musik möter praktfull scenkonst. Mäktiga röster, levande orkester och eleganta kostymer skapar en oförglömlig kväll fylld av dramatik, passion och skönhet. En hyllning till de stora mästarna – och en unik kulturupplevelse för alla sinnen."
+    },
     {
       "id": "4",
       "name": "EDM Club",
@@ -244,6 +288,142 @@
       "ticketCount": 1,
       "bookingDate": "2025-07-01T20:00:00",
       "totalPrice": 199
+    },
+    {
+      "id": "6c66",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "test",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 2,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "test",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "fd48",
+      "eventId": 3,
+      "eventTitle": "La Traviata",
+      "eventDateTime": "2025-12-18T19:00",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "b03c",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "Jenny",
+      "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "jenny.khranovska.syne25lin@edu.tucsweden.se",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "ddf9",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "190c",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "de41",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "fa3b",
+      "eventId": null,
+      "eventTitle": "Disco",
+      "eventDateTime": "2025-11-12T12:54",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 1,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
+    },
+    {
+      "id": "a8b5",
+      "eventId": null,
+      "eventTitle": "dansa med oss",
+      "eventDateTime": "2025-11-04T10:04",
+      "name": "Jenny",
+      "email": "test@test.sr",
+      "phone": "2222",
+      "tickets": 2,
+      "message": "",
+      "status": "pending",
+      "customer": {
+        "name": "Jenny",
+        "email": "test@test.sr",
+        "phone": "2222"
+      }
     }
   ]
 }
