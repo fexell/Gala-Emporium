@@ -149,6 +149,8 @@ function addClubEventListeners() {
           targetPage = 'remote-nightclub.html';
         } else if (clubId == 4) { // EDM Club
           targetPage = 'edm.html';
+        } else if (clubId == 5) { // Theater
+          targetPage = 'hiphop.html';
         } else {
           // Fallback - om okänd klubb, stanna på startsidan
           console.warn('Okänd klubb-id:', clubId);
