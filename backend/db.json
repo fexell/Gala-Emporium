@@ -177,15 +177,6 @@
       "maxTickets": 200,
       "ticketCount": 0,
       "eventImage": "Events.jpg"
-    },
-    {
-      "title": "AVICII",
-      "description": "Come and see AVICII live!",
-      "datetime": "2026-02-20T20:00",
-      "price": 500,
-      "maxTickets": 2000,
-      "clubId": 4,
-      "id": "B1ax9zI"
     }
   ],
   "clubs": [
@@ -293,7 +284,7 @@
     },
     {
       "id": "6c66",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "test",
@@ -327,7 +318,7 @@
     },
     {
       "id": "b03c",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "Jenny",
@@ -344,7 +335,7 @@
     },
     {
       "id": "ddf9",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "Jenny",
@@ -361,7 +352,7 @@
     },
     {
       "id": "190c",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "Jenny",
@@ -378,7 +369,7 @@
     },
     {
       "id": "de41",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "Jenny",
@@ -395,7 +386,7 @@
     },
     {
       "id": "fa3b",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "Disco",
       "eventDateTime": "2025-11-12T12:54",
       "name": "Jenny",
@@ -412,7 +403,7 @@
     },
     {
       "id": "a8b5",
-      "eventId": null,
+      "eventId": 3,
       "eventTitle": "dansa med oss",
       "eventDateTime": "2025-11-04T10:04",
       "name": "Jenny",
