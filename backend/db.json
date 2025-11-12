@@ -177,6 +177,8 @@
       "maxTickets": 200,
       "ticketCount": 0,
       "eventImage": "Events.jpg"
+    },
+    {
       "title": "AVICII",
       "description": "Come and see AVICII live!",
       "datetime": "2026-02-20T20:00",
@@ -424,6 +426,23 @@
         "email": "test@test.sr",
         "phone": "2222"
       }
+    },
+    {
+      "eventId": "3",
+      "eventTitle": "La Traviata",
+      "eventDateTime": "2025-12-18T19:00",
+      "name": "Daniel Aldemir",
+      "email": "direktenryd@se.se",
+      "phone": "0707654325",
+      "tickets": 10,
+      "message": "ghfjhdfh",
+      "status": "pending",
+      "customer": {
+        "name": "Daniel Aldemir",
+        "email": "direktenryd@se.se",
+        "phone": "0707654325"
+      },
+      "id": "Y6fqvM5"
     }
   ]
 }

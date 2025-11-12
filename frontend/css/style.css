@@ -359,3 +359,23 @@ footer a:hover {
   padding: 2rem;
   color: red;
 }
+
+/* Tillbaka-knapp */
+.back-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  margin: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.back-btn:hover {
+  background-color: var(--color-primary-light);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
