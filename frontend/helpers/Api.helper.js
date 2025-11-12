@@ -1,8 +1,6 @@
 // Wrapper for API requests
-// Compute a sensible default base URL that matches the current host (avoids localhost vs 127.0.0.1 mismatches)
-const DEFAULT_BASE_URL = (typeof window !== 'undefined' && window.location && window.location.hostname)
-  ? `http://${window.location.hostname}:5000`
-  : 'http://localhost:5000'
+// Alltid använd localhost eftersom json-server bara lyssnar på localhost, inte 127.0.0.1
+const DEFAULT_BASE_URL = 'http://localhost:5000'
 
 const createApiClient = ({ baseUrl = DEFAULT_BASE_URL, defaultHeaders = {} } = {}) => {
 
@@ -82,105 +80,100 @@ const createApiClient = ({ baseUrl = DEFAULT_BASE_URL, defaultHeaders = {} } = {
 const apiClient = createApiClient()
 
 // Load events along with their associated clubs
-const loadEventsWithClubs                   = async () => {
+const loadEventsWithClubs = async () => {
   try {
-    const events                            = await apiClient.get( '/events' )
-    const clubs                             = await apiClient.get( '/clubs' )
+    const events = await apiClient.get('/events')
+    const clubs = await apiClient.get('/clubs')
 
-    const eventsWithClubs                   = events.map( event => ({
+    const eventsWithClubs = events.map(event => ({
       ...event,
-      club                                  : clubs.find( club => club.id === event.clubId ) || null,
+      club: clubs.find(club => club.id === event.clubId) || null,
     }))
 
-    console.log( eventsWithClubs )
+    console.log(eventsWithClubs)
 
     return eventsWithClubs
-  } catch ( error ) {
-    console.error( 'Failed to load events: ', error )
+  } catch (error) {
+    console.error('Failed to load events: ', error)
   }
 }
 
 // Load full event data including clubs and bookings
-const loadFullEventData                     = async () => {
+const loadFullEventData = async () => {
   try {
     const [
       events,
       clubs,
       bookings
-    ]                                       = await Promise.all([
-      apiClient.get( '/events' ),
-      apiClient.get( '/clubs' ),
-      apiClient.get( '/bookings' ),
+    ] = await Promise.all([
+      apiClient.get('/events'),
+      apiClient.get('/clubs'),
+      apiClient.get('/bookings'),
     ])
 
-    const fullEvents                        = events.map( event => ({
+    const fullEvents = events.map(event => ({
       ...event,
-      club                                  : clubs.find( club => club.id === event.clubId ) || null,
-      bookings                              : bookings.filter( booking => booking.eventId === event.id ),
+      club: clubs.find(club => club.id === event.clubId) || null,
+      bookings: bookings.filter(booking => booking.eventId === event.id),
     }))
 
-    console.log( fullEvents )
+    console.log(fullEvents)
 
     return fullEvents
-  } catch ( error ) {
-    console.error( 'Failed to load event data: ', error )
+  } catch (error) {
+    console.error('Failed to load event data: ', error)
   }
 }
 
-const createClub                            = async ( data ) => {
+const createClub = async (data) => {
   try {
-    const club                              = await apiClient.post( '/clubs', {
+    const club = await apiClient.post('/clubs', {
       ...data,
-    } )
-  } catch ( error ) {
-    console.error( 'Failed to create club: ', error )
+    })
+  } catch (error) {
+    console.error('Failed to create club: ', error)
   }
 }
 
 // Create a new booking
-const createBooking                         = async ( eventId, date, time, totalTickets ) => {
+const createBooking = async (eventId, date, time, totalTickets) => {
   try {
-    const booking                           = await apiClient.post( '/bookings', {
+    const booking = await apiClient.post('/bookings', {
       eventId,
       date,
       time,
       totalTickets,
-    } )
+    })
 
-    console.log( 'Booking created: ', booking )
+    console.log('Booking created: ', booking)
 
     return booking
-  } catch ( error ) {
-    console.error( 'Failed to create booking: ', error )
+  } catch (error) {
+    console.error('Failed to create booking: ', error)
   }
 }
 
 // Create a new event
-const createEvent                           = async ( clubId, data ) => {
+const createEvent = async (clubId, data) => {
   try {
-    const event                             = await apiClient.post( '/events', {
+    const event = await apiClient.post('/events', {
       ...data,
       clubId,
-    } )
+    })
 
-    console.log( 'Event created: ', event )
+    console.log('Event created: ', event)
 
     return event
-  } catch ( error ) {
-    console.error( 'Failed to create event: ', error )
+  } catch (error) {
+    console.error('Failed to create event: ', error)
   }
 }
 
 export {
-  createApiClient,
-  apiClient,
-
+  apiClient, createApiClient, createBooking,
+  // Create data
+  createClub, createEvent,
   // Load data
   loadEventsWithClubs,
-  loadFullEventData,
-
-  // Create data
-  createClub,
-  createBooking,
-  createEvent,
+  loadFullEventData
 }
